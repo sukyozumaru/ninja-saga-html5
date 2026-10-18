@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+WARNING: The structure of this XML is not final.
+In later versions of FFDec it can be changed.
+Make sure you use compatible reader/writer based on _xmlExportMajor/_xmlExportMinor keys.
+--><swf _xmlExportMajor="2" _xmlExportMinor="2" _generator="JPEXS Free Flash Decompiler v.26.3.0" type="SWF" charset="UTF-8" compression="ZLIB" encrypted="false" frameCount="1" frameRate="24.0" gfx="false" hasEndTag="true" version="10">
+<displayRect type="RECT" Xmax="11000" Xmin="0" Ymax="8000" Ymin="0" nbits="15"/>
+<tags>
+<item type="FileAttributesTag" actionScript3="true" forceWriteAsLong="false" hasMetadata="true" noCrossDomainCache="false" reservedA="false" reservedB="0" swfRelativeUrls="false" useDirectBlit="false" useGPU="false" useNetwork="false"/>
+<item type="MetadataTag" forceWriteAsLong="true" xmlMetadata="Ninja Saga restoration: reconstructed hair_10_1; new polygon geometry; 2026-10-18; NOT authenticated original artwork."/>
+<item type="SetBackgroundColorTag" forceWriteAsLong="false">
+<backgroundColor type="RGB" blue="255" green="255" red="255"/>
+</item>
+<item type="DefineSceneAndFrameLabelDataTag" forceWriteAsLong="true">
+<sceneOffsets>
+<item>0</item>
+</sceneOffsets>
+<sceneNames>
+<item>Scene 1</item>
+</sceneNames>
+<frameNums/>
+<frameNames/>
+</item>
+<item type="DefineShapeTag" forceWriteAsLong="true" shapeId="1"><shapeBounds type="RECT" Xmin="-1000" Xmax="1000" Ymin="-2000" Ymax="0" nbits="16"/><shapes type="SHAPEWITHSTYLE" numFillBits="4" numLineBits="0"><fillStyles type="FILLSTYLEARRAY"><fillStyles><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="0" green="0" blue="0"/></item></fillStyles></fillStyles><lineStyles type="LINESTYLEARRAY"><lineStyles/></lineStyles><shapeRecords><item type="StyleChangeRecord" fillStyle1="1" moveBits="16" moveDeltaX="-1000" moveDeltaY="-2000" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="2000" deltaY="0" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="0" deltaY="2000" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-2000" deltaY="0" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="0" deltaY="-2000" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="EndShapeRecord" endOfShape="0"/></shapeRecords></shapes></item>
+<item type="DefineShapeTag" forceWriteAsLong="true" shapeId="2"><shapeBounds type="RECT" Xmin="-700" Xmax="695" Ymin="-1919" Ymax="-28" nbits="16"/><shapes type="SHAPEWITHSTYLE" numFillBits="4" numLineBits="0"><fillStyles type="FILLSTYLEARRAY"><fillStyles><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="195" green="135" blue="182"/></item><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="235" green="192" blue="220"/></item><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="235" green="192" blue="220"/></item><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="235" green="192" blue="220"/></item><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="25" green="20" blue="29"/></item><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="25" green="20" blue="29"/></item><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="25" green="20" blue="29"/></item><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="25" green="20" blue="29"/></item><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="25" green="20" blue="29"/></item></fillStyles></fillStyles><lineStyles type="LINESTYLEARRAY"><lineStyles/></lineStyles><shapeRecords><item type="StyleChangeRecord" fillStyle1="1" moveBits="16" moveDeltaX="-669" moveDeltaY="-927" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="-31" deltaY="-372" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="93" deltaY="-310" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="217" deltaY="-217" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="310" deltaY="-93" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="279" deltaY="62" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="217" deltaY="186" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="124" deltaY="341" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="31" deltaY="372" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="124" deltaY="682" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-155" deltaY="248" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-217" deltaY="-186" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-62" deltaY="-496" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-62" deltaY="-465" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-93" deltaY="-248" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-155" deltaY="124" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-124" deltaY="-155" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-124" deltaY="186" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-124" deltaY="-124" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-93" deltaY="248" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="31" deltaY="434" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-124" deltaY="279" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-93" deltaY="-124" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="31" deltaY="-372" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StyleChangeRecord" fillStyle1="2" moveBits="16" moveDeltaX="-545" moveDeltaY="-1392" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="155" deltaY="-310" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="310" deltaY="-124" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="310" deltaY="124" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="155" deltaY="248" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-186" deltaY="-124" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-279" deltaY="-124" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-248" deltaY="93" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-217" deltaY="217" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StyleChangeRecord" fillStyle1="3" moveBits="16" moveDeltaX="354" moveDeltaY="-1051" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="93" deltaY="403" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="93" deltaY="310" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-93" deltaY="-93" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-93" deltaY="-620" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StyleChangeRecord" fillStyle1="4" moveBits="16" moveDeltaX="-607" moveDeltaY="-958" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="31" deltaY="248" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-62" deltaY="155" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="31" deltaY="-403" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StyleChangeRecord" fillStyle1="5" moveBits="16" moveDeltaX="-638" moveDeltaY="-1237" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="93" deltaY="-310" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="186" deltaY="-186" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="248" deltaY="-93" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="310" deltaY="62" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="186" deltaY="217" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="93" deltaY="372" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-93" deltaY="-279" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-186" deltaY="-186" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-279" deltaY="-93" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-248" deltaY="93" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-155" deltaY="186" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-155" deltaY="217" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StyleChangeRecord" fillStyle1="6" moveBits="16" moveDeltaX="-328" moveDeltaY="-1609" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="31" deltaY="186" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-93" deltaY="93" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="0" deltaY="-124" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="62" deltaY="-155" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StyleChangeRecord" fillStyle1="7" moveBits="16" moveDeltaX="44" moveDeltaY="-1640" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="31" deltaY="186" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="124" deltaY="155" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-62" deltaY="-217" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-93" deltaY="-124" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StyleChangeRecord" fillStyle1="8" moveBits="16" moveDeltaX="354" moveDeltaY="-772" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="93" deltaY="434" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="93" deltaY="124" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-124" deltaY="-62" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-62" deltaY="-496" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StyleChangeRecord" fillStyle1="9" moveBits="16" moveDeltaX="-545" moveDeltaY="-834" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="-31" deltaY="310" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-62" deltaY="93" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="31" deltaY="-186" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="62" deltaY="-217" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="EndShapeRecord" endOfShape="0"/></shapeRecords></shapes></item>
+<item type="DefineSpriteTag" forceWriteAsLong="true" frameCount="1" hasEndTag="true" spriteId="3">
+<subTags>
+<item type="PlaceObject2Tag" characterId="1" clipDepth="5" depth="1" forceWriteAsLong="false" placeFlagHasCharacter="true" placeFlagHasClipActions="false" placeFlagHasClipDepth="true" placeFlagHasColorTransform="false" placeFlagHasMatrix="true" placeFlagHasName="false" placeFlagHasRatio="false" placeFlagMove="false">
+<matrix type="MATRIX" hasRotate="false" hasScale="false" nRotateBits="0" nScaleBits="0" nTranslateBits="0" translateX="0" translateY="0"/>
+</item>
+<item type="PlaceObject2Tag" characterId="2" depth="4" forceWriteAsLong="false" placeFlagHasCharacter="true" placeFlagHasClipActions="false" placeFlagHasClipDepth="false" placeFlagHasColorTransform="false" placeFlagHasMatrix="true" placeFlagHasName="false" placeFlagHasRatio="false" placeFlagMove="false">
+<matrix type="MATRIX" hasRotate="false" hasScale="false" nRotateBits="0" nScaleBits="0" nTranslateBits="0" translateX="0" translateY="0"/>
+</item>
+<item type="ShowFrameTag" forceWriteAsLong="false"/>
+</subTags>
+</item>
+<item type="DefineSpriteTag" forceWriteAsLong="true" frameCount="1" hasEndTag="true" spriteId="4">
+<subTags>
+<item type="ShowFrameTag" forceWriteAsLong="false"/>
+</subTags>
+</item>
+<item type="DefineShapeTag" forceWriteAsLong="true" shapeId="5"><shapeBounds type="RECT" Xmin="-116" Xmax="764" Ymin="-85" Ymax="975" nbits="16"/><shapes type="SHAPEWITHSTYLE" numFillBits="4" numLineBits="0"><fillStyles type="FILLSTYLEARRAY"><fillStyles><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="110" green="50" blue="100"/></item></fillStyles></fillStyles><lineStyles type="LINESTYLEARRAY"><lineStyles/></lineStyles><shapeRecords><item type="StyleChangeRecord" fillStyle1="1" moveBits="16" moveDeltaX="-96" moveDeltaY="215" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="80" deltaY="-220" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="180" deltaY="-80" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="300" deltaY="40" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="160" deltaY="220" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="40" deltaY="400" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="100" deltaY="280" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-100" deltaY="120" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-120" deltaY="-120" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-40" deltaY="-460" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-140" deltaY="-240" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-220" deltaY="-40" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-100" deltaY="260" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-20" deltaY="300" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-100" deltaY="100" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-40" deltaY="-140" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="20" deltaY="-420" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="EndShapeRecord" endOfShape="0"/></shapeRecords></shapes></item>
+<item type="DefineSpriteTag" forceWriteAsLong="true" frameCount="1" hasEndTag="true" spriteId="6">
+<subTags>
+<item type="PlaceObject2Tag" characterId="5" depth="1" forceWriteAsLong="false" placeFlagHasCharacter="true" placeFlagHasClipActions="false" placeFlagHasClipDepth="false" placeFlagHasColorTransform="false" placeFlagHasMatrix="true" placeFlagHasName="false" placeFlagHasRatio="false" placeFlagMove="false">
+<matrix type="MATRIX" hasRotate="false" hasScale="false" nRotateBits="0" nScaleBits="0" nTranslateBits="0" translateX="0" translateY="0"/>
+</item>
+<item type="ShowFrameTag" forceWriteAsLong="false"/>
+</subTags>
+</item>
+<item type="DefineShapeTag" forceWriteAsLong="true" shapeId="7"><shapeBounds type="RECT" Xmin="-59" Xmax="841" Ymin="-186" Ymax="1034" nbits="16"/><shapes type="SHAPEWITHSTYLE" numFillBits="4" numLineBits="0"><fillStyles type="FILLSTYLEARRAY"><fillStyles><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="190" green="100" blue="170"/></item></fillStyles></fillStyles><lineStyles type="LINESTYLEARRAY"><lineStyles/></lineStyles><shapeRecords><item type="StyleChangeRecord" fillStyle1="1" moveBits="16" moveDeltaX="-39" moveDeltaY="454" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="-20" deltaY="-240" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="60" deltaY="-200" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="140" deltaY="-140" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="200" deltaY="-60" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="180" deltaY="40" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="140" deltaY="120" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="80" deltaY="220" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="20" deltaY="240" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="80" deltaY="440" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-100" deltaY="160" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-140" deltaY="-120" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-40" deltaY="-320" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-40" deltaY="-300" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-60" deltaY="-160" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-100" deltaY="80" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-80" deltaY="-100" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-80" deltaY="120" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-80" deltaY="-80" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-60" deltaY="160" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="20" deltaY="280" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-80" deltaY="180" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-60" deltaY="-80" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="20" deltaY="-240" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="EndShapeRecord" endOfShape="0"/></shapeRecords></shapes></item>
+<item type="DefineSpriteTag" forceWriteAsLong="true" frameCount="1" hasEndTag="true" spriteId="8">
+<subTags>
+<item type="PlaceObject2Tag" characterId="7" depth="1" forceWriteAsLong="false" placeFlagHasCharacter="true" placeFlagHasClipActions="false" placeFlagHasClipDepth="false" placeFlagHasColorTransform="false" placeFlagHasMatrix="true" placeFlagHasName="false" placeFlagHasRatio="false" placeFlagMove="false">
+<matrix type="MATRIX" hasRotate="false" hasScale="false" nRotateBits="0" nScaleBits="0" nTranslateBits="0" translateX="0" translateY="0"/>
+</item>
+<item type="ShowFrameTag" forceWriteAsLong="false"/>
+</subTags>
+</item>
+<item type="DefineShapeTag" forceWriteAsLong="true" shapeId="9"><shapeBounds type="RECT" Xmin="40" Xmax="800" Ymin="80" Ymax="1120" nbits="16"/><shapes type="SHAPEWITHSTYLE" numFillBits="4" numLineBits="0"><fillStyles type="FILLSTYLEARRAY"><fillStyles><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="25" green="20" blue="29"/></item><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="25" green="20" blue="29"/></item><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="25" green="20" blue="29"/></item><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="25" green="20" blue="29"/></item><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="25" green="20" blue="29"/></item><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="228" green="187" blue="217"/></item><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="228" green="187" blue="217"/></item><item type="FILLSTYLE" fillStyleType="0"><color type="RGB" red="228" green="187" blue="217"/></item></fillStyles></fillStyles><lineStyles type="LINESTYLEARRAY"><lineStyles/></lineStyles><shapeRecords><item type="StyleChangeRecord" fillStyle1="1" moveBits="16" moveDeltaX="40" moveDeltaY="460" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="60" deltaY="-200" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="120" deltaY="-120" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="160" deltaY="-60" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="200" deltaY="40" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="120" deltaY="140" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="60" deltaY="240" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-60" deltaY="-180" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-120" deltaY="-120" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-180" deltaY="-60" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-160" deltaY="60" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-100" deltaY="120" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-100" deltaY="140" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StyleChangeRecord" fillStyle1="2" moveBits="16" moveDeltaX="240" moveDeltaY="220" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="20" deltaY="120" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-60" deltaY="60" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="0" deltaY="-80" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="40" deltaY="-100" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StyleChangeRecord" fillStyle1="3" moveBits="16" moveDeltaX="480" moveDeltaY="200" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="20" deltaY="120" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="80" deltaY="100" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-40" deltaY="-140" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-60" deltaY="-80" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StyleChangeRecord" fillStyle1="4" moveBits="16" moveDeltaX="680" moveDeltaY="760" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="60" deltaY="280" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="60" deltaY="80" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-80" deltaY="-40" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-40" deltaY="-320" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StyleChangeRecord" fillStyle1="5" moveBits="16" moveDeltaX="100" moveDeltaY="720" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="-20" deltaY="200" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-40" deltaY="60" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="20" deltaY="-120" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="40" deltaY="-140" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StyleChangeRecord" fillStyle1="6" moveBits="16" moveDeltaX="100" moveDeltaY="360" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="100" deltaY="-200" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="200" deltaY="-80" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="200" deltaY="80" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="100" deltaY="160" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-120" deltaY="-80" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-180" deltaY="-80" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-160" deltaY="60" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-140" deltaY="140" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StyleChangeRecord" fillStyle1="7" moveBits="16" moveDeltaX="680" moveDeltaY="580" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="60" deltaY="260" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="60" deltaY="200" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-60" deltaY="-60" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-60" deltaY="-400" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StyleChangeRecord" fillStyle1="8" moveBits="16" moveDeltaX="60" moveDeltaY="640" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false"/><item type="StraightEdgeRecord" deltaX="20" deltaY="160" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="-40" deltaY="100" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="StraightEdgeRecord" deltaX="20" deltaY="-260" generalLineFlag="true" numBits="16" vertLineFlag="false"/><item type="EndShapeRecord" endOfShape="0"/></shapeRecords></shapes></item>
+<item type="DefineSpriteTag" forceWriteAsLong="true" frameCount="1" hasEndTag="true" spriteId="10">
+<subTags>
+<item type="PlaceObject2Tag" characterId="6" depth="1" forceWriteAsLong="true" name="hair_color_2" placeFlagHasCharacter="true" placeFlagHasClipActions="false" placeFlagHasClipDepth="false" placeFlagHasColorTransform="false" placeFlagHasMatrix="true" placeFlagHasName="true" placeFlagHasRatio="false" placeFlagMove="false">
+<matrix type="MATRIX" hasRotate="false" hasScale="false" nRotateBits="0" nScaleBits="0" nTranslateBits="9" translateX="116" translateY="245"/>
+</item>
+<item type="PlaceObject2Tag" characterId="8" depth="3" forceWriteAsLong="true" name="hair_color_1" placeFlagHasCharacter="true" placeFlagHasClipActions="false" placeFlagHasClipDepth="false" placeFlagHasColorTransform="false" placeFlagHasMatrix="true" placeFlagHasName="true" placeFlagHasRatio="false" placeFlagMove="false">
+<matrix type="MATRIX" hasRotate="false" hasScale="false" nRotateBits="0" nScaleBits="0" nTranslateBits="9" translateX="59" translateY="206"/>
+</item>
+<item type="PlaceObject2Tag" characterId="9" depth="6" forceWriteAsLong="false" placeFlagHasCharacter="true" placeFlagHasClipActions="false" placeFlagHasClipDepth="false" placeFlagHasColorTransform="false" placeFlagHasMatrix="true" placeFlagHasName="false" placeFlagHasRatio="false" placeFlagMove="false">
+<matrix type="MATRIX" hasRotate="false" hasScale="false" nRotateBits="0" nScaleBits="0" nTranslateBits="0" translateX="0" translateY="0"/>
+</item>
+<item type="ShowFrameTag" forceWriteAsLong="false"/>
+</subTags>
+</item>
+<item type="PlaceObject2Tag" characterId="10" depth="1" forceWriteAsLong="false" placeFlagHasCharacter="true" placeFlagHasClipActions="false" placeFlagHasClipDepth="false" placeFlagHasColorTransform="false" placeFlagHasMatrix="true" placeFlagHasName="false" placeFlagHasRatio="false" placeFlagMove="false">
+<matrix type="MATRIX" hasRotate="false" hasScale="true" nRotateBits="0" nScaleBits="20" nTranslateBits="13" scaleX="5.761795" scaleY="5.761795" translateX="2974" translateY="-393"/>
+</item>
+<item type="DoABC2Tag" flags="1" forceWriteAsLong="true" name="">
+<abc type="ABC">
+<version type="ABCVersion" major="46" minor="16"/>
+<constants type="AVM2ConstantPool">
+<constant_int/>
+<constant_uint/>
+<constant_double/>
+<constant_decimal/>
+<constant_float/>
+<constant_float4/>
+<constant_string>
+<item isNull="true"/>
+<item/>
+<item>back_hair</item>
+<item>flash.display</item>
+<item>MovieClip</item>
+<item>hair</item>
+<item>hair_color_1</item>
+<item>hair_color_2</item>
+<item>icon</item>
+<item>Object</item>
+<item>flash.events</item>
+<item>EventDispatcher</item>
+<item>DisplayObject</item>
+<item>InteractiveObject</item>
+<item>DisplayObjectContainer</item>
+<item>Sprite</item>
+</constant_string>
+<constant_namespace>
+<item isNull="true"/>
+<item type="Namespace" kind="22" name_index="1"/>
+<item type="Namespace" kind="22" name_index="3"/>
+<item type="Namespace" kind="24" name_index="2"/>
+<item type="Namespace" kind="24" name_index="5"/>
+<item type="Namespace" kind="24" name_index="8"/>
+<item type="Namespace" kind="22" name_index="10"/>
+</constant_namespace>
+<constant_namespace_set/>
+<constant_multiname>
+<item isNull="true"/>
+<item type="Multiname" kind="7" name_index="2" namespace_index="1" namespace_set_index="0" qname_index="0"/>
+<item type="Multiname" kind="7" name_index="4" namespace_index="2" namespace_set_index="0" qname_index="0"/>
+<item type="Multiname" kind="7" name_index="5" namespace_index="1" namespace_set_index="0" qname_index="0"/>
+<item type="Multiname" kind="7" name_index="6" namespace_index="1" namespace_set_index="0" qname_index="0"/>
+<item type="Multiname" kind="7" name_index="7" namespace_index="1" namespace_set_index="0" qname_index="0"/>
+<item type="Multiname" kind="7" name_index="8" namespace_index="1" namespace_set_index="0" qname_index="0"/>
+<item type="Multiname" kind="7" name_index="9" namespace_index="1" namespace_set_index="0" qname_index="0"/>
+<item type="Multiname" kind="7" name_index="11" namespace_index="6" namespace_set_index="0" qname_index="0"/>
+<item type="Multiname" kind="7" name_index="12" namespace_index="2" namespace_set_index="0" qname_index="0"/>
+<item type="Multiname" kind="7" name_index="13" namespace_index="2" namespace_set_index="0" qname_index="0"/>
+<item type="Multiname" kind="7" name_index="14" namespace_index="2" namespace_set_index="0" qname_index="0"/>
+<item type="Multiname" kind="7" name_index="15" namespace_index="2" namespace_set_index="0" qname_index="0"/>
+</constant_multiname>
+</constants>
+<method_info>
+<item type="MethodInfo" flags="0" name_index="0" ret_type="0">
+<param_types/>
+<optional/>
+<paramNames/>
+</item>
+<item type="MethodInfo" flags="0" name_index="0" ret_type="0">
+<param_types/>
+<optional/>
+<paramNames/>
+</item>
+<item type="MethodInfo" flags="0" name_index="0" ret_type="0">
+<param_types/>
+<optional/>
+<paramNames/>
+</item>
+<item type="MethodInfo" flags="0" name_index="0" ret_type="0">
+<param_types/>
+<optional/>
+<paramNames/>
+</item>
+<item type="MethodInfo" flags="0" name_index="0" ret_type="0">
+<param_types/>
+<optional/>
+<paramNames/>
+</item>
+<item type="MethodInfo" flags="0" name_index="0" ret_type="0">
+<param_types/>
+<optional/>
+<paramNames/>
+</item>
+<item type="MethodInfo" flags="0" name_index="0" ret_type="0">
+<param_types/>
+<optional/>
+<paramNames/>
+</item>
+<item type="MethodInfo" flags="0" name_index="0" ret_type="0">
+<param_types/>
+<optional/>
+<paramNames/>
+</item>
+<item type="MethodInfo" flags="0" name_index="0" ret_type="0">
+<param_types/>
+<optional/>
+<paramNames/>
+</item>
+</method_info>
+<metadata_info/>
+<instance_info>
+<item type="InstanceInfo" flags="8" iinit_index="1" name_index="1" protectedNS="3" super_index="2">
+<interfaces/>
+<instance_traits type="Traits">
+<traits/>
+</instance_traits>
+</item>
+<item type="InstanceInfo" flags="8" iinit_index="4" name_index="3" protectedNS="4" super_index="2">
+<interfaces/>
+<instance_traits type="Traits">
+<traits>
+<item type="TraitSlotConst" bytes="0400000200" deleted="false" fileOffset="7650" kindFlags="0" kindType="0" name_index="4" slot_id="0" type_index="2" value_index="0" value_kind="0">
+<metadata/>
+</item>
+<item type="TraitSlotConst" bytes="0500000200" deleted="false" fileOffset="7655" kindFlags="0" kindType="0" name_index="5" slot_id="0" type_index="2" value_index="0" value_kind="0">
+<metadata/>
+</item>
+</traits>
+</instance_traits>
+</item>
+<item type="InstanceInfo" flags="8" iinit_index="7" name_index="6" protectedNS="5" super_index="2">
+<interfaces/>
+<instance_traits type="Traits">
+<traits/>
+</instance_traits>
+</item>
+</instance_info>
+<class_info>
+<item type="ClassInfo" cinit_index="0">
+<static_traits type="Traits">
+<traits/>
+</static_traits>
+</item>
+<item type="ClassInfo" cinit_index="3">
+<static_traits type="Traits">
+<traits/>
+</static_traits>
+</item>
+<item type="ClassInfo" cinit_index="6">
+<static_traits type="Traits">
+<traits/>
+</static_traits>
+</item>
+</class_info>
+<script_info>
+<item type="ScriptInfo" init_index="2">
+<traits type="Traits">
+<traits>
+<item type="TraitClass" bytes="01040100" class_info="0" deleted="false" fileOffset="7676" kindFlags="0" kindType="4" name_index="1" slot_id="1">
+<metadata/>
+</item>
+</traits>
+</traits>
+</item>
+<item type="ScriptInfo" init_index="5">
+<traits type="Traits">
+<traits>
+<item type="TraitClass" bytes="03040101" class_info="1" deleted="false" fileOffset="7682" kindFlags="0" kindType="4" name_index="3" slot_id="1">
+<metadata/>
+</item>
+</traits>
+</traits>
+</item>
+<item type="ScriptInfo" init_index="8">
+<traits type="Traits">
+<traits>
+<item type="TraitClass" bytes="06040102" class_info="2" deleted="false" fileOffset="7688" kindFlags="0" kindType="4" name_index="6" slot_id="1">
+<metadata/>
+</item>
+</traits>
+</traits>
+</item>
+</script_info>
+<bodies>
+<item type="MethodBody" codeBytes="d03047" init_scope_depth="9" max_regs="1" max_scope_depth="10" max_stack="1" method_info="0">
+<exceptions/>
+<traits type="Traits">
+<traits/>
+</traits>
+</item>
+<item type="MethodBody" codeBytes="d030d0490047" init_scope_depth="10" max_regs="1" max_scope_depth="11" max_stack="1" method_info="1">
+<exceptions/>
+<traits type="Traits">
+<traits/>
+</traits>
+</item>
+<item type="MethodBody" codeBytes="d0306500600730600830600930600a30600b30600c30600230600258001d1d1d1d1d1d1d680147" init_scope_depth="1" max_regs="1" max_scope_depth="9" max_stack="2" method_info="2">
+<exceptions/>
+<traits type="Traits">
+<traits/>
+</traits>
+</item>
+<item type="MethodBody" codeBytes="d03047" init_scope_depth="9" max_regs="1" max_scope_depth="10" max_stack="1" method_info="3">
+<exceptions/>
+<traits type="Traits">
+<traits/>
+</traits>
+</item>
+<item type="MethodBody" codeBytes="d030d0490047" init_scope_depth="10" max_regs="1" max_scope_depth="11" max_stack="1" method_info="4">
+<exceptions/>
+<traits type="Traits">
+<traits/>
+</traits>
+</item>
+<item type="MethodBody" codeBytes="d0306500600730600830600930600a30600b30600c30600230600258011d1d1d1d1d1d1d680347" init_scope_depth="1" max_regs="1" max_scope_depth="9" max_stack="2" method_info="5">
+<exceptions/>
+<traits type="Traits">
+<traits/>
+</traits>
+</item>
+<item type="MethodBody" codeBytes="d03047" init_scope_depth="9" max_regs="1" max_scope_depth="10" max_stack="1" method_info="6">
+<exceptions/>
+<traits type="Traits">
+<traits/>
+</traits>
+</item>
+<item type="MethodBody" codeBytes="d030d0490047" init_scope_depth="10" max_regs="1" max_scope_depth="11" max_stack="1" method_info="7">
+<exceptions/>
+<traits type="Traits">
+<traits/>
+</traits>
+</item>
+<item type="MethodBody" codeBytes="d0306500600730600830600930600a30600b30600c30600230600258021d1d1d1d1d1d1d680647" init_scope_depth="1" max_regs="1" max_scope_depth="9" max_stack="2" method_info="8">
+<exceptions/>
+<traits type="Traits">
+<traits/>
+</traits>
+</item>
+</bodies>
+</abc>
+</item>
+<item type="SymbolClassTag" forceWriteAsLong="true">
+<tags>
+<item>10</item>
+<item>4</item>
+<item>3</item>
+</tags>
+<names>
+<item>hair</item>
+<item>back_hair</item>
+<item>icon</item>
+</names>
+</item>
+<item type="ShowFrameTag" forceWriteAsLong="false"/>
+</tags>
+</swf>

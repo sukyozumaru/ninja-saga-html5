@@ -34,7 +34,7 @@ Para personajes existentes, `SelectCharMenu.amfGetCharacter` llama a `CharacterD
 
 ## Pendiente antes de implementar
 
-- Recuperar o autenticar `hair_10_1.swf`, requerido por la precarga original de personalización.
+- El bloqueo de precarga de `hair_10_1.swf` tiene ahora una reconstrucción visual autorizada y documentada en `reconstructed/hair_10_1/`. La recuperación/autenticación del original sigue pendiente.
 - Documentar los datos iniciales que el tutorial entrega al personaje y las reglas de validación del nombre, género y paletas.
 - Reconstruir los campos completos de SystemData y getExtraData a partir de sus consumidores; no reutilizar respuestas de clones como si fueran el contrato original.
 - Probar la secuencia original hasta la persistencia, recarga y entrada en la aldea. Estas etapas no se consideran restauradas todavía.

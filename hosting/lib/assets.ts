@@ -3,10 +3,12 @@ const files=new Map(lock.files.map(record=>[record.path,record]));
 export async function serveOriginal(request:Request){
  const name=decodeURIComponent(new URL(request.url).pathname).slice(1);
  const record=files.get(name);
- if(!record)return new Response('Missing historical resource: '+name,{status:404});
+ if(!record){console.warn('Missing historical resource',name);return new Response('Missing historical resource: '+name,{status:404});}
  const cache=(caches as unknown as {default:Cache}).default;
  const cacheKey=new Request(new URL('/__preserved/'+lock.commit+'/'+name,request.url));
- const existing=cache?await cache.match(cacheKey).catch(()=>undefined):undefined;if(existing)return existing;
+ const existing=cache?await cache.match(cacheKey).catch(()=>undefined):undefined;
+ // Vinext adds response headers; Cache API responses have immutable headers.
+ if(existing)return new Response(existing.body,{status:existing.status,headers:new Headers(existing.headers)});
  const source='https://raw.githubusercontent.com/sukyozumaru/ninja-saga-html5/'+lock.commit+'/'+record.source.split('/').map(encodeURIComponent).join('/');
  try{
   const upstream=await fetch(source);if(!upstream.ok)return new Response('Original resource temporarily unavailable',{status:503});

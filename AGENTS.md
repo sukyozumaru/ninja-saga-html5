@@ -8,6 +8,7 @@ El objetivo del usuario es restaurar y trasladar Ninja Saga Original completo a 
 - Preservar los SWF de `restoration/corpus/` y sus SHA-256. Mantener separadas las definiciones AS3 de distintas bibliotecas; no fusionarlas por nombre de clase sin análisis.
 - Un resultado de descompilación no equivale al proyecto editable original ni garantiza compilación o equivalencia semántica. Revisar bytecode ante discrepancias.
 - No sustituir silenciosamente recursos faltantes, respuestas de servidor o fórmulas por aproximaciones. Registrar lo pendiente y buscar evidencia. El comportamiento de clones/stubs del runner actual no cuenta como fidelidad demostrada.
+- Excepción autorizada expresamente por el usuario el 18 de octubre de 2026: reconstruir desde cero el modelo `hair_10_1.swf` si no aparece el original. Conservar fuente editable, registrar la diferencia y no presentarlo como recurso original autenticado. Esta autorización no se extiende a inventar mecánicas o respuestas de servidor.
 - Mantener el runner local funcional como referencia. Ruffle es una herramienta de preservación, no la prueba de una migración nativa completa.
 - El backend propio sustituye técnicamente los servicios de Facebook y los servicios perdidos. Sus contratos deben derivarse del cliente histórico y validarse localmente.
 - No ejecutar pruebas de vulnerabilidades contra servidores de terceros. La investigación del protocolo se hace sobre archivos públicos y entornos propios.

@@ -41,5 +41,6 @@ export async function dispatch(db,service,args){
  const account=await db.prepare('SELECT account_id FROM sessions WHERE token_hash=? AND expires>?').bind(await digest(session),Date.now()).first();
  if(!account)return fail('PUBLIC_INVALID_SESSION');
  if(service==='CharacterDAO.getCharactersList')return {status:'1',result:[],login_per_day:1};
+ console.warn('Unrestored historical AMF service',String(service).replace(/[^A-Za-z0-9_.]/g,'').slice(0,100));
  return fail('PUBLIC_NOT_RESTORED:'+service);
 }

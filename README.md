@@ -2,13 +2,13 @@
 
 Restauración comunitaria del Ninja Saga histórico y trabajo hacia un traslado fiel a HTML5. Conservamos su interfaz, animaciones y mecánicas, contrastando cada cambio con los archivos recuperados. Proyecto independiente; no es un servicio oficial.
 
-**Hito actual:** cliente histórico con sus bibliotecas originales, acceso local sin Facebook y pantalla original de selección de personajes. **La restauración completa y el port nativo HTML5 siguen en desarrollo.**
+**Hito actual público:** cliente histórico sin parches con acceso sin Facebook, editor original, elección de elemento y combate introductorio. Se incorporaron un peinado reconstruido autorizado y una biblioteca gráfica recuperada de procedencia secundaria, documentados aparte. **El guardado del personaje, la aldea, la restauración completa y el port nativo HTML5 siguen pendientes.**
 
 ## Prueba pública
 
 **[Abrir Ninja Saga](https://ninja-saga-restoration.heartyglade5.chatgpt.site)** — no necesitas ejecutar localhost ni instalar nada. Crea una cuenta de pruebas desde el enlace de la página y entra en la pantalla original del juego.
 
-Por ahora se pueden probar el registro, el acceso y la selección original de personajes. La creación de personajes y las misiones siguen en restauración. [Reportar un problema](https://github.com/sukyozumaru/ninja-saga-html5/issues).
+Se pueden probar registro, acceso, personalización y combate introductorio. **Al terminar la introducción el guardado sigue fallando: todavía no hay partida persistente ni acceso restaurado a la aldea.** [Informe del avance y sus límites](reports/04-RECURSOS-Y-TUTORIAL.md). [Reportar un problema](https://github.com/sukyozumaru/ninja-saga-html5/issues).
 
 El servidor y las cuentas están alojados de forma independiente del ordenador del desarrollador. [Informe de publicación y pruebas](restoration/INFORME-03.md). El código del alojamiento se conserva en `hosting/`.
 
@@ -35,11 +35,11 @@ El servidor solo escucha en tu ordenador. Cuentas y hashes de contraseña se gua
 | SWF principal, código, red, popup, idioma y datos históricos | Cargan sin modificar los binarios |
 | Acceso local y selección de personajes | Verificados en el navegador con AMF real |
 | Recursos archivados | Colección 3.3.00810 preservada con manifiesto SHA-256 |
-| Creación de personajes | Bloqueada al cargar `hair_10_1.swf`, ausente del archivo histórico |
+| Editor y combate introductorio públicos | Desbloqueados con excepciones documentadas; guardado posterior pendiente |
 | Persistencia de personajes, misiones y servicios sociales históricos | Pendientes de reconstrucción y validación |
 | Port nativo HTML5 completo | Pendiente; Ruffle se usa como herramienta de preservación |
 
-El cliente acepta el parámetro original `client_version=3.3.00810`, correspondiente a la carpeta archivada. Su constante interna inicial dice 3.3.00809; conservamos ambos valores. No se cargan bibliotecas comunitarias en este perfil, ni se generan recursos sustitutos o éxitos simulados.
+El cliente acepta el parámetro original `client_version=3.3.00810`, correspondiente a la carpeta archivada. Su constante interna inicial dice 3.3.00809; conservamos ambos valores. El corpus original permanece intacto. El sitio público añade expresamente `hair_10_1.swf` reconstruido y `library.swf` recuperado, separados del manifiesto histórico; no se declaran originales autenticados. El runner localhost de referencia conserva su alcance anterior. No se devuelven éxitos simulados para los servicios pendientes.
 
 ## Ayuda a recuperarlo
 
@@ -62,7 +62,7 @@ El runner comunitario anterior permanece mediante `npm run start:community` en h
 
 ## English
 
-We are preserving the historical Ninja Saga client and working toward a faithful HTML5 migration. The current milestone runs the unmodified historical SWF with its own archived libraries and a local replacement login, reaching the original character selection UI. It is not yet a complete playable restoration or a native HTML5 port. Missing resources and unreconstructed server contracts fail explicitly instead of being replaced with fake success responses.
+We are preserving the historical Ninja Saga client and working toward a faithful HTML5 migration. The public test now reaches the original character editor, element selection and introductory battle. An explicitly authorized reconstructed hairstyle and a recovered graphical library with unverified build provenance are documented separately from the untouched archive. Character persistence and village access are still pending; this is not a complete playable restoration or native HTML5 port. Unreconstructed server contracts fail explicitly rather than returning fake success responses.
 
 **[Try the public preview](https://ninja-saga-restoration.heartyglade5.chatgpt.site)** — create a test account and sign in through the original game screen. Registration, login and original character selection are available; character creation and missions are still under restoration.
 

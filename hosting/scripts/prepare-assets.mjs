@@ -28,3 +28,9 @@ for(const record of bundled){
  fs.mkdirSync(path.dirname(target),{recursive:true});fs.copyFileSync(original,target);
 }
 console.log(`Verified ${bundled.length} bundled assets; ${lock.files.length} pinned assets available through verified routes.`);
+// Explicitly reconstructed exception, authorized by the user; never part of the original lock.
+const reconstructed='swf/3.3.00810/swf/items/hair_10_1.swf';
+const target=path.join(root,'public',reconstructed);
+fs.mkdirSync(path.dirname(target),{recursive:true});
+fs.copyFileSync(path.join(root,'restoration-assets/hair_10_1.swf'),target);
+fs.copyFileSync(path.join(root,'restoration-assets/library.swf'),path.join(root,'public/swf/3.3.00810/swf/library/library.swf'));
