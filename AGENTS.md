@@ -12,5 +12,7 @@ El objetivo del usuario es restaurar y trasladar Ninja Saga Original completo a 
 - El backend propio sustituye técnicamente los servicios de Facebook y los servicios perdidos. Sus contratos deben derivarse del cliente histórico y validarse localmente.
 - No ejecutar pruebas de vulnerabilidades contra servidores de terceros. La investigación del protocolo se hace sobre archivos públicos y entornos propios.
 - Guardar avances en el repositorio existente. El usuario autorizó hacerlo público el 18 de octubre de 2026. Excluir credenciales, partidas de prueba y registros de sesión.
+- La prueba pública principal está en https://ninja-saga-restoration.heartyglade5.chatgpt.site. Localhost se conserva para desarrollo. No anunciar jugabilidad completa mientras solo estén verificados acceso y selección.
+- Actualizar también la bitácora privada de Notion «Ninja Saga — Restauración 1:1 · Progreso» con hitos, pruebas, faltantes y próximos pasos. No publicar esa página ni moverla sin indicación del usuario.
 
 El usuario descartó expresamente el experimento HTML5 que introducía reglas nuevas. Ese experimento fue apartado fuera del proyecto antes de hacer commit y no debe recuperarse como base del port.

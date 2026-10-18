@@ -4,6 +4,14 @@ Restauración comunitaria del Ninja Saga histórico y trabajo hacia un traslado 
 
 **Hito actual:** cliente histórico con sus bibliotecas originales, acceso local sin Facebook y pantalla original de selección de personajes. **La restauración completa y el port nativo HTML5 siguen en desarrollo.**
 
+## Prueba pública
+
+**[Abrir Ninja Saga](https://ninja-saga-restoration.heartyglade5.chatgpt.site)** — no necesitas ejecutar localhost ni instalar nada. Crea una cuenta de pruebas desde el enlace de la página y entra en la pantalla original del juego.
+
+Por ahora se pueden probar el registro, el acceso y la selección original de personajes. La creación de personajes y las misiones siguen en restauración. [Reportar un problema](https://github.com/sukyozumaru/ninja-saga-html5/issues).
+
+El servidor y las cuentas están alojados de forma independiente del ordenador del desarrollador. [Informe de publicación y pruebas](restoration/INFORME-03.md). El código del alojamiento se conserva en `hosting/`.
+
 ![Cliente histórico: selección original tras iniciar sesión local](reports/historical-local-login.png)
 
 ## Probar el cliente histórico
@@ -55,6 +63,8 @@ El runner comunitario anterior permanece mediante `npm run start:community` en h
 ## English
 
 We are preserving the historical Ninja Saga client and working toward a faithful HTML5 migration. The current milestone runs the unmodified historical SWF with its own archived libraries and a local replacement login, reaching the original character selection UI. It is not yet a complete playable restoration or a native HTML5 port. Missing resources and unreconstructed server contracts fail explicitly instead of being replaced with fake success responses.
+
+**[Try the public preview](https://ninja-saga-restoration.heartyglade5.chatgpt.site)** — create a test account and sign in through the original game screen. Registration, login and original character selection are available; character creation and missions are still under restoration.
 
 Clone this repository, run `npm start`, visit http://localhost:8082/, create a local account, and sign in through the original game screen. See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to help. Share the project with preservation and ActionScript communities if you would like to support the effort.
 
