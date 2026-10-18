@@ -1,0 +1,1 @@
+export function GET(){return Response.json({version:'historical-public-1',client:'3.3.00810',verified:['original-libraries','account-login','character-selection'],pending:['character-creation','missions','social'],missing:['hair_10_1.swf']},{headers:{'Cache-Control':'no-store'}});}
