@@ -1,4 +1,5 @@
 /local/server/
+/historical/runtime/
 *.log
 **/characters.json
 **/characters.json.bak

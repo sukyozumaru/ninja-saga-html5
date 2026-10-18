@@ -1,38 +1,61 @@
-# Ninja Saga · Local / HTML5
+# Ninja Saga · Restauración 1:1 / Preservation
 
-Proyecto privado de restauración de Ninja Saga y traslado fiel del juego original a HTML5.
+Restauración comunitaria del Ninja Saga histórico y trabajo hacia un traslado fiel a HTML5. Conservamos su interfaz, animaciones y mecánicas, contrastando cada cambio con los archivos recuperados. Proyecto independiente; no es un servicio oficial.
 
-**Alcance confirmado: restauración 1:1 del juego original, lo mejor posible.** No se desarrollará un juego distinto ni se usarán reglas de clones como sustituto de las originales. Ver [RESTORATION.md](RESTORATION.md) y el [primer informe de análisis](restoration/INFORME-01.md).
+**Hito actual:** cliente histórico con sus bibliotecas originales, acceso local sin Facebook y pantalla original de selección de personajes. **La restauración completa y el port nativo HTML5 siguen en desarrollo.**
 
-## Empezar
+![Cliente histórico: selección original tras iniciar sesión local](reports/historical-local-login.png)
 
-Con Node.js 18 o posterior instalado:
+## Probar el cliente histórico
+
+Necesitas Node.js 18 o posterior. No hay dependencias npm que instalar.
 
 ```sh
+git clone https://github.com/sukyozumaru/ninja-saga-html5.git
+cd ninja-saga-html5
 npm start
 ```
 
-Abre http://localhost:8080 y mantén el servidor funcionando. En Windows también puedes usar `Iniciar-Local.cmd`. No hace falta instalar dependencias npm, Flash ni certificados.
+Abre **http://localhost:8082/**. Crea una cuenta en el enlace de la página y entra desde la pantalla original de usuario y contraseña. En Windows también puedes abrir `Iniciar-Historico.cmd`.
 
-El cliente Flash se ejecuta con Ruffle 0.7.1. La migración nativa a JavaScript/TypeScript queda como siguiente etapa.
+El servidor solo escucha en tu ordenador. Cuentas y hashes de contraseña se guardan en `historical/runtime/`, excluido de Git. Las sesiones caducan y se invalidan al reiniciar. No existen cuentas ni partidas originales recuperadas.
 
-## Estado comprobado
+## Estado real
 
-El 18 de octubre de 2026 se verificaron creación de personaje, selección de elemento, aldea, combate de Hardworking Student, victoria, recompensa y persistencia después de recargar. El guardado de prueba se genera en `local/server/characters.json` y no se versiona.
+| Área | Estado |
+|---|---|
+| SWF principal, código, red, popup, idioma y datos históricos | Cargan sin modificar los binarios |
+| Acceso local y selección de personajes | Verificados en el navegador con AMF real |
+| Recursos archivados | Colección 3.3.00810 preservada con manifiesto SHA-256 |
+| Creación de personajes | Bloqueada al cargar `hair_10_1.swf`, ausente del archivo histórico |
+| Persistencia de personajes, misiones y servicios sociales históricos | Pendientes de reconstrucción y validación |
+| Port nativo HTML5 completo | Pendiente; Ruffle se usa como herramienta de preservación |
 
-La integración de amigos de Facebook muestra un aviso de servicio no disponible. PvP, clanes, pagos, eventos y el conjunto completo de misiones no se consideran verificados. El servidor reconstruido contiene respuestas simuladas y sustituciones de recursos; no se ha comprobado fidelidad completa al juego original.
+El cliente acepta el parámetro original `client_version=3.3.00810`, correspondiente a la carpeta archivada. Su constante interna inicial dice 3.3.00809; conservamos ambos valores. No se cargan bibliotecas comunitarias en este perfil, ni se generan recursos sustitutos o éxitos simulados.
 
-## Contenido del respaldo
+## Ayuda a recuperarlo
 
-- `local/`: integración de localhost y Ruffle.
-- `sources/shenjai47/NinjaSaga-master/`: código base y recursos de la versión que funciona; se omiten registros, ejecutables, guardados y respaldos redundantes.
-- `reports/`: inventario SHA-256 de las colecciones investigadas, comparación y evidencia de la prueba.
-- `LEEME.md`: detalles de la recuperación, procedencia y siguientes pasos.
+Buscamos experiencia en **ActionScript/AVM2, AMF, preservación de SWF, timelines y migración HTML5**. También sirven capturas, vídeos y archivos originales con evidencia de versión. Empieza por [cómo contribuir](CONTRIBUTING.md), abre una [issue](https://github.com/sukyozumaru/ninja-saga-html5/issues) o comparte este proyecto. Una estrella ayuda a que otros interesados lo encuentren.
 
-Las colecciones de Internet Archive, aqhmal y el servidor alternativo se conservan fuera del seguimiento Git en la carpeta local `sources/`. Sus archivos están documentados en el inventario, pero no forman parte de este primer respaldo. `audit.js` y `write-report.js` sirven para regenerar el informe cuando estén disponibles esas colecciones completas.
+## Evidencia y comprobaciones
 
-## Siguiente etapa
+- [Alcance de restauración](RESTORATION.md).
+- [Análisis AS3 y arquitectura](restoration/INFORME-01.md).
+- [Arranque histórico, login y límites comprobados](restoration/INFORME-02.md).
+- `restoration/as3/`: exportaciones separadas por biblioteca; no equivalen al proyecto editable original.
+- `restoration/historical-assets/`: extracción histórica sin modificar; origen y SHA-256 en `historical-assets.json`.
 
-Completar el corpus histórico y sus contratos de servidor; trasladar sus clases, pantallas y timelines con pruebas de equivalencia 1:1. El análisis y la arquitectura propuesta están en `restoration/INFORME-01.md`.
+```sh
+npm run test:historical
+npm run verify:historical
+```
 
-Los recursos originales conservan sus derechos y licencias de procedencia. Este repositorio no concede una licencia sobre Ninja Saga ni sus recursos.
+El runner comunitario anterior permanece mediante `npm run start:community` en http://localhost:8080/ o `Iniciar-Local.cmd`. Sus pruebas de aldea/combate no demuestran que esos servicios estén restaurados en el perfil histórico. Sus respuestas simuladas y parches no se adoptan como comportamiento original.
+
+## English
+
+We are preserving the historical Ninja Saga client and working toward a faithful HTML5 migration. The current milestone runs the unmodified historical SWF with its own archived libraries and a local replacement login, reaching the original character selection UI. It is not yet a complete playable restoration or a native HTML5 port. Missing resources and unreconstructed server contracts fail explicitly instead of being replaced with fake success responses.
+
+Clone this repository, run `npm start`, visit http://localhost:8082/, create a local account, and sign in through the original game screen. See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to help. Share the project with preservation and ActionScript communities if you would like to support the effort.
+
+Los recursos originales conservan sus derechos y licencias de procedencia. Este repositorio no concede una licencia sobre Ninja Saga ni sus recursos. Fuentes: [Internet Archive](https://archive.org/details/ninja_saga), [shenjai47/NinjaSaga](https://github.com/shenjai47/NinjaSaga). Ruffle se distribuye con sus avisos de licencia en `local/public/ruffle/`.

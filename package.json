@@ -4,7 +4,11 @@
   "private": true,
   "description": "Arranque local de Ninja Saga y base para una adaptación HTML5",
   "scripts": {
-    "start": "node local/start.js"
+    "start": "node historical/server.js",
+    "start:community": "node local/start.js",
+    "start:historical": "node historical/server.js",
+    "test:historical": "node --test historical/*.test.js",
+    "verify:historical": "node historical/assets.js"
   },
   "engines": { "node": ">=18" }
 }

@@ -1,5 +1,7 @@
 # Ninja Saga local
 
+> Documento del runner comunitario conservado como referencia. El arranque principal ahora es el cliente histórico en localhost:8082; consulta README.md y restoration/INFORME-02.md. Las pruebas descritas aquí pertenecen únicamente al runner comunitario.
+
 Preparado el 18 de octubre de 2026.
 
 ## Jugar
@@ -36,13 +38,9 @@ Los originales de `sources/` se conservan sin adaptar. Al iniciar, se copian los
 
 La lista de amigos muestra un aviso de servicio no disponible. Facebook, pagos, PvP, clanes y eventos no se consideran verificados. El servidor es una reconstrucción con respuestas simuladas y puede sustituir recursos faltantes por clones o archivos vacíos. La victoria de una misión demuestra que el recorrido básico funciona, no que el balance, las animaciones o todas las reglas sean fieles al original. Hay parches y herramientas de modificación en los proyectos descargados.
 
-## Trabajo para el prototipo HTML5
+## Trabajo de restauración 1:1
 
-1. Mantener este arranque como referencia y seleccionar una versión de datos y recursos.
-2. Extraer gráficos y animaciones del personaje, un enemigo, un escenario y una habilidad.
-3. Reconstruir en JavaScript/TypeScript un combate por turnos y una pantalla de aldea.
-4. Convertir las tablas necesarias a JSON; el repositorio alternativo ya aporta datos en JSON y BIN, cuya compatibilidad debe comprobarse.
-5. Conectar guardado y recompensas a una API local explícita.
+Seguir RESTORATION.md y los informes de restoration/. Conservar el cliente histórico, sus bibliotecas y recursos; reconstruir sus contratos y portar sus reglas y timelines con pruebas de equivalencia. El usuario descartó el prototipo que introducía un combate nuevo.
 
 No se ha encontrado ni verificado el proyecto editable completo del juego original (.fla/.xfl y todo su ActionScript), ni el backend original completo. No son imprescindibles para comenzar una reconstrucción pequeña, pero su ausencia exige adaptar o reescribir lógica.
 
