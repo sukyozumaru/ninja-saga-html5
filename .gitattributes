@@ -1,0 +1,5 @@
+* text=auto
+*.swf binary
+*.wasm binary
+*.png binary
+*.cmd text eol=crlf

@@ -1,0 +1,41 @@
+{
+  "sources": {
+    "github": {
+      "files": 8020,
+      "swf": 8013,
+      "bytes": 633213017,
+      "uniqueSwfHashes": 8012,
+      "invalidSwfSignatures": 0
+    },
+    "archive": {
+      "files": 4731,
+      "swf": 4731,
+      "bytes": 479197030,
+      "uniqueSwfHashes": 4731,
+      "invalidSwfSignatures": 0
+    },
+    "data": {
+      "files": 11,
+      "swf": 0,
+      "bytes": 9783159,
+      "uniqueSwfHashes": 0,
+      "invalidSwfSignatures": 0
+    },
+    "community": {
+      "files": 16406,
+      "swf": 13711,
+      "bytes": 705849008,
+      "uniqueSwfHashes": 7383,
+      "invalidSwfSignatures": 0
+    }
+  },
+  "comparison": {
+    "only-archive": 1,
+    "different": 975,
+    "identical": 3755
+  },
+  "communityComparison": {
+    "swfWithExactGithubContent": 0,
+    "swfWithoutExactGithubContent": 13711
+  }
+}

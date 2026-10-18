@@ -1,0 +1,13 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto'),zlib=require('zlib');
+const root=__dirname,out=path.join(root,'reports');fs.mkdirSync(out,{recursive:true});
+function walk(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(dir,e.name)):[path.join(dir,e.name)]);}
+const roots={github:path.join(root,'sources/shenjai47/NinjaSaga-master/web'),archive:path.join(root,'sources/internet-archive'),data:path.join(root,'sources/aqhmal'),community:path.join(root,'sources/community-server')};
+const inventory={};
+for(const [source,dir] of Object.entries(roots))inventory[source]=walk(dir).map(file=>{const b=fs.readFileSync(file);return {path:path.relative(dir,file).replaceAll('\\','/'),bytes:b.length,sha256:crypto.createHash('sha256').update(b).digest('hex'),signature:b.subarray(0,3).toString(),file};});
+const a=inventory.archive.filter(x=>x.path.endsWith('.swf')),g=inventory.github.filter(x=>x.path.endsWith('.swf'));
+const gm=new Map();for(const x of g){const key=path.basename(x.path);gm.set(key,[...(gm.get(key)||[]),x]);}
+const comparison=a.map(x=>{const candidates=gm.get(path.basename(x.path))||[];const y=candidates.find(y=>y.sha256===x.sha256)||candidates[0];return {archive:x.path,github:y?.path||null,status:!y?'only-archive':y.sha256===x.sha256?'identical':'different',archiveBytes:x.bytes,githubBytes:y?.bytes,candidates:candidates.length}});
+const summary={sources:Object.fromEntries(Object.entries(inventory).map(([k,v])=>[k,{files:v.length,swf:v.filter(x=>x.path.endsWith('.swf')).length,bytes:v.reduce((s,x)=>s+x.bytes,0)}])),comparison:comparison.reduce((r,x)=>(r[x.status]=(r[x.status]||0)+1,r),{})};
+const hashes=new Set(g.map(x=>x.sha256));summary.communityComparison={swfWithExactGithubContent:inventory.community.filter(x=>x.path.endsWith('.swf')&&hashes.has(x.sha256)).length,swfWithoutExactGithubContent:inventory.community.filter(x=>x.path.endsWith('.swf')&&!hashes.has(x.sha256)).length};
+const urls=[];for(const x of g.filter(x=>/ninja_saga.swf$|library\/.*\.swf$/.test(x.path))){let b=fs.readFileSync(x.file);if(x.signature==='CWS')b=zlib.inflateSync(b.subarray(8));for(const s of b.toString('latin1').match(/https?:\/\/[^\x00-\x20"<>]{4,250}/g)||[])urls.push({file:x.path,url:s});}
+fs.writeFileSync(path.join(out,'inventory.json'),JSON.stringify(inventory,(k,v)=>k==='file'?undefined:v,2));fs.writeFileSync(path.join(out,'comparison.json'),JSON.stringify(comparison,null,2));fs.writeFileSync(path.join(out,'summary.json'),JSON.stringify(summary,null,2));fs.writeFileSync(path.join(out,'embedded-urls.json'),JSON.stringify(urls,null,2));console.log(JSON.stringify(summary,null,2));

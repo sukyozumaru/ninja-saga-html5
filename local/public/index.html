@@ -1,0 +1,15 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><title>Ninja Saga · Local</title>
+<style>body{margin:0;background:#171c24;color:#eee;font:16px system-ui;text-align:center}header{padding:18px}h1{margin:0;font-size:24px}p{margin:8px;color:#b8c5d4}#game{width:1000px;height:650px;max-width:100vw;margin:auto}ruffle-player{width:100%;height:100%}button{padding:8px 18px;margin:8px;cursor:pointer}#status{font-size:13px}</style>
+<header><h1>Ninja Saga · Local</h1><p>Preservación del cliente Flash con Ruffle. Primera etapa antes de la adaptación a HTML5.</p><button onclick="location.reload()">Reiniciar juego</button><p id="status">Cargando…</p></header><div id="game"></div>
+<script>
+for(const type of ['error','warn','info','log']){const old=console[type].bind(console);console[type]=(...args)=>{old(...args);const s=args.map(x=>typeof x==='string'?x:JSON.stringify(x)).join(' ');if(!s.includes('WebGL'))fetch('/client-log',{method:'POST',body:type+': '+s}).catch(()=>{});}}
+window.addEventListener('error',e=>fetch('/client-log',{method:'POST',body:'ERROR '+e.message}));
+window.RufflePlayer={config:{autoplay:'on',unmuteOverlay:'hidden',splashScreen:false,logLevel:'info',upgradeToHttps:false,openUrlMode:'deny',allowScriptAccess:false,urlRewriteRules:[[/^https?:\/\/[^/]+\/Ninja(?:%20| )Saga\/web\/swf\/(.*)$/,'http://localhost:8080/cdn/swf/$1'],[/^https?:\/\/[^/]+\/(.*)$/,'http://localhost:8080/$1']]}};
+</script><script src="/ruffle/ruffle.js"></script><script>
+window.addEventListener('DOMContentLoaded',async()=>{try{
+ const player=window.RufflePlayer.newest().createPlayer();document.querySelector('#game').appendChild(player);
+ await player.ruffle().load({url:'http://localhost:8080/ninja_saga.swf',parameters:{fb_uid:'1&fb_name=Player&time=0',nocache:String(Date.now())}});
+ document.querySelector('#status').textContent='Cliente cargado · servidor local · progreso de prueba independiente';
+}catch(e){document.querySelector('#status').textContent=String(e);console.error(String(e));}});
+</script></html>
+
