@@ -1,0 +1,26 @@
+package ninja_saga_fla
+{
+   import flash.display.MovieClip;
+   
+   [Embed(source="/_assets/assets.swf", symbol="symbol2301")]
+   public dynamic class hintIcon_1003 extends MovieClip
+   {
+      
+      public function hintIcon_1003()
+      {
+         super();
+         addFrameScript(0,this.frame1,1,this.frame2);
+      }
+      
+      internal function frame1() : *
+      {
+         this.stop();
+      }
+      
+      internal function frame2() : *
+      {
+         this.stop();
+      }
+   }
+}
+

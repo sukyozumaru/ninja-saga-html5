@@ -1,0 +1,533 @@
+{
+  "generated": "2026-10-18",
+  "scope": "historical corpus, decompiled AS3; not a complete native port",
+  "tool": "JPEXS FFDec 26.3.0",
+  "sourceArchive": "https://archive.org/download/ninja_saga/ns-static-bwhcb6a5289.netdna-ssl.com.7z",
+  "folderVersion": "3.3.00810",
+  "embeddedBuild": "3.3.00809",
+  "byLibrary": {
+    "client_library": 10,
+    "code_library": 223,
+    "main": 305,
+    "menu": 195,
+    "network_library": 139
+  },
+  "scriptFiles": 872,
+  "uniqueServices": 102,
+  "incompleteExports": [],
+  "nonStandardClassNames": [
+    {
+      "file": "as3/client_library/§_o_--_-§.as",
+      "class": "§_o_--_-§"
+    },
+    {
+      "file": "as3/client_library/§_o_--§.as",
+      "class": "§_o_--§"
+    },
+    {
+      "file": "as3/client_library/§_o_-_--§.as",
+      "class": "§_o_-_--§"
+    },
+    {
+      "file": "as3/client_library/§_o_-_-_§.as",
+      "class": "§_o_-_-_§"
+    },
+    {
+      "file": "as3/client_library/§_o_-__§.as",
+      "class": "§_o_-__§"
+    },
+    {
+      "file": "as3/code_library/§_o_--_-§.as",
+      "class": "§_o_--_-§"
+    },
+    {
+      "file": "as3/code_library/§_o_--§.as",
+      "class": "§_o_--§"
+    },
+    {
+      "file": "as3/code_library/§_o_-_--§.as",
+      "class": "§_o_-_--§"
+    },
+    {
+      "file": "as3/code_library/§_o_-_-_§.as",
+      "class": "§_o_-_-_§"
+    },
+    {
+      "file": "as3/code_library/§_o_-__§.as",
+      "class": "§_o_-__§"
+    },
+    {
+      "file": "as3/main/§ §.as",
+      "class": "§"
+    }
+  ],
+  "flashImports": [
+    {
+      "name": "flash.display.MovieClip",
+      "count": 294
+    },
+    {
+      "name": "flash.display.*",
+      "count": 126
+    },
+    {
+      "name": "flash.utils.*",
+      "count": 121
+    },
+    {
+      "name": "flash.events.*",
+      "count": 120
+    },
+    {
+      "name": "flash.net.*",
+      "count": 104
+    },
+    {
+      "name": "flash.errors.*",
+      "count": 85
+    },
+    {
+      "name": "flash.external.*",
+      "count": 83
+    },
+    {
+      "name": "flash.geom.*",
+      "count": 83
+    },
+    {
+      "name": "flash.system.*",
+      "count": 83
+    },
+    {
+      "name": "flash.accessibility.*",
+      "count": 82
+    },
+    {
+      "name": "flash.desktop.*",
+      "count": 82
+    },
+    {
+      "name": "flash.filters.*",
+      "count": 82
+    },
+    {
+      "name": "flash.globalization.*",
+      "count": 82
+    },
+    {
+      "name": "flash.media.*",
+      "count": 82
+    },
+    {
+      "name": "flash.net.drm.*",
+      "count": 82
+    },
+    {
+      "name": "flash.printing.*",
+      "count": 82
+    },
+    {
+      "name": "flash.profiler.*",
+      "count": 82
+    },
+    {
+      "name": "flash.sampler.*",
+      "count": 82
+    },
+    {
+      "name": "flash.sensors.*",
+      "count": 82
+    },
+    {
+      "name": "flash.text.*",
+      "count": 82
+    },
+    {
+      "name": "flash.text.engine.*",
+      "count": 82
+    },
+    {
+      "name": "flash.text.ime.*",
+      "count": 82
+    },
+    {
+      "name": "flash.ui.*",
+      "count": 82
+    },
+    {
+      "name": "flash.xml.*",
+      "count": 82
+    },
+    {
+      "name": "flash.text.TextField",
+      "count": 78
+    },
+    {
+      "name": "flash.utils.ByteArray",
+      "count": 72
+    },
+    {
+      "name": "flash.events.Event",
+      "count": 62
+    },
+    {
+      "name": "flash.events.MouseEvent",
+      "count": 36
+    },
+    {
+      "name": "flash.events.TimerEvent",
+      "count": 23
+    },
+    {
+      "name": "flash.utils.Timer",
+      "count": 23
+    },
+    {
+      "name": "flash.display.DisplayObject",
+      "count": 23
+    },
+    {
+      "name": "flash.net.URLRequest",
+      "count": 18
+    },
+    {
+      "name": "flash.events.ProgressEvent",
+      "count": 16
+    },
+    {
+      "name": "flash.filters.ColorMatrixFilter",
+      "count": 16
+    },
+    {
+      "name": "flash.display.Sprite",
+      "count": 14
+    },
+    {
+      "name": "flash.events.IOErrorEvent",
+      "count": 14
+    },
+    {
+      "name": "flash.geom.Point",
+      "count": 13
+    },
+    {
+      "name": "flash.media.Sound",
+      "count": 13
+    },
+    {
+      "name": "flash.utils.getTimer",
+      "count": 11
+    },
+    {
+      "name": "flash.display.SimpleButton",
+      "count": 11
+    },
+    {
+      "name": "flash.events.KeyboardEvent",
+      "count": 10
+    },
+    {
+      "name": "flash.text.TextFormat",
+      "count": 10
+    },
+    {
+      "name": "flash.system.Capabilities",
+      "count": 9
+    },
+    {
+      "name": "flash.geom.ColorTransform",
+      "count": 9
+    },
+    {
+      "name": "flash.utils.Dictionary",
+      "count": 9
+    },
+    {
+      "name": "flash.events.HTTPStatusEvent",
+      "count": 8
+    },
+    {
+      "name": "flash.net.URLLoader",
+      "count": 8
+    },
+    {
+      "name": "flash.ui.Keyboard",
+      "count": 8
+    },
+    {
+      "name": "flash.media.SoundTransform",
+      "count": 8
+    },
+    {
+      "name": "flash.utils.getDefinitionByName",
+      "count": 8
+    },
+    {
+      "name": "flash.system.Security",
+      "count": 7
+    },
+    {
+      "name": "flash.filters.GlowFilter",
+      "count": 7
+    },
+    {
+      "name": "flash.net.LocalConnection",
+      "count": 6
+    },
+    {
+      "name": "flash.events.TextEvent",
+      "count": 6
+    },
+    {
+      "name": "flash.display.BitmapData",
+      "count": 6
+    },
+    {
+      "name": "flash.events.SecurityErrorEvent",
+      "count": 5
+    },
+    {
+      "name": "flash.display.Graphics",
+      "count": 5
+    },
+    {
+      "name": "flash.text.TextFieldType",
+      "count": 5
+    },
+    {
+      "name": "flash.geom.Rectangle",
+      "count": 5
+    },
+    {
+      "name": "flash.media.SoundMixer",
+      "count": 5
+    },
+    {
+      "name": "flash.events.FocusEvent",
+      "count": 5
+    },
+    {
+      "name": "flash.events.ErrorEvent",
+      "count": 4
+    },
+    {
+      "name": "flash.events.EventDispatcher",
+      "count": 4
+    },
+    {
+      "name": "flash.display.Shape",
+      "count": 4
+    },
+    {
+      "name": "flash.system.System",
+      "count": 4
+    },
+    {
+      "name": "flash.display.Bitmap",
+      "count": 4
+    },
+    {
+      "name": "flash.geom.Matrix",
+      "count": 4
+    },
+    {
+      "name": "flash.display.StageQuality",
+      "count": 4
+    },
+    {
+      "name": "flash.text.TextFormatAlign",
+      "count": 4
+    },
+    {
+      "name": "flash.display.Loader",
+      "count": 3
+    },
+    {
+      "name": "flash.display.Stage",
+      "count": 3
+    },
+    {
+      "name": "flash.external.ExternalInterface",
+      "count": 3
+    },
+    {
+      "name": "flash.media.SoundChannel",
+      "count": 3
+    },
+    {
+      "name": "flash.ui.ContextMenu",
+      "count": 3
+    },
+    {
+      "name": "flash.ui.ContextMenuBuiltInItems",
+      "count": 3
+    },
+    {
+      "name": "flash.ui.ContextMenuItem",
+      "count": 3
+    },
+    {
+      "name": "flash.display.LoaderInfo",
+      "count": 3
+    },
+    {
+      "name": "flash.display.InteractiveObject",
+      "count": 3
+    },
+    {
+      "name": "flash.utils.Endian",
+      "count": 3
+    },
+    {
+      "name": "flash.utils.IDataOutput",
+      "count": 3
+    },
+    {
+      "name": "flash.events.NetStatusEvent",
+      "count": 2
+    },
+    {
+      "name": "flash.net.NetConnection",
+      "count": 2
+    },
+    {
+      "name": "flash.utils.describeType",
+      "count": 2
+    },
+    {
+      "name": "flash.net.SharedObject",
+      "count": 2
+    },
+    {
+      "name": "flash.system.LoaderContext",
+      "count": 2
+    },
+    {
+      "name": "flash.text.TextFieldAutoSize",
+      "count": 2
+    },
+    {
+      "name": "flash.net.registerClassAlias",
+      "count": 2
+    },
+    {
+      "name": "flash.system.IME",
+      "count": 2
+    },
+    {
+      "name": "flash.utils.getQualifiedClassName",
+      "count": 2
+    },
+    {
+      "name": "flash.net.Socket",
+      "count": 2
+    },
+    {
+      "name": "flash.utils.IDataInput",
+      "count": 2
+    },
+    {
+      "name": "flash.utils.clearTimeout",
+      "count": 2
+    },
+    {
+      "name": "flash.utils.setTimeout",
+      "count": 2
+    },
+    {
+      "name": "flash.net.Responder",
+      "count": 1
+    },
+    {
+      "name": "flash.utils.Proxy",
+      "count": 1
+    },
+    {
+      "name": "flash.utils.flash_proxy",
+      "count": 1
+    },
+    {
+      "name": "flash.events.IEventDispatcher",
+      "count": 1
+    },
+    {
+      "name": "flash.net.SharedObjectFlushStatus",
+      "count": 1
+    },
+    {
+      "name": "flash.errors.IllegalOperationError",
+      "count": 1
+    },
+    {
+      "name": "flash.text.StyleSheet",
+      "count": 1
+    },
+    {
+      "name": "flash.net.URLVariables",
+      "count": 1
+    },
+    {
+      "name": "flash.net.navigateToURL",
+      "count": 1
+    },
+    {
+      "name": "flash.events.AsyncErrorEvent",
+      "count": 1
+    },
+    {
+      "name": "flash.text.TextLineMetrics",
+      "count": 1
+    },
+    {
+      "name": "flash.system.IMEConversionMode",
+      "count": 1
+    },
+    {
+      "name": "flash.display.DisplayObjectContainer",
+      "count": 1
+    },
+    {
+      "name": "flash.utils.getQualifiedSuperclassName",
+      "count": 1
+    },
+    {
+      "name": "flash.text.Font",
+      "count": 1
+    },
+    {
+      "name": "flash.net.ObjectEncoding",
+      "count": 1
+    },
+    {
+      "name": "flash.net.URLRequestMethod",
+      "count": 1
+    }
+  ],
+  "corpus": [
+    {
+      "file": "corpus/3.3.00810/client_library.swf",
+      "bytes": 5533,
+      "sha256": "49a96ff04c15f17589446f0e2633d4ab50bbc0c8b1b42eee4980d2915142976b"
+    },
+    {
+      "file": "corpus/3.3.00810/code_library.swf",
+      "bytes": 451678,
+      "sha256": "420c1234f7d1c3746fa65362beac5e279ce09a252ececb8da584eb788429669d"
+    },
+    {
+      "file": "corpus/3.3.00810/menu.swf",
+      "bytes": 1132678,
+      "sha256": "cada2ffa8a9658f47d8f81f072236046b001530aa93433317dbf9647e425b1b9"
+    },
+    {
+      "file": "corpus/3.3.00810/network_library.swf",
+      "bytes": 222297,
+      "sha256": "eafcd2acfad364c774270d4f4bec19e4b38c68ac7e26d6cd5159248b90997c44"
+    },
+    {
+      "file": "corpus/3.3.00810/ninja_saga.swf",
+      "bytes": 3029637,
+      "sha256": "6d30b194b96cc992deb7b294d8b11daf65b04744131a50fb7c4e396ce6a836a2"
+    }
+  ]
+}

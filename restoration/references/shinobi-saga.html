@@ -1,0 +1,2729 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shinobi Saga</title>
+    <style>
+      :root {
+        --bg: #0f0f14;
+        --panel: #1b1b24;
+        --accent: #e2b55f;
+        --accent2: #8e5f1f;
+        --hp: #e65050;
+        --chakra: #4cc3ff;
+        --text: #e9e9f0;
+        --muted: #aeb3bf;
+        --good: #57d47a;
+        --bad: #ff5a7a;
+        --warn: #ffd966;
+        --shadow: rgba(0, 0, 0, 0.5);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: radial-gradient(1000px 600px at 50% -200px, #232336, #0c0c12) fixed;
+        color: var(--text);
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji",
+          "Segoe UI Emoji";
+      }
+      #game {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+      }
+      header {
+        padding: 14px 16px;
+        background: radial-gradient(180px 40px at 50% -10px, rgba(255, 255, 255, 0.08), transparent 60%), linear-gradient(0deg, #11121a, #101017);
+        border-bottom: 2px solid #262636;
+        text-align: center;
+        letter-spacing: 1px;
+        font-weight: 800;
+        font-size: 24px;
+        color: #f2d18a;
+        text-shadow: 0 2px 0 #000, 0 0 12px rgba(226, 181, 95, 0.25);
+        animation: header-glow 4s ease-in-out infinite;
+      }
+      header small {
+        display: block;
+        font-weight: 500;
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: 0;
+      }
+      #main {
+        display: flex;
+        flex: 1 1 auto;
+        min-height: 0;
+      }
+      #leftPane {
+        width: 280px;
+        max-width: 36vw;
+        border-right: 1px solid #2a2a3a;
+        background: linear-gradient(180deg, #13131b, #12121a);
+        display: flex;
+        flex-direction: column;
+      }
+      #rightPane {
+        width: 320px;
+        max-width: 40vw;
+        border-left: 1px solid #2a2a3a;
+        background: linear-gradient(180deg, #13131b, #12121a);
+        display: flex;
+        flex-direction: column;
+      }
+      #battlePane {
+        flex: 1 1 auto;
+        min-width: 0;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+      /* Battle field */
+      #arena {
+        position: relative;
+        flex: 1 1 auto;
+        min-height: 340px;
+        background: radial-gradient(800px 240px at 50% 100%, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0) 60%),
+          linear-gradient(180deg, #101019 0%, #0a0a10 100%);
+        overflow: hidden;
+        border-bottom: 1px solid #2a2a3a;
+      }
+      .ground {
+        position: absolute;
+        inset: auto 0 0 0;
+        height: 110px;
+        background: radial-gradient(120px 30px at 30% 0, rgba(255, 255, 255, 0.05), transparent 60%),
+          radial-gradient(140px 40px at 70% 0, rgba(255, 255, 255, 0.04), transparent 60%), linear-gradient(180deg, #171722, #11111a);
+        box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.35) inset;
+        border-top: 1px solid #232336;
+      }
+      .side {
+        position: absolute;
+        bottom: 110px;
+        width: 44%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        pointer-events: none;
+      }
+      .side.left {
+        left: 2%;
+      }
+      .side.right {
+        right: 2%;
+        transform: scaleX(-1);
+      } /* mirror character drawing; we'll flip back UI elements inside */
+      .charWrap {
+        position: relative;
+        width: 220px;
+        height: 240px;
+      }
+      /* Character panel (name, bars) */
+      .charPanel {
+        position: absolute;
+        top: -88px;
+        width: 280px;
+        padding: 10px;
+        background: linear-gradient(180deg, #171726, #12121b);
+        border: 1px solid #2b2b3e;
+        border-radius: 10px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+        pointer-events: auto;
+        user-select: none;
+      }
+      .left .charPanel {
+        left: -20px;
+        transform: scaleX(1);
+      }
+      .right .charPanel {
+        right: -20px;
+        transform: scaleX(-1);
+      } /* reverse mirror for readable text */
+      .nameRow {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 6px;
+      }
+      .nameRow .n {
+        font-weight: 800;
+        color: #ffe1a0;
+        letter-spacing: 0.3px;
+        text-shadow: 0 1px 0 #000;
+      }
+      /* CPU win-probability label (Hard difficulty) */
+      .probRow {
+        font-size: 11px;
+        color: #9fb3ff;
+        text-align: center;
+        margin-bottom: 4px;
+        text-shadow: 0 1px 0 #000;
+      }
+      .bar {
+        position: relative;
+        background: #23233a;
+        height: 16px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 4px 0;
+        border: 1px solid #2b2b3e;
+      }
+      .bar span {
+        position: absolute;
+        inset: 0;
+        width: 0;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent) no-repeat, var(--hp);
+        background-size: 60px 100%, 100% 100%;
+        transition: width 0.35s ease;
+        animation: bar-shine 3s linear infinite;
+        animation-delay: calc(var(--i, 0) * 0.7s);
+      }
+      .bar.hp span {
+        background-color: var(--hp);
+      }
+      .bar.chakra span {
+        background-color: var(--chakra);
+      }
+      .barLabel {
+        position: absolute;
+        inset: 0;
+        font-size: 11px;
+        color: #f2f2f7aa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-shadow: 0 1px 0 #000;
+      }
+      .statusRow {
+        margin-top: 6px;
+        display: flex;
+        gap: 6px;
+        min-height: 24px;
+      }
+      .stIcon {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), transparent 60%), #26263a;
+        border: 1px solid #32324b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #eee;
+        font-size: 11px;
+        position: relative;
+        font-weight: 700;
+      }
+      .stIcon .d {
+        position: absolute;
+        bottom: -6px;
+        font-size: 9px;
+        color: #ffdba5;
+        text-shadow: 0 1px 0 #000;
+      }
+      .stIcon.burn {
+        background: conic-gradient(from 0deg, #ff974a, #ff5a36);
+      }
+      .stIcon.soak {
+        background: conic-gradient(from 0deg, #6bd3ff, #2b9bff);
+      }
+      .stIcon.expo {
+        background: conic-gradient(from 0deg, #ffc14d, #ff8b2d);
+      }
+      .stIcon.bflm {
+        background: conic-gradient(from 0deg, #111, #333);
+      }
+      .stIcon.cseal {
+        background: conic-gradient(from 0deg, #b5f2ff, #6bd3ff);
+        color: #0a1c26;
+        font-weight: 900;
+      }
+      /* Characters SVG container */
+      svg.person {
+        width: 100%;
+        height: 100%;
+        filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.55));
+      }
+      .charFX.hitflash {
+        animation: hitflash 0.22s linear;
+      }
+      @keyframes hitflash {
+        0% {
+          filter: brightness(1);
+        }
+        45% {
+          filter: brightness(2.3);
+        }
+        100% {
+          filter: brightness(1);
+        }
+      }
+      .shake {
+        animation: shake 0.28s ease-in-out;
+      }
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-6px);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+        75% {
+          transform: translateX(-3px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      .idleBob {
+        animation: idleBob 2.2s ease-in-out infinite;
+        transform-origin: 50% 90%;
+      }
+      @keyframes idleBob {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-2px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      .casting {
+        animation: castPose 0.45s ease;
+      }
+      @keyframes castPose {
+        0% {
+          transform: translateY(0) rotate(0);
+        }
+        40% {
+          transform: translateY(-3px) rotate(-2deg);
+        }
+        100% {
+          transform: translateY(0) rotate(0);
+        }
+      }
+      /* FX SVG overlay */
+      #fxWrap {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      #fxSVG {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+      .glow {
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.45));
+      }
+      /* UI bottom */
+      #bottomUI {
+        padding: 10px;
+        display: flex;
+        align-items: stretch;
+        gap: 12px;
+        background: linear-gradient(180deg, #111019, #09080f);
+      }
+      #abilities {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 10px;
+        flex: 1 1 auto;
+      }
+      .ability {
+        position: relative;
+        border: 1px solid #3a3545;
+        background: linear-gradient(180deg, #181627, #131321);
+        border-radius: 10px;
+        padding: 8px;
+        min-height: 68px;
+        cursor: pointer;
+        user-select: none;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        transition: transform 0.04s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+      .ability:hover {
+        border-color: #5a4c2c;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+      }
+      .ability:active {
+        transform: translateY(1px);
+      }
+      .ability.disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+        filter: grayscale(0.2);
+      }
+      .ability .icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        background: #222436;
+        display: grid;
+        place-items: center;
+        border: 1px solid #313449;
+      }
+      .ability .meta {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .ability .meta .label {
+        font-weight: 800;
+        font-size: 13px;
+        color: #f6e0ad;
+      }
+      .ability .meta .sub {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .ability .badge {
+        position: absolute;
+        right: 6px;
+        top: 6px;
+        background: #2b2b40;
+        border: 1px solid #3a3a55;
+        color: #dcdced;
+        font-size: 10px;
+        padding: 1px 5px;
+        border-radius: 999px;
+      }
+      .ability .cost {
+        position: absolute;
+        left: 4px;
+        bottom: -7px;
+        background: #0c1922;
+        border: 1px solid #204a60;
+        color: #7fd4ff;
+        font-size: 10px;
+        padding: 1px 6px;
+        border-radius: 999px;
+      }
+      .ability.special {
+        background: linear-gradient(180deg, #21162a, #191320);
+        border-color: #3b2d45;
+      }
+      .ability.basicJ {
+        background: linear-gradient(180deg, #1a1f25, #131a20);
+        border-color: #2f3b45;
+      }
+      #turnBox {
+        width: 220px;
+        border: 1px solid #3a3545;
+        background: linear-gradient(180deg, #161421, #12111a);
+        border-radius: 12px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        justify-content: center;
+        align-items: center;
+      }
+      #turnLabel {
+        font-weight: 900;
+        color: #ffe1a0;
+        text-shadow: 0 1px 0 #000;
+        letter-spacing: 0.5px;
+      }
+      #endTurn {
+        padding: 8px 12px;
+        border-radius: 10px;
+        border: 1px solid #4a3c26;
+        background: linear-gradient(180deg, #3a2e1b, #2b2317);
+        color: #ffebb6;
+        font-weight: 800;
+        cursor: pointer;
+        width: 100%;
+      }
+      #endTurn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      /* Left pane: ability info */
+      #infoPanel {
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      #infoTitle {
+        font-weight: 800;
+        color: #ffdba5;
+      }
+      #infoBody {
+        font-size: 13px;
+        color: #cfd3dd;
+      }
+      .line {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #2a2a3a, transparent);
+      }
+      /* Right pane: combat log */
+      #logPanel {
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        overflow: auto;
+      }
+      #logPanel h3 {
+        margin: 0;
+        font-size: 14px;
+        color: #ffdba5;
+      }
+      .log {
+        flex: 1 1 auto;
+        background: #12121a;
+        border: 1px solid #2a2a3a;
+        border-radius: 10px;
+        padding: 8px;
+        overflow: auto;
+        font-size: 13px;
+      }
+      .log p {
+        margin: 4px 0;
+        color: #cfd3dd;
+      }
+      .log .sys {
+        color: #9fb3ff;
+      }
+      .log .dmg {
+        color: #ff9d9d;
+      }
+      .log .heal {
+        color: #9dffb0;
+      }
+      .log .st {
+        color: #ffd36b;
+      }
+      .log .neg {
+        color: #ff7d9e;
+      }
+      /* Floating damage text */
+      .float {
+        position: absolute;
+        font-weight: 900;
+        text-shadow: 0 1px 0 #000, 0 0 10px rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        transform: translate(-50%, -20px) scale(1);
+        animation: floatUp 1s ease forwards;
+        pointer-events: none;
+      }
+      .float.dmg {
+        color: #ff6d6d;
+      }
+      .float.crit {
+        color: #ffb86b;
+      }
+      .float.dot {
+        color: #ffa0a0;
+        font-size: 12px;
+      }
+      .float.buff {
+        color: #9af6a1;
+        font-size: 12px;
+      }
+      .float.neg {
+        color: #93d7ff;
+        font-size: 12px;
+      }
+      @keyframes floatUp {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, 10px) scale(0.9);
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -36px) scale(1.05);
+        }
+      }
+      /* Modal */
+      #modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.65);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+      }
+      #modal .box {
+        width: min(520px, 90vw);
+        background: linear-gradient(180deg, #1a1826, #13121b);
+        border: 1px solid #2e2c3e;
+        border-radius: 14px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      }
+      #modal h2 {
+        margin-top: 0;
+        color: #ffe1a0;
+      }
+      #modal .btnRow {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 12px;
+      }
+      .btn {
+        padding: 8px 12px;
+        border-radius: 10px;
+        border: 1px solid #3d3a50;
+        background: linear-gradient(180deg, #1b1a2a, #151522);
+        color: #e8e9f6;
+        font-weight: 800;
+        cursor: pointer;
+      }
+      /* Tooltips: use native title + info panel on hover */
+      /* Ability icons SVG styling */
+      .ico flame {
+      }
+      /* Responsive */
+      @media (max-width: 1024px) {
+        #leftPane {
+          display: none;
+        }
+        #rightPane {
+          display: none;
+        }
+        #bottomUI {
+          flex-wrap: wrap;
+        }
+        #turnBox {
+          width: 100%;
+          order: 2;
+        }
+        #abilities {
+          order: 1;
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .charPanel {
+          transform: scale(0.9) translateY(-4px);
+        }
+      }
+      @keyframes header-glow {
+        50% {
+          text-shadow: 0 2px 0 #000, 0 0 18px rgba(226, 181, 95, 0.4);
+        }
+      }
+      @keyframes bar-shine {
+        from {
+          background-position: -60px 0, 0 0;
+        }
+        to {
+          background-position: 340px 0, 0 0;
+        }
+      }
+      #game::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        box-shadow: 0 0 150px rgba(0, 0, 0, 0.4) inset;
+        z-index: 100;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game">
+      <header>
+        SHINOBI SAGA
+        <small>Turn-based Ninja Duel — Original assets in SVG only — No external files</small>
+      </header>
+
+      <div id="main">
+        <!-- Ability detail/tooltip panel -->
+        <aside id="leftPane">
+          <div id="infoPanel">
+            <div id="infoTitle">Select an ability</div>
+            <div class="line"></div>
+            <div id="infoBody">
+              Hover or tap an ability to see its description and effects. Specials are powerful but cost more chakra and have longer cooldowns.
+            </div>
+          </div>
+        </aside>
+
+        <!-- Battle pane -->
+        <section id="battlePane">
+          <div id="arena">
+            <!-- Characters -->
+            <div class="side left" id="pSide">
+              <div class="charPanel" id="pPanel">
+                <div class="nameRow">
+                  <div class="n" id="pName">User</div>
+                  <div class="lv">Lv.23</div>
+                </div>
+                <div class="bar hp" style="--i: 0">
+                  <span id="pHpBar"></span>
+                  <div class="barLabel" id="pHpText"></div>
+                </div>
+                <div class="bar chakra" style="--i: 1">
+                  <span id="pChBar"></span>
+                  <div class="barLabel" id="pChText"></div>
+                </div>
+                <div class="statusRow" id="pStatus"></div>
+              </div>
+              <div class="charWrap">
+                <svg class="person" id="pChar" viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Simple humanoid ninja with blue accent -->
+                  <defs>
+                    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#202634" />
+                      <stop offset="1" stop-color="#0e111a" />
+                    </linearGradient>
+                    <linearGradient id="clothBlue" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#2248a7" />
+                      <stop offset="1" stop-color="#142f6c" />
+                    </linearGradient>
+                    <filter id="innerGlow" x="-30%" y="-30%" width="160%" height="160%">
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="1.4" result="blur" />
+                      <feComposite in="SourceGraphic" in2="blur" operator="arithmetic" k2="1" k3="1" />
+                    </filter>
+                  </defs>
+                  <g id="pBody" class="idleBob">
+                    <!-- Shadow -->
+                    <ellipse cx="110" cy="220" rx="46" ry="12" fill="rgba(0,0,0,0.5)" />
+                    <!-- Legs -->
+                    <g fill="url(#steel)">
+                      <rect x="88" y="150" width="16" height="60" rx="6" />
+                      <rect x="116" y="150" width="16" height="60" rx="6" />
+                    </g>
+                    <!-- Torso -->
+                    <rect x="80" y="90" width="60" height="70" rx="10" fill="url(#steel)" stroke="#384055" />
+                    <!-- Belt -->
+                    <rect x="80" y="140" width="60" height="10" fill="url(#clothBlue)" />
+                    <!-- Arms -->
+                    <rect x="60" y="100" width="20" height="48" rx="8" fill="url(#steel)" />
+                    <rect x="140" y="100" width="20" height="48" rx="8" fill="url(#steel)" />
+                    <!-- Head -->
+                    <circle cx="110" cy="66" r="28" fill="#dbb38e" stroke="#b38765" />
+                    <!-- Headband -->
+                    <rect x="76" y="56" width="68" height="16" rx="7" fill="url(#clothBlue)" stroke="#5276d6" />
+                    <rect x="98" y="57" width="24" height="14" rx="5" fill="#2a3148" stroke="#566188" />
+                    <!-- Eyes (group to style for doujutsu) -->
+                    <g id="pEyes">
+                      <rect x="96" y="72" width="10" height="3" rx="1.5" fill="#3b2a1b" />
+                      <rect x="124" y="72" width="10" height="3" rx="1.5" fill="#3b2a1b" />
+                    </g>
+                    <!-- Forearm wraps (blue) -->
+                    <rect x="54" y="136" width="28" height="8" rx="4" fill="url(#clothBlue)" />
+                    <rect x="138" y="136" width="28" height="8" rx="4" fill="url(#clothBlue)" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+
+            <div class="side right" id="eSide">
+              <div class="charPanel" id="ePanel">
+                <div class="nameRow">
+                  <div class="n" id="eName">CPU</div>
+                  <div class="lv">Lv.23</div>
+                </div>
+                <div class="bar hp" style="--i: 2">
+                  <span id="eHpBar"></span>
+                  <div class="barLabel" id="eHpText"></div>
+                </div>
+                <div class="bar chakra" style="--i: 3">
+                  <span id="eChBar"></span>
+                  <div class="barLabel" id="eChText"></div>
+                </div>
+                <div class="statusRow" id="eStatus"></div>
+              </div>
+              <div class="charWrap">
+                <svg class="person" id="eChar" viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Simple humanoid ninja with red accent -->
+                  <defs>
+                    <linearGradient id="steelR" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#202634" />
+                      <stop offset="1" stop-color="#0e111a" />
+                    </linearGradient>
+                    <linearGradient id="clothRed" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#b93434" />
+                      <stop offset="1" stop-color="#6c1414" />
+                    </linearGradient>
+                  </defs>
+                  <g id="eBody" class="idleBob">
+                    <ellipse cx="110" cy="220" rx="46" ry="12" fill="rgba(0,0,0,0.5)" />
+                    <g fill="url(#steelR)">
+                      <rect x="88" y="150" width="16" height="60" rx="6" />
+                      <rect x="116" y="150" width="16" height="60" rx="6" />
+                    </g>
+                    <rect x="80" y="90" width="60" height="70" rx="10" fill="url(#steelR)" stroke="#384055" />
+                    <rect x="80" y="140" width="60" height="10" fill="url(#clothRed)" />
+                    <rect x="60" y="100" width="20" height="48" rx="8" fill="url(#steelR)" />
+                    <rect x="140" y="100" width="20" height="48" rx="8" fill="url(#steelR)" />
+                    <circle cx="110" cy="66" r="28" fill="#d2a580" stroke="#a87a56" />
+                    <rect x="76" y="56" width="68" height="16" rx="7" fill="url(#clothRed)" stroke="#a64545" />
+                    <rect x="98" y="57" width="24" height="14" rx="5" fill="#2a3148" stroke="#566188" />
+                    <g id="eEyes">
+                      <rect x="96" y="72" width="10" height="3" rx="1.5" fill="#3b2a1b" />
+                      <rect x="124" y="72" width="10" height="3" rx="1.5" fill="#3b2a1b" />
+                    </g>
+                    <rect x="54" y="136" width="28" height="8" rx="4" fill="url(#clothRed)" />
+                    <rect x="138" y="136" width="28" height="8" rx="4" fill="url(#clothRed)" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+
+            <!-- FX overlay -->
+            <div id="fxWrap">
+              <svg id="fxSVG" xmlns="http://www.w3.org/2000/svg"></svg>
+            </div>
+
+            <div class="ground"></div>
+          </div>
+
+          <!-- Bottom UI -->
+          <div id="bottomUI">
+            <div id="abilities"></div>
+            <div id="turnBox">
+              <div id="turnLabel">Your Turn</div>
+              <button id="endTurn" disabled>End Turn</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Combat log -->
+        <aside id="rightPane">
+          <div id="logPanel">
+            <h3>Battle Log</h3>
+            <div class="log" id="log"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal">
+      <div class="box">
+        <h2 id="modalTitle">Victory!</h2>
+        <p id="modalMsg">Well played, shinobi. Will you battle again?</p>
+        <div class="btnRow">
+          <button class="btn" id="btnRestart">Restart</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      ;(() => {
+        "use strict"
+
+        // --- Deterministic RNG (Mulberry32) -----------------------------------
+        function makeRNG(seed) {
+          let s = seed >>> 0
+          return {
+            next() {
+              s = (s + 0x6d2b79f5) | 0
+              let t = Math.imul(s ^ (s >>> 15), 1 | s)
+              t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+              return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+            },
+            /* expose state so we can clone */
+            get state() {
+              return s
+            },
+            set state(v) {
+              s = v >>> 0
+            },
+            clone() {
+              return makeRNG(s)
+            },
+          }
+        }
+        const RNG = makeRNG(Date.now()) // seed = game start time
+        Math.random = () => RNG.next() // every call now deterministic
+
+        // Utility
+        const clamp = (n, min, max) => Math.max(min, Math.min(max, n))
+        const randi = (a, b) => Math.floor(Math.random() * (b - a + 1)) + a
+        const randf = (a, b) => Math.random() * (b - a) + a
+        const sleep = (ms) => new Promise((res) => setTimeout(res, ms))
+        const SVG_NS = "http://www.w3.org/2000/svg"
+
+        // DOM refs
+        const fxSVG = document.getElementById("fxSVG")
+        const arena = document.getElementById("arena")
+        const pSide = document.getElementById("pSide")
+        const eSide = document.getElementById("eSide")
+        const pChar = document.getElementById("pChar")
+        const eChar = document.getElementById("eChar")
+        const pBody = document.getElementById("pBody")
+        const eBody = document.getElementById("eBody")
+        const pEyes = document.getElementById("pEyes")
+        const eEyes = document.getElementById("eEyes")
+        const ePanel = document.getElementById("ePanel") // CPU HUD panel
+        let cpuProbDiv = null // label element (Hard AI only)
+
+        const pHpBar = document.getElementById("pHpBar")
+        const pChBar = document.getElementById("pChBar")
+        const pHpText = document.getElementById("pHpText")
+        const pChText = document.getElementById("pChText")
+        const eHpBar = document.getElementById("eHpBar")
+        const eChBar = document.getElementById("eChBar")
+        const eHpText = document.getElementById("eHpText")
+        const eChText = document.getElementById("eChText")
+        const pStatus = document.getElementById("pStatus")
+        const eStatus = document.getElementById("eStatus")
+
+        const abilitiesWrap = document.getElementById("abilities")
+        const turnLabel = document.getElementById("turnLabel")
+        const endTurnBtn = document.getElementById("endTurn")
+        const infoTitle = document.getElementById("infoTitle")
+        const infoBody = document.getElementById("infoBody")
+        const logEl = document.getElementById("log")
+
+        const modal = document.getElementById("modal")
+        const modalTitle = document.getElementById("modalTitle")
+        const modalMsg = document.getElementById("modalMsg")
+        const btnRestart = document.getElementById("btnRestart")
+
+        function log(msg, cls = "") {
+          if (SIM_SILENT) return
+          const p = document.createElement("p")
+          if (cls) p.classList.add(cls)
+          p.innerHTML = msg
+          logEl.appendChild(p)
+          logEl.scrollTop = logEl.scrollHeight
+        }
+
+        // Entity
+        function createEntity(name, side) {
+          return {
+            name,
+            side,
+            maxHp: 500,
+            hp: 500,
+            maxCh: 100,
+            ch: 75,
+            statuses: {}, // key -> {duration, data}
+            cooldowns: {}, // abilityKey -> turnsLeft
+            alive: true,
+            // tracks last ability used (for Counter)
+            lastUsedAbility: null,
+            // true if the entity deliberately ended its previous turn without acting
+            lastTurnSkipped: false,
+          }
+        }
+
+        const player = createEntity("User", "p")
+        const enemy = createEntity("CPU", "e")
+
+        // Ability definitions
+        const Abilities = {
+          basic: {
+            key: "basic",
+            name: "Basic Attack",
+            type: "Attack",
+            desc: "Quick melee strike. No chakra cost.",
+            cost: 0,
+            cooldown: 0,
+            base: 20,
+            critChance: 0.1,
+            tags: ["melee"],
+            icon: buildIconBasic,
+            animation: animateStrike,
+            onImpact: (caster, target, ctx) => {
+              const dmg = computeDamage(ctx.base, caster, target, ctx)
+              applyDamage(target, dmg, { crit: ctx.crit })
+              return { dmg }
+            },
+          },
+          fireball: {
+            key: "fireball",
+            name: "Fireball Jutsu",
+            type: "Basic",
+            desc: "Hurls a flaming sphere dealing damage and applying Burn (2 turns). Soaked reduces Fire damage. Water Wave removes Burn.",
+            cost: 20,
+            cooldown: 2,
+            base: 30,
+            critChance: 0.1,
+            tags: ["fire", "jutsu"],
+            icon: buildIconFireball,
+            animation: animateFireball,
+            onImpact: (caster, target, ctx) => {
+              const dmg = computeDamage(ctx.base, caster, target, ctx)
+              applyDamage(target, dmg, { crit: ctx.crit })
+              // Apply Burn 2
+              applyStatus(target, "burn", { duration: 2 })
+              return { dmg, applied: ["Burn"] }
+            },
+          },
+          water: {
+            key: "water",
+            name: "Water Wave",
+            type: "Basic",
+            desc: "Sends a surging wave. Deals solid damage, applies Soaked (3 turns: +50% Wind dmg, -30% Fire dmg) and removes Burn. If Burn is extinguished, refund 8 Chakra.",
+            cost: 20,
+            cooldown: 3,
+            base: 30,
+            critChance: 0.1,
+            tags: ["water", "jutsu"],
+            icon: buildIconWater,
+            animation: animateWater,
+            onImpact: (caster, target, ctx) => {
+              let dmg = computeDamage(ctx.base, caster, target, ctx)
+              // Bonus economy if you counter Burn
+              let refunded = 0
+              if (target.statuses.burn) {
+                delete target.statuses.burn
+                pushStatusFloat(target, "Extinguished", "buff")
+                log(`${target.name}'s <b>Burn</b> was extinguished by water.`, "st")
+                refunded = 8
+                caster.ch = clamp(caster.ch + refunded, 0, caster.maxCh)
+                pushFloat(caster, `+${refunded} Chakra`, "buff")
+                log(`${caster.name} recovered <b>${refunded}</b> Chakra.`, "heal")
+              }
+              applyDamage(target, dmg, { crit: ctx.crit })
+              // Apply Soaked 3
+              applyStatus(target, "soaked", { duration: 3 })
+              return { dmg, applied: ["Soaked"], refunded }
+            },
+          },
+          wind: {
+            key: "wind",
+            name: "Wind Slash",
+            type: "Basic",
+            desc: "Cuts with compressed air. Applies Exposed (5 turns: takes +30% damage).",
+            cost: 18,
+            cooldown: 3,
+            base: 24,
+            critChance: 0.3,
+            tags: ["wind", "jutsu"],
+            icon: buildIconWind,
+            animation: animateWind,
+            onImpact: (caster, target, ctx) => {
+              const dmg = computeDamage(ctx.base, caster, target, ctx)
+              applyDamage(target, dmg, { crit: ctx.crit })
+              applyStatus(target, "exposed", { duration: 5 })
+              return { dmg, applied: ["Exposed"] }
+            },
+          },
+          amaterasu: {
+            key: "amaterasu",
+            name: "Sharingan Amaterasu",
+            type: "Special",
+            desc: "Black flames from the Mangekyou Sharingan. Heavy damage and applies Black Flame (3 turns, high DoT). Not reduced by Soaked.",
+            cost: 40,
+            cooldown: 5,
+            base: 40,
+            critChance: 0.1,
+            tags: ["amaterasu", "black", "jutsu"],
+            icon: buildIconAmaterasu,
+            animation: animateAmaterasu,
+            onImpact: (caster, target, ctx) => {
+              const dmg = computeDamage(ctx.base, caster, target, { ...ctx, ignoreSoakedFireReduction: true })
+              applyDamage(target, dmg, { crit: ctx.crit })
+              applyStatus(target, "blackFlame", { duration: 3 })
+              return { dmg, applied: ["Black Flame"] }
+            },
+          },
+          byakugan: {
+            key: "byakugan",
+            name: "Byakugan Chakra Seals",
+            type: "Special",
+            desc: "Pin-point strikes that seal chakra. Deals 26 damage, applies Chakra Seal (2 turns: cannot use jutsu, no chakra regen), and drains 20 Chakra (you recover half).",
+            cost: 30,
+            cooldown: 4,
+            base: 26,
+            critChance: 0.1,
+            tags: ["byakugan", "melee", "jutsu"],
+            icon: buildIconByakugan,
+            animation: animateByakugan,
+            onImpact: (caster, target, ctx) => {
+              const dmg = computeDamage(ctx.base, caster, target, ctx)
+              applyDamage(target, dmg, { crit: ctx.crit })
+              // Chakra drain and partial steal
+              const drained = Math.min(20, target.ch)
+              target.ch -= drained
+              const gained = Math.floor(drained / 2)
+              if (gained > 0) {
+                caster.ch = clamp(caster.ch + gained, 0, caster.maxCh)
+                pushFloat(caster, `+${gained} Chakra`, "buff")
+                log(`${caster.name} siphoned <b>${gained}</b> Chakra.`, "heal")
+              }
+              pushFloat(target, `-${drained} Chakra`, "neg")
+              log(`${target.name} lost <b>${drained}</b> Chakra.`, "neg")
+              // Apply Chakra Seal 2
+              applyStatus(target, "chakraSeal", { duration: 2 })
+              return { dmg, applied: ["Chakra Seal"], drained, gained }
+            },
+          },
+          healing: {
+            key: "healing",
+            name: "Healing Jutsu",
+            type: "Special",
+            desc: "Instantly restores 50 HP.",
+            cost: 25,
+            cooldown: 8,
+            base: 0,
+            critChance: 0,
+            tags: ["healing", "jutsu"],
+            icon: buildIconHealing,
+            animation: animateSelf,
+            onImpact: (caster) => {
+              const heal = Math.min(50, caster.maxHp - caster.hp)
+              caster.hp += heal
+              pushFloat(caster, `+${heal}`, "heal")
+              log(`${caster.name} healed <b>${heal}</b> HP.`, "heal")
+              return { heal }
+            },
+          },
+          regeneration: {
+            key: "regeneration",
+            name: "Regeneration",
+            type: "Special",
+            desc: "Gain Regeneration for 4 turns (+15 HP each turn).",
+            cost: 28,
+            cooldown: 8,
+            base: 0,
+            critChance: 0,
+            tags: ["healing", "hot", "jutsu"],
+            icon: buildIconRegen,
+            animation: animateSelf,
+            onImpact: (caster) => {
+              applyStatus(caster, "regen", { duration: 4 })
+              return { applied: ["Regeneration"] }
+            },
+          },
+          thunder: {
+            key: "thunder",
+            name: "Thunderstorm",
+            type: "Basic",
+            desc: "22 damage and Shock the enemy (they deal half damage next turn). If the target is Soaked, deal +30% damage and also Bind them for 1 turn.",
+            cost: 22,
+            cooldown: 3,
+            base: 22,
+            critChance: 0.2,
+            tags: ["lightning", "jutsu"],
+            icon: buildIconThunder,
+            animation: animateThunder,
+            onImpact: (caster, target, ctx) => {
+              let dmg = computeDamage(ctx.base, caster, target, ctx)
+              const soaked = !!target.statuses.soaked
+              if (soaked) {
+                dmg *= 1.3
+              }
+              applyDamage(target, dmg, { crit: ctx.crit })
+              // Shocked persists into target's attack turn
+              applyStatus(target, "shocked", { duration: 2 })
+              if (soaked) {
+                applyStatus(target, "bound", { duration: 1 })
+                log(`Conductive strike! Soaked target is also <b>Bound</b> for 1 turn.`, "st")
+              }
+              return { dmg, applied: soaked ? ["Shocked", "Bound"] : ["Shocked"] }
+            },
+          },
+          earth: {
+            key: "earth",
+            name: "Earth Binding",
+            type: "Basic",
+            desc: "20 damage and Bind the enemy (skip their next turn). Also applies Exposed for 1 turn and drains 8 Chakra.",
+            cost: 22,
+            cooldown: 4,
+            base: 20,
+            critChance: 0.1,
+            tags: ["earth", "jutsu"],
+            icon: buildIconEarth,
+            animation: animateBind, // was animateStrike
+            onImpact: (caster, target, ctx) => {
+              const dmg = computeDamage(ctx.base, caster, target, ctx)
+              applyDamage(target, dmg, { crit: ctx.crit })
+              applyStatus(target, "bound", { duration: 1 })
+              applyStatus(target, "exposed", { duration: 1 })
+              // Drain 8 Chakra from the target
+              const drained = Math.min(8, target.ch)
+              if (drained > 0) {
+                target.ch -= drained
+                pushFloat(target, `-${drained} Chakra`, "neg")
+                log(`${target.name} lost <b>${drained}</b> Chakra.`, "neg")
+              }
+              return { dmg, applied: ["Bound", "Exposed"], drained }
+            },
+          },
+          counter: {
+            key: "counter",
+            name: "Revenge Counter",
+            type: "Special",
+            desc: "Reflects the opponent's last attack with double potency, re-using its animation and effects. 50% crit.",
+            cost: 30,
+            cooldown: 10,
+            base: 0,
+            critChance: 0.5,
+            tags: ["counter", "jutsu"],
+            icon: buildIconCounter,
+            animation: animateCounter,
+            onImpact: (caster, target) => {
+              const key = target.lastUsedAbility
+              if (!key) {
+                log(`${caster.name}'s Counter failed – nothing to reflect.`, "neg")
+                pushFloat(target, "No effect", "neg")
+                return {}
+              }
+
+              /* Counter-on-Counter: act as a direct empowered strike */
+              if (key === "counter") {
+                const ctx2 = { base: 40, tags: [], critChance: 0.5 }
+                const dmg = computeDamage(ctx2.base, caster, target, ctx2)
+                applyDamage(target, dmg, { crit: ctx2.crit })
+                return { dmg }
+              }
+
+              if (["healing", "regeneration"].includes(key)) {
+                log(`${caster.name}'s Counter failed – nothing to reflect.`, "neg")
+                pushFloat(target, "No effect", "neg")
+                return {}
+              }
+              const src = Abilities[key]
+              if (!src || typeof src.onImpact !== "function") return {}
+              const ctx2 = {
+                base: (src.base || 20) * 2,
+                tags: src.tags,
+                critChance: 0.5,
+              }
+              if (key === "amaterasu") ctx2.ignoreSoakedFireReduction = true
+              return src.onImpact(caster, target, ctx2) || {}
+            },
+          },
+          /* --- NEW pseudo-ability for the AI -------------------------- */
+          skip: {
+            key: "skip",
+            name: "Chakra Focus",
+            type: "Utility",
+            desc: "Skip the turn to focus and double chakra regeneration next turn.",
+            cost: 0,
+            cooldown: 0,
+            base: 0,
+            critChance: 0,
+            tags: ["skip"],
+            icon: () => "",
+            animation: animateSelf, // quick self-pose
+            onImpact: (caster) => {
+              caster.lastTurnSkipped = true // flag for double regen
+              return {}
+            },
+          },
+        }
+
+        // Build UI for ability buttons
+        const abilityOrder = ["basic", "fireball", "water", "wind", "healing", "regeneration", "thunder", "earth", "amaterasu", "byakugan", "counter"]
+
+        // ------- CPU difficulty setting -------
+        //  'easy'   – random choice
+        //  'medium' – look-ahead heuristics (2 ply: 2 CPU / 2 player turns)
+        //  'hard'   – deeper search, capped at 10 s of CPU time
+        const CPU_DIFFICULTY = "hard"
+
+        const abilityButtons = {}
+        function buildAbilityButtons() {
+          abilitiesWrap.innerHTML = ""
+          for (const key of abilityOrder) {
+            const a = Abilities[key]
+            const btn = document.createElement("button")
+            btn.className = "ability " + (a.type === "Special" ? "special" : a.type === "Basic" ? "basicJ" : "")
+            btn.dataset.key = key
+            btn.title = `${a.name} — ${a.desc}`
+            btn.innerHTML = `
+        <div class="icon">${a.icon()}</div>
+        <div class="meta">
+          <div class="label">${a.name}</div>
+          <div class="sub">${a.type}</div>
+        </div>
+        <div class="badge" data-badge="cd">CD 0</div>
+        <div class="cost">${a.cost} CH</div>
+      `
+            btn.addEventListener("mouseenter", () => setInfo(a.name, a.desc))
+            btn.addEventListener("focus", () => setInfo(a.name, a.desc))
+            btn.addEventListener("click", () => tryPlayerUse(key))
+            abilitiesWrap.appendChild(btn)
+            abilityButtons[key] = btn
+          }
+        }
+
+        function setInfo(title, body) {
+          infoTitle.textContent = title
+          infoBody.textContent = body
+        }
+
+        // Status application and icons
+        function applyStatus(target, type, { duration }) {
+          const now = target.statuses[type]
+          const maxDur = duration
+          if (now) {
+            now.duration = Math.max(now.duration, maxDur)
+          } else {
+            target.statuses[type] = { duration: maxDur }
+          }
+          // visual float
+          const labelMap = {
+            burn: "Burn",
+            soaked: "Soaked",
+            exposed: "Exposed",
+            blackFlame: "Black Flame",
+            chakraSeal: "Chakra Seal",
+            regen: "Regen",
+            shocked: "Shocked",
+            bound: "Bound",
+          }
+          pushStatusFloat(target, labelMap[type] || type, "buff")
+          updateStatusIcons()
+        }
+
+        function pushStatusFloat(target, text, cls) {
+          pushFloat(target, text, cls || "buff")
+        }
+
+        // Damage application and floating text
+        function applyDamage(target, dmg, { crit = false } = {}) {
+          dmg = Math.max(0, Math.round(dmg))
+          target.hp = clamp(target.hp - dmg, 0, target.maxHp)
+          const pos = getCharCenter(target.side)
+          pushFloat(target, `-${dmg}${crit ? " CRIT!" : ""}`, crit ? "crit" : "dmg")
+          const targetBody = target.side === "p" ? pBody : eBody
+          targetBody.classList.remove("shake") // reset
+          void targetBody.offsetWidth
+          targetBody.classList.add("shake")
+          updateBars()
+          log(`${target.name} took <b>${dmg}</b> damage${crit ? " <b>(CRIT)</b>" : ""}.`, "dmg")
+          if (target.hp <= 0) {
+            target.alive = false
+          }
+        }
+
+        // Damage computation
+        function computeDamage(base, caster, target, ctx) {
+          let dmg = base
+          // Shocked caster deals half damage
+          if (caster.statuses.shocked) dmg *= 0.5
+          // Exposed increases damage taken
+          if (target.statuses.exposed) dmg *= 1.3
+          // Soaked modifies Fire and Wind
+          if (target.statuses.soaked) {
+            if (ctx.tags && ctx.tags.includes("fire") && !ctx.ignoreSoakedFireReduction) dmg *= 0.7
+            if (ctx.tags && ctx.tags.includes("wind")) dmg *= 1.5
+          }
+          // Random variance
+          dmg *= randf(0.9, 1.1)
+          // Crit
+          const crit = Math.random() < (ctx.critChance ?? 0.1)
+          if (crit) dmg *= 1.5
+          // Round
+          ctx.crit = crit
+          return dmg
+        }
+
+        // Start-of-turn effects: DoTs and cooldown reduction
+        function startOfTurn(actor) {
+          // Decrement cooldowns
+          for (const key of abilityOrder) {
+            if (actor.cooldowns[key] > 0) actor.cooldowns[key]--
+          }
+          // DoTs
+          let totalDot = 0
+          if (actor.statuses.burn) {
+            const tick = Math.round(8 + 0.02 * actor.maxHp)
+            actor.hp = clamp(actor.hp - tick, 0, actor.maxHp)
+            totalDot += tick
+            pushFloat(actor, `-${tick} Burn`, "dot")
+            log(`${actor.name} is hurt by <b>Burn</b> for ${tick}.`, "neg")
+            actor.statuses.burn.duration--
+            if (actor.statuses.burn.duration <= 0) delete actor.statuses.burn
+          }
+          if (actor.statuses.blackFlame) {
+            const tick = Math.round(12 + 0.03 * actor.maxHp)
+            actor.hp = clamp(actor.hp - tick, 0, actor.maxHp)
+            totalDot += tick
+            pushFloat(actor, `-${tick} Black Flame`, "dot")
+            log(`${actor.name} is consumed by <b>Black Flame</b> for ${tick}.`, "neg")
+            actor.statuses.blackFlame.duration--
+            if (actor.statuses.blackFlame.duration <= 0) delete actor.statuses.blackFlame
+          }
+          // Regeneration HoT
+          if (actor.statuses.regen) {
+            const tick = 15
+            actor.hp = clamp(actor.hp + tick, 0, actor.maxHp)
+            pushFloat(actor, `+${tick} Regen`, "heal")
+            log(`${actor.name} recovers <b>${tick}</b> HP from Regeneration.`, "heal")
+            actor.statuses.regen.duration--
+            if (actor.statuses.regen.duration <= 0) delete actor.statuses.regen
+          }
+          // Duration-only statuses
+          if (actor.statuses.soaked) {
+            actor.statuses.soaked.duration--
+            if (actor.statuses.soaked.duration <= 0) delete actor.statuses.soaked
+          }
+          if (actor.statuses.exposed) {
+            actor.statuses.exposed.duration--
+            if (actor.statuses.exposed.duration <= 0) delete actor.statuses.exposed
+          }
+          if (actor.statuses.chakraSeal) {
+            actor.statuses.chakraSeal.duration--
+            if (actor.statuses.chakraSeal.duration <= 0) delete actor.statuses.chakraSeal
+          }
+          if (actor.statuses.shocked) {
+            actor.statuses.shocked.duration--
+            if (actor.statuses.shocked.duration <= 0) delete actor.statuses.shocked
+          }
+          // Chakra regen (blocked by chakraSeal)
+          const baseRegen = actor.statuses.chakraSeal ? 0 : 8
+          const regen = actor.lastTurnSkipped ? baseRegen * 2 : baseRegen
+          actor.lastTurnSkipped = false // reset the flag after applying the bonus
+          if (regen > 0) {
+            actor.ch = clamp(actor.ch + regen, 0, actor.maxCh)
+            pushFloat(actor, `+${regen} Chakra`, "buff")
+            log(`${actor.name} regenerates ${regen} Chakra.`, "heal")
+          }
+          // Check alive
+          if (actor.hp <= 0) {
+            actor.alive = false
+          }
+          updateBars()
+          updateStatusIcons()
+        }
+
+        // Status icons rendering
+        function updateStatusIcons() {
+          function fill(sideEl, statuses) {
+            sideEl.innerHTML = ""
+            const entries = [
+              ["burn", "burn", "Bu"],
+              ["blackFlame", "bflm", "BF"],
+              ["soaked", "soak", "So"],
+              ["exposed", "expo", "Ex"],
+              ["chakraSeal", "cseal", "CS"],
+              ["regen", "regen", "Re"],
+              ["shocked", "shock", "Sh"],
+              ["bound", "bound", "Bd"],
+            ]
+            for (const [key, cls, label] of entries) {
+              const st = statuses[key]
+              if (!st) continue
+              const div = document.createElement("div")
+              div.className = `stIcon ${cls}`
+              div.textContent = label
+              const d = document.createElement("div")
+              d.className = "d"
+              d.textContent = st.duration
+              div.appendChild(d)
+              sideEl.appendChild(div)
+            }
+          }
+          fill(pStatus, player.statuses)
+          fill(eStatus, enemy.statuses)
+        }
+
+        // Bars update
+        function updateBars() {
+          pHpBar.style.width = `${(player.hp / player.maxHp) * 100}%`
+          pHpText.textContent = `HP: ${player.hp} / ${player.maxHp}`
+          pChBar.style.width = `${(player.ch / player.maxCh) * 100}%`
+          pChText.textContent = `Chakra: ${player.ch} / ${player.maxCh}`
+          eHpBar.style.width = `${(enemy.hp / enemy.maxHp) * 100}%`
+          eHpText.textContent = `HP: ${enemy.hp} / ${enemy.maxHp}`
+          eChBar.style.width = `${(enemy.ch / enemy.maxCh) * 100}%`
+          eChText.textContent = `Chakra: ${enemy.ch} / ${enemy.maxCh}`
+          // Ability availability
+          updateAbilityButtons()
+        }
+
+        function canUse(entity, key) {
+          if (key === "skip") return { ok: true } // always allowed for AI
+          const a = Abilities[key]
+          if (!a) return { ok: false, reason: "Unknown" }
+          if (entity.cooldowns[key] > 0) return { ok: false, reason: `Cooldown ${entity.cooldowns[key]} turn(s)` }
+          if (entity.ch < a.cost) return { ok: false, reason: "Not enough chakra" }
+          if (entity.statuses.chakraSeal && key !== "basic") return { ok: false, reason: "Chakra sealed (only Basic Attack)" }
+          return { ok: true }
+        }
+
+        function updateAbilityButtons() {
+          const myTurn = game.turn === "p" && !game.busy && game.running
+          for (const key of abilityOrder) {
+            const btn = abilityButtons[key]
+            const a = Abilities[key]
+            const cd = player.cooldowns[key] || 0
+            btn.querySelector('[data-badge="cd"]').textContent = `CD ${cd}`
+            let enabled = myTurn && canUse(player, key).ok
+            btn.classList.toggle("disabled", !enabled)
+            btn.disabled = !enabled
+            btn.querySelector(".cost").textContent = `${a.cost} CH`
+          }
+          endTurnBtn.disabled = !myTurn
+        }
+
+        // Floating text at character
+        function getCharCenter(side) {
+          const char = side === "p" ? pSide : eSide
+          const rectArena = arena.getBoundingClientRect()
+          const rect = char.getBoundingClientRect()
+          return {
+            x: rect.left + rect.width / 2 - rectArena.left,
+            y: rect.top + rect.height * 0.35 - rectArena.top,
+          }
+        }
+
+        function pushFloat(target, text, cls = "dmg") {
+          if (SIM_SILENT) return
+          const pos = getCharCenter(target.side)
+          const div = document.createElement("div")
+          div.className = `float ${cls}`
+          div.textContent = text
+          div.style.left = `${pos.x}px`
+          div.style.top = `${pos.y}px`
+          arena.appendChild(div)
+          setTimeout(() => div.remove(), 1200)
+        }
+
+        // Ability animations (SVG in fxSVG), each returns Promise that resolves after it finishes and calls impact callback at the hit moment.
+        function clearFXSoon(el, ms = 1200) {
+          setTimeout(() => el.remove(), ms)
+        }
+
+        async function animateStrike(caster, target, ctx, onImpact) {
+          // Simple dash line + impact burst
+          const from = getCharCenter(caster.side)
+          const to = getCharCenter(target.side)
+          const line = document.createElementNS(SVG_NS, "line")
+          line.setAttribute("x1", from.x)
+          line.setAttribute("y1", from.y)
+          line.setAttribute("x2", from.x)
+          line.setAttribute("y2", from.y)
+          line.setAttribute("stroke", "#ffd28a")
+          line.setAttribute("stroke-width", "5") /* was 3 → thicker blade */
+          line.setAttribute("stroke-linecap", "round")
+          fxSVG.appendChild(line)
+
+          const body = caster.side === "p" ? pBody : eBody
+          body.classList.add("casting")
+          setTimeout(() => body.classList.remove("casting"), 500)
+
+          const dur = 240
+          const t0 = performance.now()
+          await new Promise((res) => {
+            function step(t) {
+              const k = clamp((t - t0) / dur, 0, 1)
+              const cx = from.x + (to.x - from.x) * k
+              const cy = from.y + (to.y - from.y) * k
+              line.setAttribute("x2", cx)
+              line.setAttribute("y2", cy)
+              if (k < 1) requestAnimationFrame(step)
+              else res()
+            }
+            requestAnimationFrame(step)
+          })
+          // Impact burst
+          const burst = document.createElementNS(SVG_NS, "circle")
+          burst.setAttribute("cx", to.x)
+          burst.setAttribute("cy", to.y)
+          burst.setAttribute("r", "6") /* was 4 → larger spark */
+          burst.setAttribute("fill", "#ffcc88")
+          burst.setAttribute("opacity", "1")
+          fxSVG.appendChild(burst)
+          ;(target.side === "p" ? pBody : eBody).classList.add("charFX", "hitflash")
+          setTimeout(() => (target.side === "p" ? pBody : eBody).classList.remove("hitflash"), 240)
+
+          onImpact() // apply damage/effects
+
+          // Expand burst then fade
+          const dur2 = 220
+          const t1 = performance.now()
+          await new Promise((res) => {
+            function step2(t) {
+              const k = clamp((t - t1) / dur2, 0, 1)
+              burst.setAttribute("r", String(6 + 26 * k)) /* was 4 + 16*k → 6 + 26*k */
+              burst.setAttribute("opacity", String(1 - k))
+              if (k < 1) requestAnimationFrame(step2)
+              else res()
+            }
+            requestAnimationFrame(step2)
+          })
+          line.remove()
+          burst.remove()
+        }
+
+        async function animateFireball(caster, target, ctx, onImpact) {
+          const from = getCharCenter(caster.side)
+          const to = getCharCenter(target.side)
+          // Ball with flame trail
+          const g = document.createElementNS(SVG_NS, "g")
+          const trail = document.createElementNS(SVG_NS, "path")
+          trail.setAttribute("stroke", "url(#fireGrad)")
+          trail.setAttribute("fill", "none")
+          trail.setAttribute("stroke-width", "6")
+          trail.setAttribute("stroke-linecap", "round")
+          // Create gradient
+          const defs = ensureDefs()
+          const grad = document.createElementNS(SVG_NS, "linearGradient")
+          const gid = "fireGrad" + Math.random().toString(36).slice(2)
+          grad.setAttribute("id", gid)
+          grad.innerHTML = `
+      <stop offset="0" stop-color="#fffcf2" stop-opacity="1"/>
+      <stop offset="0.4" stop-color="#ffad5c" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ff5a2a" stop-opacity="0.0"/>
+    `
+          defs.appendChild(grad)
+          trail.setAttribute("stroke", `url(#${gid})`)
+
+          const ball = document.createElementNS(SVG_NS, "circle")
+          ball.setAttribute("r", "10")
+          ball.setAttribute("fill", "#ff7e3a")
+          ball.setAttribute("stroke", "#ffd2a4")
+          ball.setAttribute("stroke-width", "2")
+          g.appendChild(trail)
+          g.appendChild(ball)
+          fxSVG.appendChild(g)
+
+          const body = caster.side === "p" ? pBody : eBody
+          body.classList.add("casting")
+          setTimeout(() => body.classList.remove("casting"), 500)
+
+          const dur = 520
+          const t0 = performance.now()
+          let lastX = from.x,
+            lastY = from.y
+          await new Promise((res) => {
+            function step(t) {
+              const k = clamp((t - t0) / dur, 0, 1)
+              const ease = k < 0.5 ? 2 * k * k : -1 + (4 - 2 * k) * k // ease in-out quad
+              const cx = from.x + (to.x - from.x) * ease
+              const cy = from.y + (to.y - from.y) * ease
+              ball.setAttribute("cx", String(cx))
+              ball.setAttribute("cy", String(cy))
+              // trail path as simple line from last to current
+              const path = `M ${lastX} ${lastY} L ${cx} ${cy}`
+              trail.setAttribute("d", path)
+              trail.setAttribute("opacity", String(0.6 + 0.4 * (1 - k)))
+              lastX = cx
+              lastY = cy
+              if (k < 1) requestAnimationFrame(step)
+              else res()
+            }
+            requestAnimationFrame(step)
+          })
+
+          // Impact flame
+          const flames = document.createElementNS(SVG_NS, "g")
+          flames.setAttribute("opacity", "1")
+          const fl1 = document.createElementNS(SVG_NS, "path")
+          fl1.setAttribute("fill", "#ff7b2a")
+          fl1.setAttribute("d", flamePath(to.x, to.y, 14))
+          const fl2 = document.createElementNS(SVG_NS, "path")
+          fl2.setAttribute("fill", "#ffb36b")
+          fl2.setAttribute("d", flamePath(to.x + 6, to.y - 4, 10))
+          flames.appendChild(fl1)
+          flames.appendChild(fl2)
+          fxSVG.appendChild(flames)
+          ;(target.side === "p" ? pBody : eBody).classList.add("hitflash")
+
+          onImpact()
+
+          // Fade flames
+          const t1 = performance.now()
+          const dur2 = 360
+          await new Promise((res) => {
+            function step(t) {
+              const k = clamp((t - t1) / dur2, 0, 1)
+              flames.setAttribute("opacity", String(1 - k))
+              if (k < 1) requestAnimationFrame(step)
+              else res()
+            }
+            requestAnimationFrame(step)
+          })
+          g.remove()
+          flames.remove()
+        }
+
+        function flamePath(cx, cy, s) {
+          // simple stylized flame path
+          return `M ${cx} ${cy}
+            c ${-s} ${-s * 0.6}, ${-s * 0.6} ${-s * 1.4}, 0 ${-s * 2}
+            c ${s * 0.8} ${s * 0.6}, ${s * 0.8} ${s * 1.2}, 0 ${s * 2}
+            z`
+        }
+
+        function ensureDefs() {
+          let defs = fxSVG.querySelector("defs")
+          if (!defs) {
+            defs = document.createElementNS(SVG_NS, "defs")
+            fxSVG.appendChild(defs)
+          }
+          return defs
+        }
+
+        async function animateWater(caster, target, ctx, onImpact) {
+          const from = getCharCenter(caster.side)
+          const to = getCharCenter(target.side)
+          const wave = document.createElementNS(SVG_NS, "path")
+          const gid = "waterGrad" + Math.random().toString(36).slice(2)
+          const defs = ensureDefs()
+          const grad = document.createElementNS(SVG_NS, "linearGradient")
+          grad.setAttribute("id", gid)
+          grad.setAttribute("x1", "0")
+          grad.setAttribute("x2", "0")
+          grad.setAttribute("y1", "0")
+          grad.setAttribute("y2", "1")
+          grad.innerHTML = `
+      <stop offset="0" stop-color="#b8ecff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#2b9bff" stop-opacity="0.9"/>
+    `
+          defs.appendChild(grad)
+          wave.setAttribute("fill", `url(#${gid})`)
+          wave.setAttribute("opacity", "0.85")
+          fxSVG.appendChild(wave)
+
+          const dur = 600
+          const t0 = performance.now()
+          await new Promise((res) => {
+            function step(t) {
+              const k = clamp((t - t0) / dur, 0, 1)
+              const x = from.x + (to.x - from.x) * k
+              const y = from.y + (to.y - from.y) * k
+              const amp = 10 + 14 * Math.sin(k * Math.PI)
+              const w = 26
+              const path = `
+          M ${x - 20} ${y + 8}
+          q ${w / 2} ${-amp}, ${w} 0
+          q ${w / 2} ${amp}, ${w} 0
+          q ${w / 2} ${-amp}, ${w} 0
+          L ${x + 60} ${y + 40}
+          L ${x - 20} ${y + 40} Z
+        `
+              wave.setAttribute("d", path)
+              if (k < 1) requestAnimationFrame(step)
+              else res()
+            }
+            requestAnimationFrame(step)
+          })
+          // Splash
+          const splash = document.createElementNS(SVG_NS, "circle")
+          splash.setAttribute("cx", String(to.x))
+          splash.setAttribute("cy", String(to.y + 4))
+          splash.setAttribute("r", "2")
+          splash.setAttribute("fill", "#9cdfff")
+          fxSVG.appendChild(splash)
+          onImpact()
+          const t1 = performance.now()
+          const dur2 = 320
+          await new Promise((res) => {
+            function step(t) {
+              const k = clamp((t - t1) / dur2, 0, 1)
+              splash.setAttribute("r", String(2 + 18 * k))
+              splash.setAttribute("opacity", String(1 - k))
+              if (k < 1) requestAnimationFrame(step)
+              else res()
+            }
+            requestAnimationFrame(step)
+          })
+          wave.remove()
+          splash.remove()
+        }
+
+        async function animateWind(caster, target, ctx, onImpact) {
+          const from = getCharCenter(caster.side)
+          const to = getCharCenter(target.side)
+          const cres = document.createElementNS(SVG_NS, "path")
+          cres.setAttribute("fill", "#d8ffe6")
+          cres.setAttribute("stroke", "#6bff9a")
+          cres.setAttribute("stroke-width", "1")
+          fxSVG.appendChild(cres)
+
+          const dur = 520
+          const t0 = performance.now()
+          await new Promise((res) => {
+            function step(t) {
+              const k = clamp((t - t0) / dur, 0, 1)
+              const cx = from.x + (to.x - from.x) * k
+              const cy = from.y + (to.y - from.y) * k
+              const s = 10 + 10 * Math.sin(k * Math.PI)
+              const path = `
+          M ${cx - 12 - s} ${cy}
+          q ${s} ${-s}, ${2 * s} 0
+          q ${s} ${s}, ${2 * s} 0
+          q ${s} ${-s}, ${2 * s} 0
+          q ${s} ${s}, ${2 * s} 0
+          L ${cx + 40} ${cy + 10}
+          L ${cx - 12 - s} ${cy + 10} Z
+        `
+              cres.setAttribute("d", path)
+              cres.setAttribute("opacity", String(0.9 - 0.4 * k))
+              if (k < 1) requestAnimationFrame(step)
+              else res()
+            }
+            requestAnimationFrame(step)
+          })
+          // Impact slices
+          const slice1 = document.createElementNS(SVG_NS, "line")
+          slice1.setAttribute("x1", to.x - 22)
+          slice1.setAttribute("y1", to.y - 12)
+          slice1.setAttribute("x2", to.x + 22)
+          slice1.setAttribute("y2", to.y + 12)
+          slice1.setAttribute("stroke", "#aaffc4")
+          slice1.setAttribute("stroke-width", "2")
+          const slice2 = document.createElementNS(SVG_NS, "line")
+          slice2.setAttribute("x1", to.x - 22)
+          slice2.setAttribute("y1", to.y + 12)
+          slice2.setAttribute("x2", to.x + 22)
+          slice2.setAttribute("y2", to.y - 12)
+          slice2.setAttribute("stroke", "#c0ffe0")
+          slice2.setAttribute("stroke-width", "1.6")
+          fxSVG.appendChild(slice1)
+          fxSVG.appendChild(slice2)
+          onImpact()
+          await sleep(260)
+          cres.remove()
+          slice1.remove()
+          slice2.remove()
+        }
+
+        async function animateAmaterasu(caster, target, ctx, onImpact) {
+          // Sharingan eye flash on caster, black flames on target
+          const casterEyes = caster.side === "p" ? pEyes : eEyes
+          const origEyesHTML = casterEyes.innerHTML
+          // Red sharingan
+          casterEyes.innerHTML = `
+      <circle cx="101" cy="13.5" r="3.5" fill="#ad1515" stroke="#2b0000" stroke-width="1"/>
+      <circle cx="129" cy="13.5" r="3.5" fill="#ad1515" stroke="#2b0000" stroke-width="1"/>
+    `
+
+          const to = getCharCenter(target.side)
+          // Black flame group flicker
+          const g = document.createElementNS(SVG_NS, "g")
+          g.setAttribute("opacity", "0.1") // will ramp up
+          const flame1 = document.createElementNS(SVG_NS, "path")
+          flame1.setAttribute("fill", "#111")
+          flame1.setAttribute("d", flamePath(to.x, to.y - 10, 32)) /* size ×2 (16→32) */
+          const flame2 = document.createElementNS(SVG_NS, "path")
+          flame2.setAttribute("fill", "#222")
+          flame2.setAttribute("d", flamePath(to.x + 4, to.y - 8, 24)) /* 12→24 */
+          g.appendChild(flame1)
+          g.appendChild(flame2)
+          fxSVG.appendChild(g)
+
+          // Ramp up opacity with flicker
+          const dur = 520
+          const t0 = performance.now()
+          await new Promise((res) => {
+            function step(t) {
+              const k = clamp((t - t0) / dur, 0, 1)
+              const flick = 0.75 + 0.25 * Math.sin(t * 0.04)
+              g.setAttribute("opacity", String(0.1 + k * 0.9 * flick))
+              if (k < 1) requestAnimationFrame(step)
+              else res()
+            }
+            requestAnimationFrame(step)
+          })
+
+          // Impact and flicker linger
+          onImpact()
+          ;(target.side === "p" ? pBody : eBody).classList.add("hitflash")
+
+          const t1 = performance.now()
+          const dur2 = 520
+          await new Promise((res) => {
+            function step2(t) {
+              const flick = 0.7 + 0.3 * Math.sin(t * 0.08)
+              g.setAttribute("opacity", String(0.6 + 0.4 * flick))
+              if (t - t1 < dur2) requestAnimationFrame(step2)
+              else res()
+            }
+            requestAnimationFrame(step2)
+          })
+          // fade out visual (status continues via DoT)
+          const t2 = performance.now()
+          const dur3 = 360
+          await new Promise((res) => {
+            function step3(t) {
+              const k = clamp((t - t2) / dur3, 0, 1)
+              g.setAttribute("opacity", String(1 - k))
+              if (k < 1) requestAnimationFrame(step3)
+              else res()
+            }
+            requestAnimationFrame(step3)
+          })
+          g.remove()
+          casterEyes.innerHTML = origEyesHTML
+        }
+
+        async function animateByakugan(caster, target, ctx, onImpact) {
+          // Byakugan white eyes + rapid strikes + sealing sigil
+          const casterEyes = caster.side === "p" ? pEyes : eEyes
+          const origEyesHTML = casterEyes.innerHTML
+          // White eyes with veins hint
+          casterEyes.innerHTML = `
+      <circle cx="101" cy="73.5" r="3.5" fill="#f0f8ff" stroke="#a3c7e8" stroke-width="1"/>
+      <circle cx="129" cy="73.5" r="3.5" fill="#f0f8ff" stroke="#a3c7e8" stroke-width="1"/>
+    `
+          const to = getCharCenter(target.side)
+          const group = document.createElementNS(SVG_NS, "g")
+          fxSVG.appendChild(group)
+
+          // Rapid 4 impacts around the target
+          for (let i = 0; i < 4; i++) {
+            const dx = randi(-20, 20),
+              dy = randi(-14, 14)
+            const c = document.createElementNS(SVG_NS, "circle")
+            c.setAttribute("cx", String(to.x + dx))
+            c.setAttribute("cy", String(to.y + dy))
+            c.setAttribute("r", "2")
+            c.setAttribute("fill", "#c7f1ff")
+            group.appendChild(c)
+            const t0 = performance.now()
+            const dur = 200
+            await new Promise((res) => {
+              function step(t) {
+                const k = clamp((t - t0) / dur, 0, 1)
+                c.setAttribute("r", String(2 + 12 * k))
+                c.setAttribute("opacity", String(1 - k))
+                if (k < 1) requestAnimationFrame(step)
+                else res()
+              }
+              requestAnimationFrame(step)
+            })
+            c.remove()
+            if (i === 1) {
+              // After second hit, apply impact
+              onImpact()
+            }
+          }
+          // Sealing sigil overlay
+          const seal = document.createElementNS(SVG_NS, "g")
+          const ring = document.createElementNS(SVG_NS, "circle")
+          ring.setAttribute("cx", String(to.x))
+          ring.setAttribute("cy", String(to.y))
+          ring.setAttribute("r", "22")
+          ring.setAttribute("fill", "none")
+          ring.setAttribute("stroke", "#8fe2ff")
+          ring.setAttribute("stroke-width", "2")
+          const inner = document.createElementNS(SVG_NS, "circle")
+          inner.setAttribute("cx", String(to.x))
+          inner.setAttribute("cy", String(to.y))
+          inner.setAttribute("r", "10")
+          inner.setAttribute("fill", "none")
+          inner.setAttribute("stroke", "#c7f1ff")
+          inner.setAttribute("stroke-width", "1.5")
+          const mark = document.createElementNS(SVG_NS, "path")
+          // simple rune-like shape
+          const path = `M ${to.x - 4} ${to.y - 2} l 3 -5 l 3 5 l -3 8 z`
+          mark.setAttribute("d", path)
+          mark.setAttribute("fill", "#b9ecff")
+          seal.appendChild(ring)
+          seal.appendChild(inner)
+          seal.appendChild(mark)
+          fxSVG.appendChild(seal)
+          // Pulse and fade
+          const t1 = performance.now()
+          const dur2 = 400
+          await new Promise((res) => {
+            function step(t) {
+              const k = clamp((t - t1) / dur2, 0, 1)
+              const r = 22 + 8 * Math.sin(k * Math.PI)
+              ring.setAttribute("r", String(r))
+              seal.setAttribute("opacity", String(1 - k * 0.8))
+              if (k < 1) requestAnimationFrame(step)
+              else res()
+            }
+            requestAnimationFrame(step)
+          })
+          seal.remove()
+          casterEyes.innerHTML = origEyesHTML
+        }
+
+        // Ability icons (inline SVG strings)
+        function buildIconBasic() {
+          return `
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1">
+            <stop offset="0" stop-color="#ffcf96"/><stop offset="1" stop-color="#ff9a55"/>
+          </linearGradient>
+        </defs>
+        <circle cx="20" cy="20" r="18" fill="#2a2736" stroke="#403a52"/>
+        <path d="M6 22 L20 18 L34 22" stroke="url(#g1)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="20" cy="18" r="3" fill="#ffd39a"/>
+      </svg>
+    `
+        }
+        function buildIconFireball() {
+          return `
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <defs>
+          <linearGradient id="f1" x1="0" x2="1">
+            <stop offset="0" stop-color="#fff2de"/><stop offset="1" stop-color="#ff7b2a"/>
+          </linearGradient>
+        </defs>
+        <circle cx="20" cy="20" r="18" fill="#2a2736" stroke="#403a52"/>
+        <path d="M12 25 C 8 18, 18 10, 26 12 C 24 16, 24 22, 12 25 Z" fill="url(#f1)"/>
+        <circle cx="23" cy="18" r="4" fill="#ff9b4f" stroke="#ffd9ac"/>
+      </svg>
+    `
+        }
+        function buildIconWater() {
+          return `
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#232b3a" stroke="#35425d"/>
+        <path d="M12 24 Q 20 10, 28 24 Q 20 30, 12 24 Z" fill="#6bd3ff" stroke="#a6e7ff"/>
+        <path d="M16 22 Q 20 16, 24 22 Q 20 26, 16 22 Z" fill="#b7ecff"/>
+      </svg>
+    `
+        }
+        function buildIconWind() {
+          return `
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#22302a" stroke="#364b40"/>
+        <path d="M10 18 Q 18 14, 28 18" stroke="#9af6a1" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M12 24 Q 20 20, 30 24" stroke="#c9ffd1" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+    `
+        }
+        function buildIconAmaterasu() {
+          return `
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#1b1b1b" stroke="#3a3a3a"/>
+        <path d="M16 26 C 12 20, 18 14, 20 10 C 24 14, 28 18, 24 26 C 22 28, 18 28, 16 26 Z" fill="#111"/>
+        <circle cx="20" cy="14" r="3" fill="#ad1515" stroke="#2b0000"/>
+      </svg>
+    `
+        }
+        function buildIconByakugan() {
+          return `
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#1a2230" stroke="#2e3d52"/>
+        <ellipse cx="14" cy="20" rx="4.5" ry="3.2" fill="#f0f8ff" stroke="#a3c7e8"/>
+        <ellipse cx="26" cy="20" rx="4.5" ry="3.2" fill="#f0f8ff" stroke="#a3c7e8"/>
+        <circle cx="20" cy="20" r="6" fill="none" stroke="#8fe2ff"/>
+      </svg>
+    `
+        }
+        function buildIconHealing() {
+          return `
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#1e2a1e" stroke="#304930"/>
+        <path d="M20 10 V30 M10 20 H30" stroke="#8ff07f" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    `
+        }
+        function buildIconRegen() {
+          return `
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#1a2a28" stroke="#335853"/>
+        <path d="M14 24 Q20 14 26 24" fill="none" stroke="#7fffc8" stroke-width="3" stroke-linecap="round"/>
+        <path d="M12 24 L28 24" stroke="#7fffc8" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    `
+        }
+        function buildIconThunder() {
+          return `
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#2a2736" stroke="#403a52"/>
+        <polygon points="18,10 26,10 22,18 28,18 14,30 18,20 12,20" fill="#ffd966" stroke="#ffb400" stroke-width="1"/>
+      </svg>
+    `
+        }
+        function buildIconEarth() {
+          return `
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#2c2620" stroke="#4a3e32"/>
+        <rect x="16" y="12" width="8" height="16" fill="#c2a269" stroke="#8d744c"/>
+      </svg>
+    `
+        }
+        function buildIconCounter() {
+          return `
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#2a1e2e" stroke="#46364d"/>
+        <path d="M12 20 A8 8 0 1 1 28 20" stroke="#ff8bde" stroke-width="3" fill="none"/>
+        <polyline points="18,14 22,20 18,26" stroke="#ff8bde" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+    `
+        }
+
+        // Game State
+        const game = {
+          turn: "p", // 'p' or 'e'
+          running: true,
+          busy: false,
+        }
+
+        // Initialize
+        function init() {
+          buildAbilityButtons()
+          // Add "Win Chance" label only when the AI is Hard
+          if (CPU_DIFFICULTY === "hard" && ePanel) {
+            cpuProbDiv = document.createElement("div")
+            cpuProbDiv.className = "probRow"
+            cpuProbDiv.textContent = "Win Chance: 50%"
+            ePanel.insertBefore(cpuProbDiv, ePanel.firstChild)
+          }
+          updateBars()
+          updateStatusIcons()
+          setInfo(
+            "Welcome to Shinobi Saga",
+            "Choose an ability and target your foe. Turn order alternates. Start-of-turn applies damage-over-time and reduces cooldowns. Water removes Burn. Soaked reduces Fire damage and boosts Wind. Exposed increases all damage taken. Chakra Seal blocks jutsu and chakra regen. Good luck!"
+          )
+          log("<b>Battle Start!</b>", "sys")
+          startTurn("p")
+        }
+
+        function startTurn(side) {
+          if (!game.running) return
+          game.turn = side
+          game.busy = false
+          turnLabel.textContent = side === "p" ? "Your Turn" : "Enemy Turn"
+          // Start-of-turn effects
+          const actor = side === "p" ? player : enemy
+          startOfTurn(actor)
+          updateBars()
+          // Bound ⇒ skip this turn
+          if (actor.statuses.bound) {
+            log(`${actor.name} is bound and cannot act this turn!`, "st")
+            actor.statuses.bound.duration--
+            if (actor.statuses.bound.duration <= 0) delete actor.statuses.bound
+            actor.lastTurnSkipped = true
+            updateStatusIcons()
+            setTimeout(() => startTurn(side === "p" ? "e" : "p"), 600)
+            return
+          }
+          if (!actor.alive) {
+            finish(actor === player ? "Defeat" : "Victory")
+            return
+          }
+          if (side === "p") {
+            updateAbilityButtons()
+          } else {
+            // CPU acts after a short delay
+            updateAbilityButtons()
+            cpuAct()
+          }
+        }
+
+        async function cpuAct() {
+          game.busy = true
+          await sleep(650)
+          const usable = await cpuChooseAbility(enemy)
+          // Perform ability
+          await performAbility(enemy, player, usable)
+          if (!game.running) return
+          await sleep(350)
+          startTurn("p")
+        }
+
+        async function cpuChooseAbility(ai) {
+          switch (CPU_DIFFICULTY) {
+            case "easy":
+              return cpuChooseEasy(ai)
+            case "medium":
+              return cpuChooseMedium(ai)
+            case "hard":
+              return await cpuChooseHard(ai)
+            default:
+              return cpuChooseMedium(ai)
+          }
+        }
+
+        // ----------  AI helpers ----------
+
+        function cpuChooseEasy(ai) {
+          const opts = abilityOrder.filter((k) => canUse(ai, k).ok)
+          return opts.length ? opts[randi(0, opts.length - 1)] : "basic"
+        }
+
+        // expected value of an ability using a live simulation step
+        function evaluateAbility(key, caster, target) {
+          /* --- NEW: special handling for Skip ------------------------ */
+          if (key === "skip") {
+            if (caster.statuses.chakraSeal) return -20 // no regen while sealed
+            const missing = caster.maxCh - caster.ch // value grows when low on chakra
+            return 0.4 * missing // up to ~16 pts when empty
+          }
+          if (!Abilities[key]) return -Infinity
+
+          /* ----------  Heuristic helpers  ---------- */
+          const thunderCombo = key === "thunder" && target.statuses.soaked
+          const exposedBonus = !!target.statuses.exposed
+          const strongCounter = new Set(["fireball", "amaterasu", "thunder", "earth"])
+          /* ----------------------------------------- */
+
+          const c0 = cloneEntityLite(caster)
+          const t0 = cloneEntityLite(target)
+          simApplyAbility(c0, t0, key)
+
+          /* 1 / Immediate lethal → maximal priority */
+          if (t0.hp <= 0) return 99999
+
+          /* 2 / Basic swing (was original logic) */
+          const deltaHp = target.hp - t0.hp - (caster.hp - c0.hp)
+          const deltaCh = c0.ch - caster.ch + (target.ch - t0.ch)
+          let score = deltaHp + 0.1 * deltaCh
+
+          /* 3 / Combo awareness */
+          if (thunderCombo) score += 20 // Soaked → Thunder bonus
+          if (exposedBonus) score += (Abilities[key].base || 0) * 0.5
+
+          /* 4 / Smart Counter gating */
+          if (key === "counter") {
+            if (strongCounter.has(target.lastUsedAbility) || t0.hp <= 0) score += 25
+            else score -= 15
+          }
+          return score
+        }
+
+        function cpuChooseMedium(ai) {
+          const DEFENSIVE = new Set(["byakugan", "earth", "thunder", "healing", "regeneration"])
+          const opts = abilityOrder.filter((k) => canUse(ai, k).ok)
+
+          let best = "basic",
+            bestScore = -Infinity
+
+          for (const key of opts) {
+            /* simulate the move */
+            const c0 = cloneEntityLite(ai)
+            const t0 = cloneEntityLite(player)
+            simApplyAbility(c0, t0, key)
+
+            /* Instant-kill available? take it immediately */
+            if (t0.hp <= 0) return key
+
+            let score = evaluateAbility(key, ai, player)
+
+            /* Threat-prevention: will the reply one-shot us? */
+            const threat = estimateOpponentBestDamage(c0, t0)
+            if (threat >= c0.hp) {
+              score += DEFENSIVE.has(key) ? 30 : -40 // favour Seal / Bind / Shock / Heal
+            }
+
+            if (score > bestScore) {
+              bestScore = score
+              best = key
+            }
+          }
+          return best
+        }
+
+        async function cpuChooseHard(ai) {
+          /* --------- Minimax / α-β with iterative deepening --------- */
+          const THINK_TIME = 3000
+          const HARD_CAP = 10000
+          const t0 = performance.now()
+
+          function rootState() {
+            return { ai: cloneEntityLite(ai), pl: cloneEntityLite(player), turn: "ai" }
+          }
+
+          let bestMove = "basic"
+          let depth = 1
+          while (true) {
+            const { best } = searchRoot(rootState(), depth, -Infinity, Infinity)
+            if (best) bestMove = best
+            depth++
+            if (performance.now() - t0 > THINK_TIME) break
+            if (performance.now() - t0 > HARD_CAP) break
+          }
+
+          const wp = 1 / (1 + Math.exp(-0.04 * evalPosition(rootState())))
+          updateCpuWinProb(wp)
+
+          const spent = performance.now() - t0
+          if (spent < THINK_TIME) await sleep(THINK_TIME - spent)
+          return bestMove
+        }
+
+        // Helper for Hard-AI: estimate the highest damage the opponent can
+        // inflict on their imminent turn (given their current cooldowns/chakra).
+        // Adds a simple 1-ply look-ahead so the AI avoids moves that leave it
+        // wide open to huge counter-attacks.
+        function estimateOpponentBestDamage(attacker, defender) {
+          const opts = abilityOrder.filter((k) => canUse(defender, k).ok)
+          let best = 0
+          for (const k of opts) {
+            const v = evaluateAbility(k, defender, attacker)
+            if (v > best) best = v
+          }
+          return best
+        }
+
+        function tryPlayerUse(key) {
+          if (game.turn !== "p" || game.busy || !game.running) return
+          const check = canUse(player, key)
+          if (!check.ok) {
+            const a = Abilities[key]
+            infoTitle.textContent = a.name
+            infoBody.textContent = check.reason
+            return
+          }
+          performAbility(player, enemy, key).then(() => {
+            if (!game.running) return
+            startTurn("e")
+          })
+        }
+
+        endTurnBtn.addEventListener("click", () => {
+          if (game.turn !== "p" || game.busy || !game.running) return
+          // mark that the player skipped any action this turn
+          player.lastTurnSkipped = true
+          log(`You ended your turn.`, "sys")
+          startTurn("e")
+        })
+
+        // Perform ability flow
+        async function performAbility(caster, target, key) {
+          const a = Abilities[key]
+          if (!a) return
+          // remember ability for potential Counter
+          caster.lastUsedAbility = key
+          // taking an action clears any previous "skipped" flag
+          caster.lastTurnSkipped = false
+          game.busy = true
+          updateAbilityButtons()
+          // Spend chakra and set cooldown immediately
+          caster.ch -= a.cost
+          caster.cooldowns[key] = a.cooldown || 0
+          updateBars()
+          // Log
+          const nameCaster = caster.name === "User" ? "User" : "CPU"
+          log(`<b>${nameCaster}</b> used <b>${a.name}</b>.`, "st")
+
+          // Animation + impact
+          const ctx = {
+            base: a.base,
+            tags: a.tags,
+            critChance: a.critChance,
+          }
+          let impactDone = false
+          const onImpact = () => {
+            if (impactDone) return
+            impactDone = true
+            const result = a.onImpact(caster, target, ctx) || {}
+            updateBars()
+            updateStatusIcons()
+          }
+
+          // Choose proper animation function
+          await a.animation(caster, target, ctx, onImpact)
+
+          // Ensure impact executed
+          if (!impactDone) onImpact()
+
+          // Check victory
+          if (!target.alive) {
+            finish(caster === player ? "Victory" : "Defeat")
+            return
+          }
+          game.busy = false
+          updateAbilityButtons()
+        }
+
+        // Finish game
+        function finish(result) {
+          game.running = false
+          game.busy = false
+          updateAbilityButtons()
+          modalTitle.textContent = result === "Victory" ? "Victory!" : "Defeat..."
+          modalMsg.textContent =
+            result === "Victory"
+              ? "You have bested your opponent. Want to run it again?"
+              : "The CPU prevailed this time. Sharpen your jutsu and try again."
+          modal.style.display = "flex"
+        }
+
+        btnRestart.addEventListener("click", () => {
+          // Reset entities
+          Object.assign(player, createEntity("User", "p"))
+          Object.assign(enemy, createEntity("CPU", "e"))
+          // Clean fx
+          while (fxSVG.firstChild) fxSVG.removeChild(fxSVG.firstChild)
+          // Hide modal
+          modal.style.display = "none"
+          // Reset visuals
+          pBody.classList.remove("shake")
+          eBody.classList.remove("shake")
+          game.running = true
+          game.busy = false
+          updateBars()
+          updateStatusIcons()
+          log("<b>Battle Restarted!</b>", "sys")
+          startTurn("p")
+        })
+
+        // Initialize on DOM ready
+        window.addEventListener("load", init)
+        window.addEventListener("resize", () => {
+          // No specific layout recompute needed; positions computed at use-time.
+        })
+
+        // -------------------
+        // End of main script
+        // -------------------
+
+        // Show current CPU win probability (0–1)
+        function updateCpuWinProb(prob) {
+          if (cpuProbDiv) {
+            const pct = clamp(prob * 100, 0, 100)
+            cpuProbDiv.textContent = `Win Chance: ${pct.toFixed(0)}%`
+          }
+        }
+
+        // Simple self-target animation
+        async function animateSelf(caster, target, ctx, onImpact) {
+          const body = caster.side === "p" ? pBody : eBody
+          body.classList.add("casting")
+          await sleep(200)
+          onImpact()
+          await sleep(200)
+          body.classList.remove("casting")
+        }
+
+        /* -------- Revenge Counter dynamic animation -------- */
+        async function animateCounter(caster, target, ctx, onImpact) {
+          const key = target.lastUsedAbility
+          const src = Abilities[key]
+
+          /* Avoid infinite recursion when reflecting another Counter */
+          const recursive = key === "counter" || !src || src.animation === animateCounter
+
+          const anim = recursive ? animateStrike : src.animation
+          const proxyCtx = recursive ? { base: 40, tags: [], critChance: 0.5 } : { base: (src.base || 20) * 2, tags: src.tags || [], critChance: 0.5 }
+
+          await anim(caster, target, proxyCtx, onImpact)
+        }
+
+        // --- Simulation helpers (Hard AI) -----------------------------
+        // Utility – run code with UI completely muted so we can reuse
+        // real combat logic inside AI simulations.
+        function withSimulation(fn) {
+          const savedRandom = Math.random
+          const savedPushFloat = pushFloat
+          const savedStatusFloat = pushStatusFloat
+          const savedLog = log
+          const savedUpdateStatus = updateStatusIcons
+          const savedUpdateBars = updateBars
+          const savedApplyDamage = applyDamage
+
+          SIM_SILENT = true
+          /* ---- clairvoyant RNG: cloned, so real stream is NOT advanced ---- */
+          const simRng = RNG.clone()
+          Math.random = () => simRng.next()
+
+          pushFloat = pushStatusFloat = log = updateStatusIcons = updateBars = () => {}
+          applyDamage = (t, d) => {
+            t.hp = clamp(t.hp - Math.round(d), 0, t.maxHp)
+          }
+
+          let r
+          try {
+            r = fn()
+          } finally {
+            SIM_SILENT = false
+            Math.random = savedRandom
+            pushFloat = savedPushFloat
+            pushStatusFloat = savedStatusFloat
+            log = savedLog
+            updateStatusIcons = savedUpdateStatus
+            updateBars = savedUpdateBars
+            applyDamage = savedApplyDamage
+          }
+          return r
+        }
+        // shallow-clone entity (now keeps more fields)
+        function cloneEntityLite(src) {
+          return {
+            hp: src.hp,
+            maxHp: src.maxHp,
+            ch: src.ch,
+            maxCh: src.maxCh,
+            cooldowns: { ...src.cooldowns },
+            statuses: JSON.parse(JSON.stringify(src.statuses)),
+            lastUsedAbility: src.lastUsedAbility || null,
+            lastTurnSkipped: src.lastTurnSkipped || false,
+          }
+        }
+
+        // Accurate application using the authentic onImpact logic
+        function simApplyAbility(caster, target, key) {
+          /* Skip: mark flag, spend nothing */
+          if (key === "skip") {
+            caster.lastTurnSkipped = true
+            return
+          }
+          const ab = Abilities[key]
+          if (!ab) return
+          withSimulation(() => {
+            caster.lastUsedAbility = key
+            caster.ch = clamp(caster.ch - ab.cost, 0, caster.maxCh)
+            caster.cooldowns[key] = ab.cooldown || 0
+            const ctx = { base: ab.base, tags: ab.tags, critChance: ab.critChance }
+            ab.onImpact(caster, target, ctx)
+          })
+        }
+
+        function simStartOfTurn(actor) {
+          withSimulation(() => startOfTurn(actor))
+        }
+
+        // cooldown tick for simulations
+        function simCooldownTick(ent) {
+          for (const k of abilityOrder) if (ent.cooldowns[k] > 0) ent.cooldowns[k]--
+        }
+
+        // pick the strongest legal move for the given (cloned) state
+        function simBestAbility(caster, target) {
+          const opts = abilityOrder.filter((k) => canUse(caster, k).ok)
+          let best = "basic",
+            bestScore = -Infinity
+          for (const k of opts) {
+            const s = evaluateAbility(k, caster, target)
+            if (s > bestScore) {
+              bestScore = s
+              best = k
+            }
+          }
+          return best
+        }
+
+        // Flag that tells helpers to stay completely silent (no DOM/log)
+        // while the AI is running internal simulations.
+        let SIM_SILENT = false
+
+        /* === Minimax / α-β helpers (Hard AI) ========================= */
+
+        function evalPosition(state) {
+          /* Linear material/tempo evaluation. */
+          return state.ai.hp - state.pl.hp + 0.2 * (state.pl.ch - state.ai.ch)
+        }
+
+        // Order moves using the same heuristics we added for Medium AI
+        function orderedLegalMoves(caster, opponent) {
+          const DEFENSIVE = new Set(["byakugan", "earth", "thunder", "healing", "regeneration"])
+          /* collect legal ability moves */
+          const moves = abilityOrder.filter((k) => canUse(caster, k).ok)
+          /* always add the option to Skip */
+          if (canUse(caster, "skip").ok) moves.push("skip")
+
+          return moves.sort((a, b) => {
+            const sa = moveScore(a)
+            const sb = moveScore(b)
+            return sb - sa
+          })
+
+          // --- local helper --------------------------------------------
+          function moveScore(key) {
+            /* Immediate-lethal check (not for skip) */
+            if (key !== "skip") {
+              const c0 = cloneEntityLite(caster)
+              const o0 = cloneEntityLite(opponent)
+              simApplyAbility(c0, o0, key)
+              if (o0.hp <= 0) return 99999
+            }
+
+            let score = evaluateAbility(key, caster, opponent)
+
+            // Threat prevention
+            if (key !== "skip") {
+              const c0 = cloneEntityLite(caster)
+              const o0 = cloneEntityLite(opponent)
+              simApplyAbility(c0, o0, key)
+              const threat = estimateOpponentBestDamage(c0, o0)
+              if (threat >= c0.hp) score += DEFENSIVE.has(key) ? 30 : -40
+            }
+            return score
+          }
+        }
+
+        function cloneState(src) {
+          return { ai: cloneEntityLite(src.ai), pl: cloneEntityLite(src.pl), turn: src.turn }
+        }
+
+        function searchRoot(state, depth, alpha, beta) {
+          let bestScore = -Infinity
+          let bestMove = "basic"
+          for (const m of orderedLegalMoves(state.ai, state.pl)) {
+            const next = cloneState(state)
+            simApplyAbility(next.ai, next.pl, m)
+            if (next.pl.hp <= 0) return { best: m, score: 99999 }
+            simStartOfTurn(next.pl)
+            next.turn = "pl"
+            const s = search(next, depth - 1, alpha, beta)
+            if (s > bestScore) {
+              bestScore = s
+              bestMove = m
+            }
+            alpha = Math.max(alpha, bestScore)
+            if (alpha >= beta) break
+          }
+          return { best: bestMove, score: bestScore }
+        }
+
+        function search(state, depth, alpha, beta) {
+          /* ----------  Bound (skip-turn) handling  ---------- */
+          const actor = state.turn === "ai" ? state.ai : state.pl
+          if (actor.statuses && actor.statuses.bound) {
+            /* Consume the skip: decrement duration, mark double-regen flag */
+            actor.statuses.bound.duration--
+            if (actor.statuses.bound.duration <= 0) delete actor.statuses.bound
+            actor.lastTurnSkipped = true
+
+            /* Opponent immediately starts their turn */
+            const opp = state.turn === "ai" ? state.pl : state.ai
+            simStartOfTurn(opp) // DoTs / regen / cds for the new actor
+            state.turn = state.turn === "ai" ? "pl" : "ai"
+
+            /* Check lethal dots that may have fired just now */
+            if (state.pl.hp <= 0) return 99999
+            if (state.ai.hp <= 0) return -99999
+
+            /* Re-enter search one ply deeper */
+            return search(state, depth - 1, alpha, beta)
+          }
+          /* --------------------------------------------------- */
+
+          if (depth <= 0 || state.ai.hp <= 0 || state.pl.hp <= 0) return evalPosition(state)
+
+          if (state.turn === "ai") {
+            let v = -Infinity
+            for (const m of orderedLegalMoves(state.ai, state.pl)) {
+              const next = cloneState(state)
+              simApplyAbility(next.ai, next.pl, m)
+              if (next.pl.hp <= 0) return 99999
+              simStartOfTurn(next.pl)
+              next.turn = "pl"
+              v = Math.max(v, search(next, depth - 1, alpha, beta))
+              alpha = Math.max(alpha, v)
+              if (alpha >= beta) break
+            }
+            return v
+          } else {
+            let v = Infinity
+            for (const m of orderedLegalMoves(state.pl, state.ai)) {
+              const next = cloneState(state)
+              simApplyAbility(next.pl, next.ai, m)
+              if (next.ai.hp <= 0) return -99999
+              simStartOfTurn(next.ai)
+              next.turn = "ai"
+              v = Math.min(v, search(next, depth - 1, alpha, beta))
+              beta = Math.min(beta, v)
+              if (alpha >= beta) break
+            }
+            return v
+          }
+        }
+
+        // --- New animation: Lightning Thunderstorm --------------------
+        async function animateThunder(caster, target, ctx, onImpact) {
+          const to = getCharCenter(target.side)
+          const x = to.x
+          const yTop = to.y - 80
+          const bolt = document.createElementNS(SVG_NS, "polyline")
+          bolt.setAttribute(
+            "points",
+            `${x},${yTop} ${x + 8},${yTop + 40} ${x - 8},${yTop + 80} ${x + 6},${yTop + 120} ${x},${to.y}`
+          ) /* all offsets doubled */
+          bolt.setAttribute("stroke", "#fff78e")
+          bolt.setAttribute("stroke-width", "8") /* was 4 */
+          bolt.setAttribute("fill", "none")
+          bolt.setAttribute("stroke-linecap", "round")
+          fxSVG.appendChild(bolt)
+          const len = bolt.getTotalLength()
+          bolt.setAttribute("stroke-dasharray", len)
+          bolt.setAttribute("stroke-dashoffset", len)
+
+          const dur = 160
+          const t0 = performance.now()
+          await new Promise((res) => {
+            function step(t) {
+              const k = clamp((t - t0) / dur, 0, 1)
+              bolt.setAttribute("stroke-dashoffset", String(len * (1 - k)))
+              if (k < 1) requestAnimationFrame(step)
+              else res()
+            }
+            requestAnimationFrame(step)
+          })
+
+          // Impact flash
+          const flash = document.createElementNS(SVG_NS, "circle")
+          flash.setAttribute("cx", String(x))
+          flash.setAttribute("cy", String(to.y))
+          flash.setAttribute("r", "12") /* was 6 */
+          flash.setAttribute("fill", "#fffdc0")
+          fxSVG.appendChild(flash)
+          onImpact()
+
+          const t1 = performance.now()
+          await new Promise((res) => {
+            function fade(t) {
+              const k = clamp((t - t1) / 220, 0, 1)
+              flash.setAttribute("opacity", String(1 - k))
+              if (k < 1) requestAnimationFrame(fade)
+              else res()
+            }
+            requestAnimationFrame(fade)
+          })
+          bolt.remove()
+          flash.remove()
+        }
+
+        // --- New animation: Earthen Chakra Bind -----------------------
+        async function animateBind(caster, target, ctx, onImpact) {
+          const to = getCharCenter(target.side)
+          const g = document.createElementNS(SVG_NS, "g")
+          fxSVG.appendChild(g)
+          const cols = ["#8d744c", "#c2a269"]
+          const rects = []
+          const offs = [-56, -28, 28, 56] /* pillar spacing ×2 (−28, −14, 14, 28) */
+          for (let i = 0; i < offs.length; i++) {
+            const r = document.createElementNS(SVG_NS, "rect")
+            r.setAttribute("x", String(to.x + offs[i] - 6))
+            r.setAttribute("y", String(to.y + 20))
+            r.setAttribute("width", "12") /* was 8 */
+            r.setAttribute("height", "0")
+            r.setAttribute("fill", cols[i % 2])
+            g.appendChild(r)
+            rects.push(r)
+          }
+
+          const dur = 260
+          const t0 = performance.now()
+          let hit = false
+          await new Promise((res) => {
+            function step(t) {
+              const k = clamp((t - t0) / dur, 0, 1)
+              for (const r of rects) {
+                r.setAttribute("y", String(to.y + 20 - 80 * k)) /* 40→80 for taller rise */
+                r.setAttribute("height", String(80 * k)) /* pillar height ×2 */
+              }
+              if (!hit && k >= 0.5) {
+                hit = true
+                onImpact()
+              }
+              if (k < 1) requestAnimationFrame(step)
+              else res()
+            }
+            requestAnimationFrame(step)
+          })
+          await sleep(240)
+          g.remove()
+        }
+      })()
+    </script>
+  </body>
+</html>

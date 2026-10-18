@@ -1,0 +1,26 @@
+package menu_fla
+{
+   import flash.display.MovieClip;
+   
+   [Embed(source="/_assets/assets.swf", symbol="symbol2115")]
+   public dynamic class highlight_upgrade_hpspap_815 extends MovieClip
+   {
+      
+      public function highlight_upgrade_hpspap_815()
+      {
+         super();
+         addFrameScript(0,this.frame1,1,this.frame2);
+      }
+      
+      internal function frame1() : *
+      {
+         this.stop();
+      }
+      
+      internal function frame2() : *
+      {
+         this.stop();
+      }
+   }
+}
+

@@ -3,3 +3,7 @@
 *.wasm binary
 *.png binary
 *.cmd text eol=crlf
+# Preserve exact exported/reference bytes and their recorded hashes.
+restoration/as3/** -text -whitespace
+restoration/evidence/** -text -whitespace
+restoration/references/** -text -whitespace

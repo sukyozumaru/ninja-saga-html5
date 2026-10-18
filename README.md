@@ -1,6 +1,8 @@
 # Ninja Saga · Local / HTML5
 
-Proyecto privado de recuperación local y desarrollo de un prototipo HTML5.
+Proyecto privado de restauración de Ninja Saga y traslado fiel del juego original a HTML5.
+
+**Alcance confirmado: restauración 1:1 del juego original, lo mejor posible.** No se desarrollará un juego distinto ni se usarán reglas de clones como sustituto de las originales. Ver [RESTORATION.md](RESTORATION.md) y el [primer informe de análisis](restoration/INFORME-01.md).
 
 ## Empezar
 
@@ -31,6 +33,6 @@ Las colecciones de Internet Archive, aqhmal y el servidor alternativo se conserv
 
 ## Siguiente etapa
 
-Elegir datos de una misma versión, extraer un personaje, un enemigo, un escenario y una habilidad; reconstruir un combate en HTML5 y conectar guardado y recompensas al servidor local.
+Completar el corpus histórico y sus contratos de servidor; trasladar sus clases, pantallas y timelines con pruebas de equivalencia 1:1. El análisis y la arquitectura propuesta están en `restoration/INFORME-01.md`.
 
 Los recursos originales conservan sus derechos y licencias de procedencia. Este repositorio no concede una licencia sobre Ninja Saga ni sus recursos.

@@ -1,0 +1,869 @@
+{
+  "limitations": "Only literal .service(\"...\") calls. Dynamic service names and runtime-only calls require further analysis.",
+  "unique": [
+    "Achievement.flushBattleStat",
+    "Achievement.flushCharStat",
+    "Achievement.validate",
+    "Anni7th.finishBattle",
+    "AnniReward.claimOlympusDailyLogin",
+    "BloodlineService.useTalentPill",
+    "CharacterDAO.AccRegTutNoticeRead",
+    "CharacterDAO.activatePet",
+    "CharacterDAO.addTrialEmblemThirdSkillType",
+    "CharacterDAO.createCharacter",
+    "CharacterDAO.deactivatePet",
+    "CharacterDAO.deleteCharacter",
+    "CharacterDAO.deleteCharactersOnRemoveTrialEmblem",
+    "CharacterDAO.deletePet",
+    "CharacterDAO.equipCharacter",
+    "CharacterDAO.getCharacterById",
+    "CharacterDAO.getCharacterProfileById",
+    "CharacterDAO.getCharactersList",
+    "CharacterDAO.getExtraData",
+    "CharacterDAO.getPvpCharacter",
+    "CharacterDAO.instantTrainByToken",
+    "CharacterDAO.makeBattleBetter",
+    "CharacterDAO.payMinigame",
+    "CharacterDAO.rankup",
+    "CharacterDAO.resetAPbyToken",
+    "CharacterDAO.resetSkill",
+    "CharacterDAO.saveResetAP",
+    "CharacterDAO.trainPetSkill",
+    "CharacterDAO.train_hp_cp_ap",
+    "CharacterDAO.updateAP",
+    "CharacterDAO.updateDailyTask",
+    "CharacterDAO.upgradeInvSlot",
+    "CharacterDAO.upgradePet",
+    "CharacterDAO.verifyTrainingSkill",
+    "CharacterDAO.verify_hp_cp_ap",
+    "CharacterDAO.watchSJENotice",
+    "CharacterManagement.buyHair",
+    "CharacterManagement.changeHair",
+    "CharacterManagement.recoverCharacter",
+    "CharacterService.changeName",
+    "CharacterService.changePetName",
+    "CharacterService.completeDailyTask",
+    "CharacterService.getNewsfeedReward",
+    "CharacterService.reviveBattleCharacter",
+    "CharacterService.selectFreeSkill",
+    "CharacterService.startMission",
+    "CharacterService.startSJExam",
+    "CharacterService.updateCharacter",
+    "CharacterService.useFriendshipBox",
+    "CharacterValidation.validateSkill",
+    "ChristmasEvent2014.claimNewYear2015SpecialReward",
+    "ClanWar.generateBattleResult",
+    "CrewWar.finishLandHunt",
+    "EasterFestival.sendBattleEvent",
+    "EudemonGarden.finishHunting",
+    "FacebookService.getFriendList",
+    "FacebookService.getFriendsData",
+    "FacebookService.payToRecruit",
+    "FacebookService.saveChallengeRecord",
+    "FacebookService.saveRecruitRecord",
+    "FileChecking.checkHackActivity",
+    "FriendReward.getFriendReward",
+    "GodSnap.updateGodSnap",
+    "HalloweenEvent2015.finishBattle",
+    "ItemDAO.getBossReward",
+    "ItemDAO.getDailyHuntingPassport",
+    "OptionData.setOption",
+    "PVPService.pvpFinishRecord",
+    "PVPServiceDebug.logData",
+    "PetDAO.addPetMaturityByItem",
+    "ReportService.pvpActionHitLog",
+    "ReportService.reportAmfError2",
+    "ReportService.reportBug2",
+    "ReportService.reportLogDump",
+    "ReportService.saveLog",
+    "ReportService.submitData",
+    "ReportService.submitSkillTrainingError",
+    "RouletteService.getReward",
+    "RouletteService.randomAddScatchCard",
+    "SLevelMission.finishMission",
+    "SSTraining.finishSSMission",
+    "SmallEvent.replyAmazingDraw2014",
+    "SocialNetwork.getFriends",
+    "SocialNetwork.saveRecruitRecord",
+    "SpecialReward.claimLvUpReward",
+    "SpecialReward.claimTrialEmblem",
+    "SpecialReward.getLvUpReward",
+    "SpecialReward.minikGift",
+    "SystemData.get",
+    "SystemData.getCreateCharacter",
+    "SystemService.checkAmf",
+    "SystemService.login",
+    "SystemService.requireLogin",
+    "SystemService.snsLogin",
+    "Tracking.clickIngameLoginBanner",
+    "Tracking.generated",
+    "Tracking.posted",
+    "Tracking.tutTracking",
+    "ValentinesDay2017.finishHunting",
+    "VisitFriendService.getLearnedSkill",
+    "VisitFriendService.getLearningStatus",
+    "VisitFriendService.unlearn"
+  ],
+  "occurrences": [
+    {
+      "service": "Achievement.flushBattleStat",
+      "file": "as3/code_library/ninjasaga/Achievement.as",
+      "line": 61
+    },
+    {
+      "service": "Achievement.flushCharStat",
+      "file": "as3/code_library/ninjasaga/Achievement.as",
+      "line": 141
+    },
+    {
+      "service": "Achievement.validate",
+      "file": "as3/code_library/ninjasaga/Achievement.as",
+      "line": 364
+    },
+    {
+      "service": "ReportService.reportAmfError2",
+      "file": "as3/code_library/ninjasaga/AMFConnector.as",
+      "line": 60
+    },
+    {
+      "service": "CharacterDAO.makeBattleBetter",
+      "file": "as3/code_library/ninjasaga/battle/BattleProcessor.as",
+      "line": 12604
+    },
+    {
+      "service": "ClanWar.generateBattleResult",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 2421
+    },
+    {
+      "service": "ItemDAO.getBossReward",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 2440
+    },
+    {
+      "service": "EudemonGarden.finishHunting",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 2448
+    },
+    {
+      "service": "ValentinesDay2017.finishHunting",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 2456
+    },
+    {
+      "service": "CrewWar.finishLandHunt",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 2465
+    },
+    {
+      "service": "ItemDAO.getBossReward",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 2485
+    },
+    {
+      "service": "ClanWar.generateBattleResult",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 2532
+    },
+    {
+      "service": "ReportService.pvpActionHitLog",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 9382
+    },
+    {
+      "service": "EudemonGarden.finishHunting",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 9455
+    },
+    {
+      "service": "ValentinesDay2017.finishHunting",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 9463
+    },
+    {
+      "service": "CrewWar.finishLandHunt",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 9470
+    },
+    {
+      "service": "ItemDAO.getBossReward",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 9478
+    },
+    {
+      "service": "EudemonGarden.finishHunting",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 9548
+    },
+    {
+      "service": "ValentinesDay2017.finishHunting",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 9556
+    },
+    {
+      "service": "CrewWar.finishLandHunt",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 9564
+    },
+    {
+      "service": "ItemDAO.getBossReward",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 9573
+    },
+    {
+      "service": "CharacterService.reviveBattleCharacter",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 9606
+    },
+    {
+      "service": "PVPService.pvpFinishRecord",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 10927
+    },
+    {
+      "service": "PVPService.pvpFinishRecord",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 11007
+    },
+    {
+      "service": "CharacterDAO.createCharacter",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 11390
+    },
+    {
+      "service": "SystemData.getCreateCharacter",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 11403
+    },
+    {
+      "service": "CharacterDAO.getExtraData",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 11413
+    },
+    {
+      "service": "CharacterService.selectFreeSkill",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 11440
+    },
+    {
+      "service": "Tracking.tutTracking",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 11615
+    },
+    {
+      "service": "Tracking.tutTracking",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 11665
+    },
+    {
+      "service": "Tracking.tutTracking",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 11715
+    },
+    {
+      "service": "Tracking.tutTracking",
+      "file": "as3/code_library/ninjasaga/Battle.as",
+      "line": 11720
+    },
+    {
+      "service": "CharacterDAO.equipCharacter",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 713
+    },
+    {
+      "service": "CharacterService.updateCharacter",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 768
+    },
+    {
+      "service": "CharacterService.updateCharacter",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 793
+    },
+    {
+      "service": "CharacterService.updateCharacter",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 819
+    },
+    {
+      "service": "RouletteService.randomAddScatchCard",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 864
+    },
+    {
+      "service": "CharacterDAO.updateAP",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 890
+    },
+    {
+      "service": "CharacterDAO.updateDailyTask",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 905
+    },
+    {
+      "service": "CharacterService.completeDailyTask",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 931
+    },
+    {
+      "service": "CharacterValidation.validateSkill",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 2564
+    },
+    {
+      "service": "CharacterDAO.saveResetAP",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 2629
+    },
+    {
+      "service": "CharacterDAO.verifyTrainingSkill",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 2692
+    },
+    {
+      "service": "VisitFriendService.getLearningStatus",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 2742
+    },
+    {
+      "service": "CharacterDAO.addTrialEmblemThirdSkillType",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 2921
+    },
+    {
+      "service": "GodSnap.updateGodSnap",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 3250
+    },
+    {
+      "service": "GodSnap.updateGodSnap",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 3258
+    },
+    {
+      "service": "SpecialReward.getLvUpReward",
+      "file": "as3/code_library/ninjasaga/Character.as",
+      "line": 3664
+    },
+    {
+      "service": "ReportService.submitSkillTrainingError",
+      "file": "as3/code_library/ninjasaga/DataParser.as",
+      "line": 1042
+    },
+    {
+      "service": "SystemService.checkAmf",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 3020
+    },
+    {
+      "service": "CharacterDAO.watchSJENotice",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 4678
+    },
+    {
+      "service": "CharacterService.startSJExam",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 4729
+    },
+    {
+      "service": "FacebookService.saveChallengeRecord",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 5280
+    },
+    {
+      "service": "SocialNetwork.saveRecruitRecord",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 5295
+    },
+    {
+      "service": "FacebookService.saveRecruitRecord",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 5299
+    },
+    {
+      "service": "ReportService.reportLogDump",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 5322
+    },
+    {
+      "service": "ReportService.submitData",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 5336
+    },
+    {
+      "service": "ReportService.saveLog",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 5369
+    },
+    {
+      "service": "CharacterDAO.getPvpCharacter",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 5433
+    },
+    {
+      "service": "CharacterDAO.rankup",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 5624
+    },
+    {
+      "service": "FileChecking.checkHackActivity",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 5977
+    },
+    {
+      "service": "CharacterService.getNewsfeedReward",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 6158
+    },
+    {
+      "service": "CharacterDAO.AccRegTutNoticeRead",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 6599
+    },
+    {
+      "service": "SmallEvent.replyAmazingDraw2014",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 7286
+    },
+    {
+      "service": "SmallEvent.replyAmazingDraw2014",
+      "file": "as3/code_library/ninjasaga/Main.as",
+      "line": 7299
+    },
+    {
+      "service": "CharacterService.startMission",
+      "file": "as3/code_library/ninjasaga/Mission.as",
+      "line": 261
+    },
+    {
+      "service": "CharacterDAO.getCharacterProfileById",
+      "file": "as3/code_library/ninjasaga/Mission.as",
+      "line": 318
+    },
+    {
+      "service": "CharacterDAO.getCharacterProfileById",
+      "file": "as3/code_library/ninjasaga/Mission.as",
+      "line": 381
+    },
+    {
+      "service": "HalloweenEvent2015.finishBattle",
+      "file": "as3/code_library/ninjasaga/Mission.as",
+      "line": 962
+    },
+    {
+      "service": "Anni7th.finishBattle",
+      "file": "as3/code_library/ninjasaga/Mission.as",
+      "line": 967
+    },
+    {
+      "service": "SLevelMission.finishMission",
+      "file": "as3/code_library/ninjasaga/Mission.as",
+      "line": 973
+    },
+    {
+      "service": "SSTraining.finishSSMission",
+      "file": "as3/code_library/ninjasaga/Mission.as",
+      "line": 978
+    },
+    {
+      "service": "HalloweenEvent2015.finishBattle",
+      "file": "as3/code_library/ninjasaga/Mission.as",
+      "line": 1131
+    },
+    {
+      "service": "Anni7th.finishBattle",
+      "file": "as3/code_library/ninjasaga/Mission.as",
+      "line": 1135
+    },
+    {
+      "service": "SLevelMission.finishMission",
+      "file": "as3/code_library/ninjasaga/Mission.as",
+      "line": 1140
+    },
+    {
+      "service": "SSTraining.finishSSMission",
+      "file": "as3/code_library/ninjasaga/Mission.as",
+      "line": 1145
+    },
+    {
+      "service": "Tracking.generated",
+      "file": "as3/code_library/ninjasaga/SNS.as",
+      "line": 905
+    },
+    {
+      "service": "Tracking.posted",
+      "file": "as3/code_library/ninjasaga/SNS.as",
+      "line": 915
+    },
+    {
+      "service": "FacebookService.getFriendList",
+      "file": "as3/code_library/ninjasaga/SNS.as",
+      "line": 981
+    },
+    {
+      "service": "SocialNetwork.getFriends",
+      "file": "as3/code_library/ninjasaga/SNS.as",
+      "line": 991
+    },
+    {
+      "service": "CharacterDAO.resetAPbyToken",
+      "file": "as3/code_library/ninjasaga/Token.as",
+      "line": 38
+    },
+    {
+      "service": "CharacterDAO.instantTrainByToken",
+      "file": "as3/code_library/ninjasaga/Token.as",
+      "line": 84
+    },
+    {
+      "service": "CharacterManagement.buyHair",
+      "file": "as3/code_library/ninjasaga/Token.as",
+      "line": 138
+    },
+    {
+      "service": "CharacterManagement.changeHair",
+      "file": "as3/code_library/ninjasaga/Token.as",
+      "line": 163
+    },
+    {
+      "service": "SystemService.requireLogin",
+      "file": "as3/code_library/NinjaSaga.as",
+      "line": 596
+    },
+    {
+      "service": "SystemService.snsLogin",
+      "file": "as3/code_library/NinjaSaga.as",
+      "line": 629
+    },
+    {
+      "service": "SystemService.snsLogin",
+      "file": "as3/code_library/NinjaSaga.as",
+      "line": 640
+    },
+    {
+      "service": "SystemService.snsLogin",
+      "file": "as3/code_library/NinjaSaga.as",
+      "line": 643
+    },
+    {
+      "service": "SpecialReward.claimLvUpReward",
+      "file": "as3/main/ninjasaga/linkage/ConfirmationDoc.as",
+      "line": 1381
+    },
+    {
+      "service": "AnniReward.claimOlympusDailyLogin",
+      "file": "as3/main/ninjasaga/linkage/ConfirmationDoc.as",
+      "line": 1897
+    },
+    {
+      "service": "ItemDAO.getDailyHuntingPassport",
+      "file": "as3/main/ninjasaga/linkage/ConfirmationDoc.as",
+      "line": 2003
+    },
+    {
+      "service": "EasterFestival.sendBattleEvent",
+      "file": "as3/main/ninjasaga/linkage/ConfirmationDoc.as",
+      "line": 2608
+    },
+    {
+      "service": "CharacterDAO.payMinigame",
+      "file": "as3/main/ninjasaga/linkage/ConfirmationDoc.as",
+      "line": 2625
+    },
+    {
+      "service": "FriendReward.getFriendReward",
+      "file": "as3/main/ninjasaga/linkage/DailyTask.as",
+      "line": 94
+    },
+    {
+      "service": "Tracking.tutTracking",
+      "file": "as3/main/ninjasaga/linkage/DialogueDoc.as",
+      "line": 134
+    },
+    {
+      "service": "CharacterManagement.recoverCharacter",
+      "file": "as3/main/ninjasaga/linkage/ErrorDisplay.as",
+      "line": 188
+    },
+    {
+      "service": "SystemService.login",
+      "file": "as3/main/ninjasaga/linkage/LoginMenu.as",
+      "line": 133
+    },
+    {
+      "service": "ChristmasEvent2014.claimNewYear2015SpecialReward",
+      "file": "as3/main/ninjasaga/linkage/newYearClothing2015.as",
+      "line": 105
+    },
+    {
+      "service": "SpecialReward.minikGift",
+      "file": "as3/main/ninjasaga/linkage/panel/MinikPromotion.as",
+      "line": 62
+    },
+    {
+      "service": "CharacterDAO.getCharacterById",
+      "file": "as3/main/ninjasaga/linkage/panel/RRSelectCharMenu.as",
+      "line": 592
+    },
+    {
+      "service": "CharacterDAO.getCharactersList",
+      "file": "as3/main/ninjasaga/linkage/panel/RRSelectCharMenu.as",
+      "line": 603
+    },
+    {
+      "service": "CharacterDAO.createCharacter",
+      "file": "as3/main/ninjasaga/linkage/panel/RRSelectCharMenu.as",
+      "line": 648
+    },
+    {
+      "service": "CharacterDAO.deleteCharacter",
+      "file": "as3/main/ninjasaga/linkage/panel/RRSelectCharMenu.as",
+      "line": 727
+    },
+    {
+      "service": "SystemData.get",
+      "file": "as3/main/ninjasaga/linkage/panel/RRSelectCharMenu.as",
+      "line": 754
+    },
+    {
+      "service": "CharacterDAO.getExtraData",
+      "file": "as3/main/ninjasaga/linkage/panel/RRSelectCharMenu.as",
+      "line": 773
+    },
+    {
+      "service": "CharacterDAO.resetSkill",
+      "file": "as3/main/ninjasaga/linkage/ResetSkill.as",
+      "line": 205
+    },
+    {
+      "service": "RouletteService.getReward",
+      "file": "as3/main/ninjasaga/linkage/Roulette.as",
+      "line": 151
+    },
+    {
+      "service": "FriendReward.getFriendReward",
+      "file": "as3/main/ninjasaga/linkage/Roulette.as",
+      "line": 235
+    },
+    {
+      "service": "Tracking.clickIngameLoginBanner",
+      "file": "as3/main/ninjasaga/linkage/SelectCharMenu.as",
+      "line": 191
+    },
+    {
+      "service": "CharacterDAO.getCharacterById",
+      "file": "as3/main/ninjasaga/linkage/SelectCharMenu.as",
+      "line": 780
+    },
+    {
+      "service": "CharacterDAO.getCharactersList",
+      "file": "as3/main/ninjasaga/linkage/SelectCharMenu.as",
+      "line": 792
+    },
+    {
+      "service": "Tracking.tutTracking",
+      "file": "as3/main/ninjasaga/linkage/SelectCharMenu.as",
+      "line": 924
+    },
+    {
+      "service": "Tracking.tutTracking",
+      "file": "as3/main/ninjasaga/linkage/SelectCharMenu.as",
+      "line": 928
+    },
+    {
+      "service": "Tracking.tutTracking",
+      "file": "as3/main/ninjasaga/linkage/SelectCharMenu.as",
+      "line": 932
+    },
+    {
+      "service": "Tracking.tutTracking",
+      "file": "as3/main/ninjasaga/linkage/SelectCharMenu.as",
+      "line": 936
+    },
+    {
+      "service": "CharacterDAO.deleteCharacter",
+      "file": "as3/main/ninjasaga/linkage/SelectCharMenu.as",
+      "line": 983
+    },
+    {
+      "service": "SystemData.get",
+      "file": "as3/main/ninjasaga/linkage/SelectCharMenu.as",
+      "line": 1010
+    },
+    {
+      "service": "CharacterDAO.getExtraData",
+      "file": "as3/main/ninjasaga/linkage/SelectCharMenu.as",
+      "line": 1029
+    },
+    {
+      "service": "SpecialReward.claimTrialEmblem",
+      "file": "as3/main/ninjasaga/linkage/TrialEmblemPanel.as",
+      "line": 124
+    },
+    {
+      "service": "CharacterDAO.deleteCharactersOnRemoveTrialEmblem",
+      "file": "as3/main/ninjasaga/linkage/TrialEmblemPanel.as",
+      "line": 207
+    },
+    {
+      "service": "SystemService.requireLogin",
+      "file": "as3/main/NinjaSaga.as",
+      "line": 732
+    },
+    {
+      "service": "SystemService.snsLogin",
+      "file": "as3/main/NinjaSaga.as",
+      "line": 765
+    },
+    {
+      "service": "SystemService.snsLogin",
+      "file": "as3/main/NinjaSaga.as",
+      "line": 776
+    },
+    {
+      "service": "SystemService.snsLogin",
+      "file": "as3/main/NinjaSaga.as",
+      "line": 779
+    },
+    {
+      "service": "FacebookService.getFriendsData",
+      "file": "as3/main/Rank.as",
+      "line": 300
+    },
+    {
+      "service": "FacebookService.payToRecruit",
+      "file": "as3/main/Rank.as",
+      "line": 778
+    },
+    {
+      "service": "CharacterDAO.getCharacterProfileById",
+      "file": "as3/main/Rank.as",
+      "line": 820
+    },
+    {
+      "service": "CharacterDAO.verify_hp_cp_ap",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 1924
+    },
+    {
+      "service": "CharacterDAO.train_hp_cp_ap",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 2241
+    },
+    {
+      "service": "CharacterDAO.verify_hp_cp_ap",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 2323
+    },
+    {
+      "service": "CharacterDAO.upgradePet",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 3554
+    },
+    {
+      "service": "EasterFestival.sendBattleEvent",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 4730
+    },
+    {
+      "service": "BloodlineService.useTalentPill",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 4814
+    },
+    {
+      "service": "CharacterService.useFriendshipBox",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 4838
+    },
+    {
+      "service": "ReportService.reportBug2",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 4919
+    },
+    {
+      "service": "CharacterService.changeName",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 6236
+    },
+    {
+      "service": "CharacterService.changePetName",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 6286
+    },
+    {
+      "service": "OptionData.setOption",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 7513
+    },
+    {
+      "service": "CharacterDAO.trainPetSkill",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 7894
+    },
+    {
+      "service": "CharacterDAO.deletePet",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 8009
+    },
+    {
+      "service": "CharacterDAO.activatePet",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 8064
+    },
+    {
+      "service": "CharacterDAO.deactivatePet",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 8089
+    },
+    {
+      "service": "PetDAO.addPetMaturityByItem",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 8745
+    },
+    {
+      "service": "CharacterDAO.upgradeInvSlot",
+      "file": "as3/menu/ninjasaga/linkage/MapMenu.as",
+      "line": 8877
+    },
+    {
+      "service": "VisitFriendService.getLearnedSkill",
+      "file": "as3/menu/ninjasaga/linkage/UIModule_TrainTimer.as",
+      "line": 383
+    },
+    {
+      "service": "VisitFriendService.unlearn",
+      "file": "as3/menu/ninjasaga/linkage/UIModule_TrainTimer.as",
+      "line": 438
+    },
+    {
+      "service": "SystemService.requireLogin",
+      "file": "as3/menu/NinjaSaga.as",
+      "line": 587
+    },
+    {
+      "service": "SystemService.snsLogin",
+      "file": "as3/menu/NinjaSaga.as",
+      "line": 620
+    },
+    {
+      "service": "SystemService.snsLogin",
+      "file": "as3/menu/NinjaSaga.as",
+      "line": 631
+    },
+    {
+      "service": "SystemService.snsLogin",
+      "file": "as3/menu/NinjaSaga.as",
+      "line": 634
+    },
+    {
+      "service": "PVPServiceDebug.logData",
+      "file": "as3/network_library/ninjasaga/Socket.as",
+      "line": 1117
+    },
+    {
+      "service": "PVPServiceDebug.logData",
+      "file": "as3/network_library/ninjasaga/Socket.as",
+      "line": 1132
+    }
+  ]
+}

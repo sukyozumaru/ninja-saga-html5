@@ -1,0 +1,34 @@
+package menu_fla
+{
+   import flash.display.MovieClip;
+   import ninjasaga.data.AppData;
+   
+   [Embed(source="/_assets/assets.swf", symbol="symbol366")]
+   public dynamic class icon_dailyTask_21 extends MovieClip
+   {
+      
+      public function icon_dailyTask_21()
+      {
+         super();
+         addFrameScript(0,this.frame1,1,this.frame2);
+      }
+      
+      internal function frame1() : *
+      {
+         switch(AppData.type)
+         {
+            case AppData.RR:
+               this.gotoAndStop(2);
+               break;
+            default:
+               this.stop();
+         }
+      }
+      
+      internal function frame2() : *
+      {
+         stop();
+      }
+   }
+}
+
