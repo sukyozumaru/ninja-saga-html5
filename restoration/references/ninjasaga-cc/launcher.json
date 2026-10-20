@@ -1,0 +1,250 @@
+{
+    "cdn": [
+        {
+            "label": "CDN Server 1",
+            "url": "https://cdn.ninjasaga.cc/cdn/swf/latest/ninja_saga.swf",
+            "value": "https://cdn.ninjasaga.cc/cdn/",
+            "display_label": "Server 1",
+            "cache_bust": false
+        }, {
+            "label": "CDN Server 2",
+            "url": "https://nscdn.b-cdn.net/cdn/swf/latest/ninja_saga.swf",
+            "value": "https://nscdn.b-cdn.net/cdn/",
+            "display_label": "Server 2",
+            "cache_bust": true
+        }
+    ],
+    "servers": [
+        {
+            "label": "Game Server 1",
+            "value": "https://amf.ninjasaga.cc/",
+            "display_label": "Server 1",
+            "website": "https://ninjasaga.cc/"
+        },{
+            "label": "Game Server 2",
+            "value": "https://8630da35-7.b-cdn.net/",
+            "display_label": "Server 2",
+            "website": "https://ninjasaga.cc/"
+        }
+    ],
+    "languages": [
+        {
+            "label": "English",
+            "value": "en",
+            "enabled": true
+        },
+        {
+            "label": "Spanish",
+            "value": "es",
+            "enabled": true
+        },
+        {
+            "label": "Portuguese",
+            "value": "pt",
+            "enabled": true
+        },
+        {
+            "label": "Filipino",
+            "value": "fil",
+            "enabled": true
+        },
+        {
+            "label": "Indonesian",
+            "value": "id",
+            "enabled": true
+        },
+        {
+            "label": "Malay",
+            "value": "ms",
+            "enabled": true
+        }
+    ],
+    "ui": {
+        "show_menu_button": true,
+        "show_cdn": true,
+        "show_servers": true,
+        "show_languages": false,
+        "show_display_mode": true
+    },
+    "layout": {
+        "desktop": {
+            "side": "left",
+            "toggle_w": 48,
+            "toggle_h": 48,
+            "settings_w": 48,
+            "settings_h": 48,
+            "arrow_thickness": 5,
+            "cog_outer": 16,
+            "cog_inner": 12,
+            "cog_hole": 6,
+            "menu_w": 320,
+            "menu_item_h": 56,
+            "menu_header_h": 36,
+            "menu_item_font": 20,
+            "menu_header_font": 16,
+            "dot_radius": 5,
+            "gap": 10
+        },
+        "mobile": {
+            "side": "right",
+            "toggle_w": 100,
+            "toggle_h": 110,
+            "settings_w": 100,
+            "settings_h": 100,
+            "arrow_thickness": 7,
+            "cog_outer": 22,
+            "cog_inner": 17,
+            "cog_hole": 8,
+            "menu_w": 460,
+            "menu_item_h": 90,
+            "menu_header_h": 50,
+            "menu_item_font": 28,
+            "menu_header_font": 24,
+            "dot_radius": 8,
+            "gap": 10
+        }
+    },
+    "labels": {
+        "en": {
+            "cdn_header": "Content Delivery Network",
+            "server_header": "Game Server",
+            "language_header": "Language",
+            "restart_message": "Please restart the game to apply changes.",
+            "loading": "Connecting...",
+            "initializing": "Initializing Game...",
+            "error": "Connection Error.",
+            "config_error": "Failed to load server list.",
+            "update_available": "A new version is available!",
+            "update_required": "Please update to continue playing.",
+            "update_button": "Update",
+            "update_button_32": "Download (32-bit)",
+            "update_button_64": "Download (64-bit)",
+            "display_mode_header": "Display Mode",
+            "display_mode_mobile": "Mobile",
+            "display_mode_desktop": "Desktop"
+        },
+        "es": {
+            "cdn_header": "Red de Distribución de Contenido",
+            "server_header": "Servidor de Juego",
+            "language_header": "Idioma",
+            "restart_message": "Por favor reinicia el juego para aplicar los cambios.",
+            "loading": "Conectando...",
+            "initializing": "Inicializando Juego...",
+            "error": "Error de Conexión.",
+            "config_error": "Error al cargar la lista de servidores.",
+            "update_available": "¡Una nueva versión está disponible!",
+            "update_required": "Por favor actualiza para seguir jugando.",
+            "update_button": "Actualizar",
+            "update_button_32": "Descargar (32-bit)",
+            "update_button_64": "Descargar (64-bit)",
+            "display_mode_header": "Modo de Pantalla",
+            "display_mode_mobile": "Móvil",
+            "display_mode_desktop": "Escritorio"
+        },
+        "pt": {
+            "cdn_header": "Rede de Distribuição de Conteúdo",
+            "server_header": "Servidor do Jogo",
+            "language_header": "Idioma",
+            "restart_message": "Por favor reinicie o jogo para aplicar as alterações.",
+            "loading": "Conectando...",
+            "initializing": "Inicializando Jogo...",
+            "error": "Erro de Conexão.",
+            "config_error": "Falha ao carregar a lista de servidores.",
+            "update_available": "Uma nova versão está disponível!",
+            "update_required": "Por favor atualize para continuar jogando.",
+            "update_button": "Atualizar",
+            "update_button_32": "Baixar (32-bit)",
+            "update_button_64": "Baixar (64-bit)",
+            "display_mode_header": "Modo de Exibição",
+            "display_mode_mobile": "Celular",
+            "display_mode_desktop": "Desktop"
+        },
+        "id": {
+            "cdn_header": "Jaringan Pengiriman Konten",
+            "server_header": "Server Game",
+            "language_header": "Bahasa",
+            "restart_message": "Silakan mulai ulang game untuk menerapkan perubahan.",
+            "loading": "Menghubungkan...",
+            "initializing": "Memulai Game...",
+            "error": "Kesalahan Koneksi.",
+            "config_error": "Gagal memuat daftar server.",
+            "update_available": "Versi baru tersedia!",
+            "update_required": "Silakan perbarui untuk melanjutkan bermain.",
+            "update_button": "Perbarui",
+            "update_button_32": "Unduh (32-bit)",
+            "update_button_64": "Unduh (64-bit)",
+            "display_mode_header": "Mode Tampilan",
+            "display_mode_mobile": "Mobile",
+            "display_mode_desktop": "Desktop"
+        },
+        "fil": {
+            "cdn_header": "Content Delivery Network",
+            "server_header": "Game Server",
+            "language_header": "Wika",
+            "restart_message": "Mangyaring i-restart ang laro upang mailapat ang mga pagbabago.",
+            "loading": "Kumokonekta...",
+            "initializing": "Sinisimulan ang Laro...",
+            "error": "Error sa Koneksyon.",
+            "config_error": "Hindi ma-load ang listahan ng server.",
+            "update_available": "May bagong bersyon na available!",
+            "update_required": "Mangyaring mag-update upang makapaglaro.",
+            "update_button": "I-update",
+            "update_button_32": "I-download (32-bit)",
+            "update_button_64": "I-download (64-bit)",
+            "display_mode_header": "Display Mode",
+            "display_mode_mobile": "Mobile",
+            "display_mode_desktop": "Desktop"
+        },
+        "ms": {
+            "cdn_header": "Rangkaian Penghantaran Kandungan",
+            "server_header": "Pelayan Permainan",
+            "language_header": "Bahasa",
+            "restart_message": "Sila mulakan semula permainan untuk menggunakan perubahan.",
+            "loading": "Menyambung...",
+            "initializing": "Memulakan Permainan...",
+            "error": "Ralat Sambungan.",
+            "config_error": "Gagal memuatkan senarai pelayan.",
+            "update_available": "Versi baharu tersedia!",
+            "update_required": "Sila kemas kini untuk terus bermain.",
+            "update_button": "Kemas Kini",
+            "update_button_32": "Muat Turun (32-bit)",
+            "update_button_64": "Muat Turun (64-bit)",
+            "display_mode_header": "Mod Paparan",
+            "display_mode_mobile": "Mudah Alih",
+            "display_mode_desktop": "Desktop"
+        }
+    },
+    "version": {
+        "latest": "1.8",
+        "required": true,
+        "changelog": [
+            "- Fixed Server Selector"
+        ],
+        "downloads": {
+            "windows": "https://download.ninjasaga.cc/ninja_saga.exe",
+            "android_arm": "https://download.ninjasaga.cc/ninja_saga_32bit.apk",
+            "android_arm64": "https://download.ninjasaga.cc/ninja_saga.apk"
+        }
+    },
+    "colors": {
+        "menu_background": "3D2B1A",
+        "menu_border": "6B5B3E",
+        "menu_text": "CCCCCC",
+        "menu_selected": "5C4A32",
+        "menu_header": "E8861C",
+        "update_bg": "5C4A32",
+        "update_panel": "2E2318",
+        "update_panel_border": "6B5B3E",
+        "update_title": "E8861C",
+        "update_text": "CCBBAA",
+        "button_fill": "E8861C",
+        "button_text": "FFFFFF",
+        "button_hover_fill": "3D2B1A",
+        "button_hover_text": "E8861C",
+        "skip_fill": "444444",
+        "skip_text": "CCCCCC",
+        "loading_text": "FFFFFF",
+        "restart_bg": "000000",
+        "restart_text": "FFFFFF"
+    }
+}

@@ -1,0 +1,111 @@
+{
+  "reviewDate": "2026-10-19",
+  "source": "https://ninjasaga.cc/download",
+  "authentication": "secondary source; exact historical build not authenticated",
+  "executedPackages": false,
+  "resources": [
+    {
+      "file": "cdn/swf/items/hair_01_0.swf",
+      "url": "https://cdn.ninjasaga.cc/cdn/swf/latest/swf/items/hair_01_0.swf",
+      "bytes": 4035,
+      "sha256": "a50a05b0a48e0d349dc411b19bc6fd23c8fe7ca41854a0041a137d672d8941f8",
+      "historicalMatch": "swf/3.3.00810/swf/items/hair_01_0.swf"
+    },
+    {
+      "file": "cdn/swf/items/hair_10_1.swf",
+      "url": "https://cdn.ninjasaga.cc/cdn/swf/latest/swf/items/hair_10_1.swf",
+      "bytes": 7132,
+      "sha256": "8186cc867b4b179d74cf5b93887e5086ee20ab9227df142b0f442a8a306aaf33",
+      "historicalMatch": null
+    },
+    {
+      "file": "cdn/swf/language/data_library_en.swf",
+      "url": "https://cdn.ninjasaga.cc/cdn/swf/latest/swf/language/data_library_en.swf",
+      "bytes": 851041,
+      "sha256": "170e5de45bf5be8af860cdae0a95b84fed2fe2d88faa58692c739e4deaec9cdc",
+      "historicalMatch": null
+    },
+    {
+      "file": "cdn/swf/library/client_library.swf",
+      "url": "https://cdn.ninjasaga.cc/cdn/swf/latest/swf/library/client_library.swf",
+      "bytes": 1842,
+      "sha256": "5c13ee0172fc0bb2e98c1c77dcc8849c3c8f9d4964a23b52ec4c6029c1b9d846",
+      "historicalMatch": null
+    },
+    {
+      "file": "cdn/swf/library/code_library.swf",
+      "url": "https://cdn.ninjasaga.cc/cdn/swf/latest/swf/library/code_library.swf",
+      "bytes": 454403,
+      "sha256": "16685ee706fef7ac36614471c2239c8c3294d2642e4dddb921aaa37a4994a4f0",
+      "historicalMatch": null
+    },
+    {
+      "file": "cdn/swf/library/library.swf",
+      "url": "https://cdn.ninjasaga.cc/cdn/swf/latest/swf/library/library.swf",
+      "bytes": 7058627,
+      "sha256": "1b57b1779a5ba3f97d7bc2610dbfe4ac718f3d137ae088a01e0a6ab621bfb8f3",
+      "historicalMatch": null
+    },
+    {
+      "file": "cdn/swf/library/menu.swf",
+      "url": "https://cdn.ninjasaga.cc/cdn/swf/latest/swf/library/menu.swf",
+      "bytes": 1112271,
+      "sha256": "18073f5ee78ff9f623965e973b68149ec91baac6317409ae7441418dca057033",
+      "historicalMatch": null
+    },
+    {
+      "file": "cdn/swf/library/network_library.swf",
+      "url": "https://cdn.ninjasaga.cc/cdn/swf/latest/swf/library/network_library.swf",
+      "bytes": 69992,
+      "sha256": "c4a2940f5744406a7928811bc4c17a98ab78e0e9a9c946b45fd7003ca1941b53",
+      "historicalMatch": null
+    },
+    {
+      "file": "cdn/swf/mission/mission_01.swf",
+      "url": "https://cdn.ninjasaga.cc/cdn/swf/latest/swf/mission/mission_01.swf",
+      "bytes": 164588,
+      "sha256": "f19c7696b7af85fd64df177ec4650924186a5c4f65c2c82b30da36155f7e40de",
+      "historicalMatch": "swf/3.3.00810/swf/mission/mission_01.swf"
+    },
+    {
+      "file": "cdn/swf/panels/Panel_New_Daily_Login.swf",
+      "url": "https://cdn.ninjasaga.cc/cdn/swf/latest/swf/panels/Panel_New_Daily_Login.swf",
+      "bytes": 107286,
+      "sha256": "317748bc2dcbd56256f5f3add43aafa4e0a4955ae940db0f4ffb951ae38aec43",
+      "historicalMatch": null
+    },
+    {
+      "file": "ninja_saga-latest.swf",
+      "url": "https://cdn.ninjasaga.cc/cdn/swf/latest/ninja_saga.swf",
+      "bytes": 2884046,
+      "sha256": "72b1c290aafcc41f93336ce234b056cdef882a0dae21eaeb9ab3b946a030b9d0",
+      "historicalMatch": null
+    }
+  ],
+  "packages": [
+    {
+      "file": "ninja_saga.exe",
+      "url": "https://download.ninjasaga.cc/ninja_saga.exe",
+      "bytes": 100512787,
+      "sha256": "22a72e7e2ef849bcdcc63645604703cf575b77ae924312b40aab375b5da46cb6",
+      "historicalMatch": null,
+      "storedInRepository": false
+    },
+    {
+      "file": "ninja_saga.apk",
+      "url": "https://download.ninjasaga.cc/ninja_saga.apk",
+      "bytes": 24216756,
+      "sha256": "b2a8f59af237bb7fe76e1b6f707934aafc739b42723c8990fc3278e5d5721989",
+      "historicalMatch": null,
+      "storedInRepository": false
+    },
+    {
+      "file": "ninja_saga_32bit.apk",
+      "url": "https://download.ninjasaga.cc/ninja_saga_32bit.apk",
+      "bytes": 17654113,
+      "sha256": "0a4110fde42eb8e42a703526a86d42fa7b5ff016edb24a3b4d0618e9b966ceb0",
+      "historicalMatch": null,
+      "storedInRepository": false
+    }
+  ]
+}
