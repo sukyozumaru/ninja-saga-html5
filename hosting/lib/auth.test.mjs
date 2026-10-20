@@ -1,10 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
-import {readFileSync} from 'node:fs';
+import {readFileSync,readdirSync} from 'node:fs';
 import {dispatch,register,signature,rateLimit,digest} from './auth.mjs';
 function database(t){
- const sqlite=new DatabaseSync(':memory:');sqlite.exec(readFileSync(new URL('../drizzle/0000_low_leader.sql',import.meta.url),'utf8'));t.after(()=>sqlite.close());
+ const sqlite=new DatabaseSync(':memory:');for(const f of readdirSync(new URL('../drizzle/',import.meta.url)).filter(f=>f.endsWith('.sql')).sort())sqlite.exec(readFileSync(new URL('../drizzle/'+f,import.meta.url),'utf8'));t.after(()=>sqlite.close());
  return {prepare(sql){const statement=sqlite.prepare(sql);let values=[];return {bind(...args){values=args;return this;},first(){return statement.get(...values)||null;},run(){return statement.run(...values);}};},batch(statements){return statements.map(s=>s.run());}};
 }
 test('historical account signature matches original ClientLibrary fixture',async()=>assert.equal(await signature('0123456789abcdef',7),'9cd5151c51f0'));

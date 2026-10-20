@@ -10,6 +10,10 @@ window.addEventListener('DOMContentLoaded',async()=>{try{
  const player=window.RufflePlayer.newest().createPlayer();document.querySelector('#game').appendChild(player);
  // The unchanged client checks loaderURL for its original host string.
  await player.ruffle().load({url:origin+'/swf/3.3.00810/ninja_saga.swf?preserved_host=http://static.ninjasaga.com/',parameters:{lang:'en',client_version:'3.3.00810'}});
+ if(location.hostname==='127.0.0.1'&&new URLSearchParams(location.search).has('diagnostics')){
+  const log=document.createElement('pre');log.id='diagnostics';document.body.appendChild(log);
+  player.ruffle().traceObserver=message=>{if(/error|fault|amf|onError|lock|invalid/i.test(message)){const safe=message.replace(/[a-f0-9]{32,}/gi,'[redacted]');log.textContent=(log.textContent+'\n'+safe).slice(-12000);}};
+ }
  document.querySelector('#status').textContent='Entra con tu cuenta de pruebas en la pantalla original del juego.';
 }catch{document.querySelector('#status').textContent='No se pudo cargar el cliente. Recarga la página o reporta el problema.';}});
 </script></html>

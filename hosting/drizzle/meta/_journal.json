@@ -8,6 +8,20 @@
       "when": 1792360046440,
       "tag": "0000_low_leader",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1792460924259,
+      "tag": "0001_lazy_brood",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1792462715573,
+      "tag": "0002_legal_tempest",
+      "breakpoints": true
     }
   ]
 }

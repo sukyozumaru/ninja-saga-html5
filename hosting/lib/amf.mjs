@@ -99,10 +99,11 @@ class Reader {
       this.t3.push(traits);
     }
     const o = {}; this.o3.push(o);
+    const order=[];Object.defineProperty(o,Symbol.for('amf.propertyOrder'),{value:order});
     if (traits.cn) o.__class = traits.cn;
-    for (const p of traits.props) o[p] = this.val3();
+    for (const p of traits.props){order.push(p);o[p] = this.val3();}
     if (traits.dynamic) {
-      for (;;) { const k = this.str3(); if (k === '') break; o[k] = this.val3(); }
+      for (;;) { const k = this.str3(); if (k === '') break;order.push(k);o[k] = this.val3(); }
     }
     return o;
   }
@@ -118,7 +119,8 @@ class Reader {
       case 0x05: return null;
       case 0x06: return undefined;
       case 0x07: return this.o0[this.u16()];
-      case 0x08: { this.u32(); return this.obj0({}); }
+      // AMF0 ECMA arrays retain array identity (including numeric and associative keys).
+      case 0x08: { this.u32(); return this.obj0([]); }
       case 0x0A: { const n = this.u32(); const a = []; this.o0.push(a);
                    for (let i = 0; i < n; i++) a.push(this.val0()); return a; }
       case 0x0B: { const t = this.dbl(); this.u16(); return new Date(t); }
@@ -132,10 +134,11 @@ class Reader {
 
   obj0(o) {
     this.o0.push(o);
+    const order=[];Object.defineProperty(o,Symbol.for('amf.propertyOrder'),{value:order});
     for (;;) {
       const k = this.utf(this.u16());
       if (k === '') { this.u8(); break; }   // 0x09 end
-      o[k] = this.val0();
+      order.push(k);o[k] = this.val0();
     }
     return o;
   }

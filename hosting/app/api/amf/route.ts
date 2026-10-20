@@ -14,6 +14,7 @@ export async function POST(request:Request){
   if(packet.bodies.length>8)return new Response('Too many calls',{status:400});
   const responses=[];
   for(const b of packet.bodies){
+   console.info('Historical AMF',String(b.target).replace(/[^A-Za-z0-9_.]/g,'').slice(0,100));
    const args=Array.isArray(b.data)?b.data:[];
    let data;
    if(b.target==='SystemService.login'&&await rateLimit(env.DB,'login:'+request.headers.get('CF-Connecting-IP')))data={status:'0',error:'PUBLIC_RATE_LIMIT'};

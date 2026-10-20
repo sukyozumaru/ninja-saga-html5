@@ -1,3 +1,5 @@
+import {characterService} from './characters.mjs';
+import {checkFiles} from './file-checking.mjs';
 const encoder=new TextEncoder();
 export function randomHex(bytes=24){return Array.from(crypto.getRandomValues(new Uint8Array(bytes)),b=>b.toString(16).padStart(2,'0')).join('');}
 export async function digest(text,algorithm='SHA-256'){return Array.from(new Uint8Array(await crypto.subtle.digest(algorithm,encoder.encode(text))),b=>b.toString(16).padStart(2,'0')).join('');}
@@ -38,9 +40,12 @@ export async function dispatch(db,service,args){
  }
  const session=args[0];
  if(typeof session!=='string'||!/^[a-f0-9]{48}$/.test(session))return fail('PUBLIC_INVALID_SESSION');
- const account=await db.prepare('SELECT account_id FROM sessions WHERE token_hash=? AND expires>?').bind(await digest(session),Date.now()).first();
+ const sessionHash=await digest(session);
+ const account=await db.prepare('SELECT account_id,selected_character_id,pending_skill,fresh_character FROM sessions WHERE token_hash=? AND expires>?').bind(sessionHash,Date.now()).first();
  if(!account)return fail('PUBLIC_INVALID_SESSION');
- if(service==='CharacterDAO.getCharactersList')return {status:'1',result:[],login_per_day:1};
+ if(service==='FileChecking.checkHackActivity')return await checkFiles(args)?{status:'1'}:fail('PUBLIC_RESOURCE_INTEGRITY_MISMATCH');
+ const characterResult=await characterService(db,service,args,account,sessionHash);
+ if(characterResult){if(characterResult.status==='0')console.warn('Rejected historical service',service,characterResult.error);return characterResult;}
  console.warn('Unrestored historical AMF service',String(service).replace(/[^A-Za-z0-9_.]/g,'').slice(0,100));
  return fail('PUBLIC_NOT_RESTORED:'+service);
 }

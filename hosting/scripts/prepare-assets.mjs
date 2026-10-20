@@ -34,3 +34,5 @@ const target=path.join(root,'public',reconstructed);
 fs.mkdirSync(path.dirname(target),{recursive:true});
 fs.copyFileSync(path.join(root,'restoration-assets/hair_10_1.swf'),target);
 fs.copyFileSync(path.join(root,'restoration-assets/library.swf'),path.join(root,'public/swf/3.3.00810/swf/library/library.swf'));
+const daily=path.join(root,'public/swf/3.3.00810/swf/panels/Panel_New_Daily_Login.swf');
+fs.mkdirSync(path.dirname(daily),{recursive:true});fs.copyFileSync(path.join(root,'restoration-assets/Panel_New_Daily_Login.swf'),daily);
